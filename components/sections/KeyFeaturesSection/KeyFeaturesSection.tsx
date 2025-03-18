@@ -43,13 +43,13 @@ export const KeyFeaturesSection = () => {
           </div>
 
           <div className="md:w-1/2">
-            {/* <Image
+            <Image
               className="w-full h-auto object-cover"
               alt="Child at birthday party"
-              src=""
+              src="/assets/Oalh2MojUuk (2).png"
               width={1440}
               height={720}
-            /> */}
+            />
           </div>
         </div>
       </div>

@@ -5,6 +5,13 @@ import { OfferingsSection } from "@/components/sections/OfferingsSection/Offerin
 import { ServicesOverviewSection } from "@/components/sections/ServicesOverviewSection/ServicesOverviewSection";
 import { ImageGallerySection } from "@/components/sections/ImageGallerySection";
 import { KeyFeaturesSection } from "@/components/sections/KeyFeaturesSection";
+import { ImageDisplaySection } from "@/components/sections/ImageDisplaySection";
+import { HighlightsSection } from "@/components/sections/HighlightsSection";
+import { MainContentSection } from "@/components/sections/MainContentSection/MainContentSection";
+import { BenefitsOverviewSection } from "@/components/sections/BenefitsOverviewSection";
+import { ClientTestimonialsSection } from "@/components/sections/ClientTestimonialsSection/ClientTestimonialsSection";
+import { ContactUsSection } from "@/components/sections/ContactUsSection/ContactUsSection";
+import { FeaturedProductSection } from "@/components/sections/FeaturedProductSection/FeaturedProductSection";
 
 // interface NavItem {
 //   label: string;
@@ -87,16 +94,16 @@ export default function Home() {
             <KeyFeaturesSection />
 
             {/* Image Display Section */}
-            {/* <ImageDisplaySection /> */}
+            <ImageDisplaySection />
 
             {/* Highlights Section */}
-            {/* <HighlightsSection /> */}
+            <HighlightsSection />
 
             {/* Main Content Section */}
-            {/* <MainContentSection /> */}
+            <MainContentSection />
 
             {/* Benefits Overview Section */}
-            {/* <BenefitsOverviewSection /> */}
+            <BenefitsOverviewSection />
 
             {/* Image Gallery */}
             <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -131,13 +138,13 @@ export default function Home() {
             </section>
 
             {/* Client Testimonials Section */}
-            {/* <ClientTestimonialsSection /> */}
+            <ClientTestimonialsSection />
 
             {/* Contact Us Section */}
-            {/* <ContactUsSection /> */}
+            <ContactUsSection />
 
             {/* Featured Product Section */}
-            {/* <FeaturedProductSection /> */}
+            <FeaturedProductSection />
           </main>
         </div>
       </div>

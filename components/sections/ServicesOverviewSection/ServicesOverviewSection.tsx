@@ -6,13 +6,13 @@ export const ServicesOverviewSection = () => {
     <section className="flex justify-center py-20 w-full">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-[100px] max-w-7xl">
         <div className="w-full md:w-1/2">
-          {/* <Image
+          <Image
             className="w-full h-auto object-cover rounded-md max-h-[627px]"
             alt="Children playing outdoors"
-            src=""
+            src="/assets/Oalh2MojUuk.png"
             width={1440}
             height={627}
-          /> */}
+          />
         </div>
 
         <div className="w-full md:w-1/2 border-none shadow-none">

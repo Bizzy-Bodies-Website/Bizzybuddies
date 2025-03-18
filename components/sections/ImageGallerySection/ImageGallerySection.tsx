@@ -8,13 +8,13 @@ export const ImageGallerySection = () => {
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2">
-          {/* <Image
+          <Image
             className="w-full h-auto object-cover rounded-sm"
             alt="Children playing sports outdoors"
-            src=""
+            src="/assets/Oalh2MojUuk (1).png"
             width={1440}
             height={627}
-          /> */}
+          />
         </div>
 
         {/* Content on the right */}

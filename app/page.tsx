@@ -36,14 +36,13 @@ export default function Home() {
           <main className="w-full">
             {/* Offerings Section */}
             <section
-              className="w-full relative h-[50v]"
+              className="w-full relative z-10"
               style={{
                 backgroundImage: "url('/assets/hero1.svg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
-                // backgroundAttachment: "fixed",
               }}
             >
               <OfferingsSection />
@@ -51,26 +50,18 @@ export default function Home() {
 
             {/* Introduction Section */}
             <section
-              className="w-full relative h-[50vh] bg-[#FF0000]"
+              className="w-full relative bg-[#FF0000] mt-[-30px] z-0 py-[50px]"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                // backgroundAttachment: "fixed",
               }}
             >
               <IntroductionSection />
             </section>
 
             {/* Services Overview Section */}
-            <section className="w-full relative bg-grey-5 bg-opacity-15 py-16">
-              {/* <Image
-                className="w-[200px] h-[141px] mx-auto mb-8"
-                alt="Icon"
-                src=""
-                width={200}
-                height={141}
-              /> */}
+            <section className="w-full relative bg-[#D8D8D8] py-16">
               <ServicesOverviewSection />
             </section>
 

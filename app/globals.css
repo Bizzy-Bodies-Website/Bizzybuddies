@@ -128,13 +128,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    /* --background: #0a0a0a; */
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  /* background: var(--background); */
   /* color: var(--foreground); */
   font-family: var(--font-bebas-neue), Arial, Helvetica, sans-serif;
 }
@@ -173,7 +173,7 @@ body {
     --radius: 0.5rem;
   }
 
-  .dark {
+  /* .dark {
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
 
@@ -204,5 +204,5 @@ body {
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
-  }
+  } */
 }

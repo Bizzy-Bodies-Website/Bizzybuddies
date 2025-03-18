@@ -51,7 +51,7 @@ export default function Home() {
 
             {/* Introduction Section */}
             <section
-              className="w-full relative h-[80vh] bg-[#FF0000]"
+              className="w-full relative h-[50vh] bg-[#FF0000]"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
                 backgroundSize: "cover",

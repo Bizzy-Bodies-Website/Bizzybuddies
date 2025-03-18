@@ -32,35 +32,33 @@ export default function Home() {
     <div>
       <div className="bg-white flex flex-col items-center w-full">
         <div className="bg-white w-full relative">
-          {/* Navigation Bar */}
-          <header className="w-full h-20 bg-bb-red">
-            <div className="container mx-auto flex items-center justify-between h-full px-4">
-              {/* <Image
-                className="w-[60px] h-[60px] object-cover"
-                alt="Logo"
-                src=""
-                width={60}
-                height={60}
-              /> */}
-
-              <button
-                // variant="outline"
-                className="border-2 border-white rounded-[100px] text-black font-desktop-button-large-button-text text-base font-semibold leading-[200%]"
-              >
-                Contact Us
-              </button>
-            </div>
-          </header>
-
           {/* Main Content */}
           <main className="w-full">
             {/* Offerings Section */}
-            <section className="w-full relative h-[50vh] bg-fuchsia-500">
+            <section
+              className="w-full relative h-[50v]"
+              style={{
+                backgroundImage: "url('/assets/hero1.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "#FF0000",
+                // backgroundAttachment: "fixed",
+              }}
+            >
               <OfferingsSection />
             </section>
 
             {/* Introduction Section */}
-            <section className="w-full relative h-[50vh] bg-amber-400">
+            <section
+              className="w-full relative h-[80vh] bg-[#FF0000]"
+              style={{
+                backgroundImage: "url('/assets/hero2.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                // backgroundAttachment: "fixed",
+              }}
+            >
               <IntroductionSection />
             </section>
 

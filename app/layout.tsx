@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Bebas_Neue, Poppins } from "next/font/google"; // Import Poppins
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,8 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        {/* Featured Product Section */}
+        <FeaturedProductSection />
       </body>
     </html>
   );

@@ -1,17 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import { IntroductionSection } from "@/components/sections/IntroductionSection";
-import { OfferingsSection } from "@/components/sections/OfferingsSection/OfferingsSection";
-import { ServicesOverviewSection } from "@/components/sections/ServicesOverviewSection/ServicesOverviewSection";
-import { ImageGallerySection } from "@/components/sections/ImageGallerySection";
-import { KeyFeaturesSection } from "@/components/sections/KeyFeaturesSection";
-import { ImageDisplaySection } from "@/components/sections/ImageDisplaySection";
-import { HighlightsSection } from "@/components/sections/HighlightsSection";
-import { MainContentSection } from "@/components/sections/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/sections/BenefitsOverviewSection";
-import { ClientTestimonialsSection } from "@/components/sections/ClientTestimonialsSection/ClientTestimonialsSection";
-import { ContactUsSection } from "@/components/sections/ContactUsSection/ContactUsSection";
-import { FeaturedProductSection } from "@/components/sections/FeaturedProductSection/FeaturedProductSection";
+import { IntroductionSection } from "@/components/home/IntroductionSection";
+import { OfferingsSection } from "@/components/home/OfferingsSection/OfferingsSection";
+import { ServicesOverviewSection } from "@/components/home/ServicesOverviewSection/ServicesOverviewSection";
+import { ImageGallerySection } from "@/components/home/ImageGallerySection";
+import { KeyFeaturesSection } from "@/components/home/KeyFeaturesSection";
+import { ImageDisplaySection } from "@/components/home/ImageDisplaySection";
+import { HighlightsSection } from "@/components/home/HighlightsSection";
+import { MainContentSection } from "@/components/home/MainContentSection/MainContentSection";
+import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSection";
+import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsSection/ClientTestimonialsSection";
+import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
+import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 
 // interface NavItem {
 //   label: string;
@@ -61,7 +61,7 @@ export default function Home() {
             </section>
 
             {/* Services Overview Section */}
-            <section className="w-full relative bg-[#D8D8D8] py-16">
+            <section className="w-full relative bg-[#F9F9F9] py-16">
               <ServicesOverviewSection />
             </section>
 
@@ -94,46 +94,49 @@ export default function Home() {
             {/* Benefits Overview Section */}
             <BenefitsOverviewSection />
 
-            {/* Image Gallery */}
-            <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-0">
-              {/* <Image
-                className="w-full h-[415px] object-cover"
-                alt="Kitchen"
-                src=""
-                width={500}
-                height={500}
-              /> */}
-              {/* <Image
-                className="w-full h-[415px] object-cover"
-                alt="Photo"
-                src=""
-                width={500}
-                height={500}
-              /> */}
-              {/* <Image
-                className="w-full h-[505px] object-cover md:col-span-1"
-                alt="Photo"
-                src=""
-                width={500}
-                height={500}
-              /> */}
-              {/* <Image
-                className="w-full h-[505px] md:col-span-1"
-                alt="Mask group"
-                src=""
-                width={500}
-                height={500}
-              /> */}
+            <section className="w-full p-4">
+              {/* First Row - Two Images */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Image
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Batman Cosplay"
+                  src="/assets/one.svg"
+                  width={500}
+                  height={415}
+                />
+                <Image
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Soccer Goal"
+                  src="/assets/four.svg"
+                  width={500}
+                  height={415}
+                />
+              </div>
+
+              {/* Second Row - Two Images in a Flexbox */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <Image
+                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Batman and Kid"
+                  src="/assets/two.svg"
+                  width={500}
+                  height={415}
+                />
+                <Image
+                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Kids in Superhero Masks"
+                  src="/assets/three.svg"
+                  width={500}
+                  height={415}
+                />
+              </div>
             </section>
 
             {/* Client Testimonials Section */}
             {/* <ClientTestimonialsSection /> */}
 
             {/* Contact Us Section */}
-            {/* <ContactUsSection /> */}
-
-            {/* Featured Product Section */}
-            {/* <FeaturedProductSection /> */}
+            <ContactUsSection />
           </main>
         </div>
       </div>

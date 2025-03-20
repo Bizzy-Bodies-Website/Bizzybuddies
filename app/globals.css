@@ -1,26 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --font-bebas-neue: "Bebas Neue", cursive;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --bb-red: rgba(255, 0, 0, 1);
+  --bb-red-2: rgba(255, 73, 72, 1);
+  --black: rgba(17, 17, 17, 1);
+  --button-font-family: "Roboto", Helvetica;
+  --button-font-size: 16px;
+  --button-font-style: normal;
+  --button-font-weight: 500;
+  --button-letter-spacing: 0px;
+  --button-line-height: normal;
+  --dark-grey: rgba(60, 60, 59, 1);
+  --desktop-body-body-copy-1-font-family: "Poppins", Helvetica;
+  --desktop-body-body-copy-1-font-size: 16px;
+  --desktop-body-body-copy-1-font-style: normal;
+  --desktop-body-body-copy-1-font-weight: 400;
+  --desktop-body-body-copy-1-letter-spacing: 0px;
+  --desktop-body-body-copy-1-line-height: 30px;
+  --desktop-body-testimonial-font-family: "Poppins", Helvetica;
+  --desktop-body-testimonial-font-size: 24px;
+  --desktop-body-testimonial-font-style: normal;
+  --desktop-body-testimonial-font-weight: 400;
+  --desktop-body-testimonial-letter-spacing: 0px;
+  --desktop-body-testimonial-line-height: 36px;
+  --desktop-button-button-text-font-family: "Poppins", Helvetica;
+  --desktop-button-button-text-font-size: 14px;
+  --desktop-button-button-text-font-style: normal;
+  --desktop-button-button-text-font-weight: 600;
+  --desktop-button-button-text-letter-spacing: 0px;
+  --desktop-button-button-text-line-height: normal;
+  --desktop-button-large-button-text-font-family: "Poppins", Helvetica;
+  --desktop-button-large-button-text-font-size: 16px;
+  --desktop-button-large-button-text-font-style: normal;
+  --desktop-button-large-button-text-font-weight: 600;
+  --desktop-button-large-button-text-letter-spacing: 0px;
+  --desktop-button-large-button-text-line-height: 200%;
+  --desktop-button-secondary-button-text-font-family: "Poppins", Helvetica;
+  --desktop-button-secondary-button-text-font-size: 16px;
+  --desktop-button-secondary-button-text-font-style: normal;
+  --desktop-button-secondary-button-text-font-weight: 500;
+  --desktop-button-secondary-button-text-letter-spacing: 0px;
+  --desktop-button-secondary-button-text-line-height: 32px;
+  --desktop-title-CTA-body-font-family: "Poppins", Helvetica;
+  --desktop-title-CTA-body-font-size: 24px;
+  --desktop-title-CTA-body-font-style: normal;
+  --desktop-title-CTA-body-font-weight: 400;
+  --desktop-title-CTA-body-letter-spacing: -0.48px;
+  --desktop-title-CTA-body-line-height: 38px;
+  --desktop-title-CTA-label-font-family: "Poppins", Helvetica;
+  --desktop-title-CTA-label-font-size: 24px;
+  --desktop-title-CTA-label-font-style: normal;
+  --desktop-title-CTA-label-font-weight: 500;
+  --desktop-title-CTA-label-letter-spacing: 1px;
+  --desktop-title-CTA-label-line-height: 64px;
+  --desktop-title-CTA-title-font-family: "Bebas", Helvetica;
+  --desktop-title-CTA-title-font-size: 144px;
+  --desktop-title-CTA-title-font-style: normal;
+  --desktop-title-CTA-title-font-weight: 400;
+  --desktop-title-CTA-title-letter-spacing: 0px;
+  --desktop-title-CTA-title-line-height: 120px;
+  --desktop-title-headline-1-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-1-font-size: 120px;
+  --desktop-title-headline-1-font-style: normal;
+  --desktop-title-headline-1-font-weight: 400;
+  --desktop-title-headline-1-letter-spacing: -2.4px;
+  --desktop-title-headline-1-line-height: 100px;
+  --desktop-title-headline-2-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-2-font-size: 72px;
+  --desktop-title-headline-2-font-style: normal;
+  --desktop-title-headline-2-font-weight: 400;
+  --desktop-title-headline-2-letter-spacing: -1.44px;
+  --desktop-title-headline-2-line-height: 72px;
+  --desktop-title-headline-3-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-3-font-size: 72px;
+  --desktop-title-headline-3-font-style: normal;
+  --desktop-title-headline-3-font-weight: 400;
+  --desktop-title-headline-3-letter-spacing: -1.44px;
+  --desktop-title-headline-3-line-height: 63px;
+  --desktop-title-headline-4-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-4-font-size: 64px;
+  --desktop-title-headline-4-font-style: normal;
+  --desktop-title-headline-4-font-weight: 400;
+  --desktop-title-headline-4-letter-spacing: -1.28px;
+  --desktop-title-headline-4-line-height: 64px;
+  --desktop-title-headline-5-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-5-font-size: 52px;
+  --desktop-title-headline-5-font-style: normal;
+  --desktop-title-headline-5-font-weight: 400;
+  --desktop-title-headline-5-letter-spacing: -1.04px;
+  --desktop-title-headline-5-line-height: 48px;
+  --desktop-title-headline-6-font-family: "Bebas", Helvetica;
+  --desktop-title-headline-6-font-size: 40px;
+  --desktop-title-headline-6-font-style: normal;
+  --desktop-title-headline-6-font-weight: 400;
+  --desktop-title-headline-6-letter-spacing: -0.8px;
+  --desktop-title-headline-6-line-height: normal;
+  --desktop-title-label-font-family: "Poppins", Helvetica;
+  --desktop-title-label-font-size: 16px;
+  --desktop-title-label-font-style: normal;
+  --desktop-title-label-font-weight: 500;
+  --desktop-title-label-letter-spacing: 0.96px;
+  --desktop-title-label-line-height: 32px;
+  --desktop-title-subheading-1-font-family: "Poppins", Helvetica;
+  --desktop-title-subheading-1-font-size: 28px;
+  --desktop-title-subheading-1-font-style: normal;
+  --desktop-title-subheading-1-font-weight: 500;
+  --desktop-title-subheading-1-letter-spacing: 0px;
+  --desktop-title-subheading-1-line-height: 40px;
+  --desktop-title-subheading-2-font-family: "Poppins", Helvetica;
+  --desktop-title-subheading-2-font-size: 18px;
+  --desktop-title-subheading-2-font-style: normal;
+  --desktop-title-subheading-2-font-weight: 500;
+  --desktop-title-subheading-2-letter-spacing: 0px;
+  --desktop-title-subheading-2-line-height: 32px;
+  --grey-2: rgba(99, 99, 98, 1);
+  --grey-3: rgba(135, 135, 134, 1);
+  --grey-5: rgba(216, 216, 216, 1);
+  --light-cream: rgba(253, 239, 224, 1);
+  --white: rgba(255, 255, 255, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    /* --background: #0a0a0a; */
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* background: var(--background); */
+  /* color: var(--foreground); */
+  font-family: var(--font-bebas-neue), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  /* .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  } */
 }

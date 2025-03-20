@@ -26,7 +26,15 @@ export const BenefitsOverviewSection = () => {
   ];
 
   return (
-    <section className="w-full py-16 bg-bb-red bg-cover relative">
+    <section
+    style={{
+      backgroundImage: "url('/assets/bg.svg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundColor: "#FF0000",
+    }}
+     className="w-full py-16 bg-bb-red bg-cover relative">
       <div className="container mx-auto px-4">
         {/* Header content */}
         <div className="flex flex-col items-center gap-4 mb-24">

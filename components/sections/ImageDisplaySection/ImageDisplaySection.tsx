@@ -3,25 +3,23 @@ import React from "react";
 
 export const ImageDisplaySection = () => {
   return (
-    <section className="w-full py-10">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-[100px]">
-          {/* Image column */}
-          <div className="flex-1">
-            <Image
-              className="w-full max-w-[641px] h-auto object-cover"
-              alt="Sports coaching session"
+    <section className="w-full py-10 relative">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
+        {/* Image on the left */}
+        <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
+          <Image
+            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover rounded-sm"   alt="Sports coaching session"
               src="/assets/Oalh2MojUuk (3).png"
-              width={641}
-              height={720}
+              width={1440}
+              height={627}
             />
           </div>
 
           {/* Content column */}
-          <div className="flex-1 bg-light-cream bg-opacity-50 rounded-sm border-none">
-            <div className="pt-10 pb-10">
-              <div className="flex flex-col items-start gap-5">
-                <div className="flex flex-col items-start gap-4">
+          <div className="w-full lg:w-1/2 bg-[#FDEFE0] rounded-sm border-none flex justify-center">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[210px] text-center lg:text-left">
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-4">
                   <p className="opacity-40 font-desktop-title-label text-grey-2 tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)]">
                     COACHING
                   </p>
@@ -43,7 +41,6 @@ export const ImageDisplaySection = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

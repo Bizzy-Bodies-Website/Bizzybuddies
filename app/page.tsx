@@ -127,13 +127,13 @@ export default function Home() {
             </section>
 
             {/* Client Testimonials Section */}
-            <ClientTestimonialsSection />
+            {/* <ClientTestimonialsSection /> */}
 
             {/* Contact Us Section */}
-            <ContactUsSection />
+            {/* <ContactUsSection /> */}
 
             {/* Featured Product Section */}
-            <FeaturedProductSection />
+            {/* <FeaturedProductSection /> */}
           </main>
         </div>
       </div>

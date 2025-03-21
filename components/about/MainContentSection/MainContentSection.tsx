@@ -20,7 +20,7 @@ export const MainContentSection = () => {
           <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[200px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 font-desktop-title-label text-grey-2 tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
+                <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
                   GROUP SESSIONS
                 </p>
 
@@ -30,7 +30,7 @@ export const MainContentSection = () => {
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-grey-2 text-[length:var(--desktop-body-body-copy-1-font-size)] tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] [font-style:var(--desktop-body-body-copy-1-font-style)]">
+              <p className="font-desktop-body-body-copy-1 text-[#636362] text-[length:var(--desktop-body-body-copy-1-font-size)] tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] [font-style:var(--desktop-body-body-copy-1-font-style)]">
                 Perfect for early years children and private group sessions with
                 a smaller group of children. Perfect to get more focused
                 training.

@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-bebas-neue: "Bebas Neue", cursive;
+  /* --font-bebas-neue: "Bebas Neue", cursive; */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --bb-red: rgba(255, 0, 0, 1);
@@ -136,7 +136,33 @@
 body {
   /* background: var(--background); */
   /* color: var(--foreground); */
-  font-family: var(--font-bebas-neue), Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+.font-desktop-title-headline-1,
+.font-desktop-title-headline-2,
+.font-desktop-title-headline-5 {
+  font-family: var(--desktop-title-headline-1-font-family);
+}
+
+.font-desktop-title-headline-5 {
+  font-family: Bebas;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 48px;
+  letter-spacing: -2%;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.font-desktop-title-subheading-2,
+.font-desktop-title-label {
+  /* color: #636362; */
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 6%;
 }
 
 @layer base {

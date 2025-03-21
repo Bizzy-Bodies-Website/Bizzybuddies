@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Bebas_Neue, Poppins } from "next/font/google"; // Import Poppins
+import Bebas from "next/font/local"; // Corrected import for local Bebas font
+import RobotoMono from "next/font/local"; // Corrected import for local Roboto Mono font
+import localFont from "next/font/local";
+
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
@@ -19,6 +23,36 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const bebas = localFont({
+  // src: "../public/fonts/bebas/Bebas-Regular.otf",
+  src: [
+    {
+      path: "../public/fonts/bebas/Bebas-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bebas",
+  style: "normal",
+});
+
+const robotoMono = localFont({
+  variable: "--font-roboto-mono",
+  src: [
+    {
+      path: "../public/fonts/Poppins,Roboto_Mono/Roboto_Mono/RobotoMono-VariableFont_wght.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Poppins,Roboto_Mono/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ], // Path to the Roboto Mono font file
+  style: "normal",
 });
 
 const poppins = Poppins({
@@ -41,7 +75,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${poppins.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${poppins.variable} ${bebas.variable} 
+      ${robotoMono.variable}
+       antialiased`}
       >
         <Header />
         {children}

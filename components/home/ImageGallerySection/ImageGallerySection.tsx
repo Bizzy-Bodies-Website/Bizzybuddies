@@ -22,7 +22,7 @@ export const ImageGallerySection = () => {
           <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[180px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 font-desktop-title-label text-grey-2 tracking-wide text-sm sm:text-base md:text-lg">
+                <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-wide text-sm sm:text-base md:text-lg">
                   SATURDAYS
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
@@ -30,7 +30,7 @@ export const ImageGallerySection = () => {
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-grey-2 text-sm sm:text-base md:text-lg leading-relaxed">
+              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
                 We offer our extremely popular Holiday Multisport Camps all year
                 round. Children can learn various sports throughout the week,
                 such as football, cricket and tennis. We also play fun games

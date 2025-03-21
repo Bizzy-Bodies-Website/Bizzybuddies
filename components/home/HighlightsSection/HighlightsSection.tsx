@@ -10,7 +10,7 @@ export const HighlightsSection = () => {
           <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[190px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 text-grey-2 text-sm md:text-base lg:text-lg font-semibold">
+                <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-desktop-title-label">
                   GROUP SESSIONS
                 </p>
                 <h2 className="text-black text-xl md:text-2xl lg:text-3xl font-bold">
@@ -18,7 +18,7 @@ export const HighlightsSection = () => {
                 </h2>
               </div>
 
-              <p className="text-grey-2 text-sm md:text-base lg:text-lg leading-relaxed">
+              <p className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
                 Come down and join in our fun multisport sessions on a Saturday
                 morning. Providing a fantastic introduction into sport for
                 little ones, we focus on fun and games to develop your

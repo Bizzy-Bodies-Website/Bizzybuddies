@@ -17,10 +17,10 @@ export const ImageDisplaySection = () => {
 
           {/* Content column */}
           <div className="w-full lg:w-1/2 bg-[#FDF6EF] rounded-sm border-none flex justify-center">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[210px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[160px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                  <p className="opacity-40 font-desktop-title-label text-grey-2 tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)]">
+                  <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)]">
                     COACHING
                   </p>
 
@@ -29,7 +29,7 @@ export const ImageDisplaySection = () => {
                   </h2>
                 </div>
 
-                <p className="font-desktop-body-body-copy-1 text-grey-2 text-[length:var(--desktop-body-body-copy-1-font-size)] tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] max-w-[441px]">
+                <p className="font-desktop-body-body-copy-1 text-[#636362] text-[length:var(--desktop-body-body-copy-1-font-size)] tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] max-w-[441px]">
                   We offer 1v1 sports coaching to take your child&#39;s sporting
                   ability to the next level. Whether they want to brush up on
                   their shooting technique in football, or their backhand stroke

@@ -13,20 +13,7 @@ import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsS
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
 import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 
-// interface NavItem {
-//   label: string;
-//   href: string;
-// }
-
 export default function Home() {
-  // Navigation items data
-  // const navItems: NavItem[] = [
-  //   { label: "Camps", href: "#" },
-  //   { label: "Birthday Parties", href: "#" },
-  //   { label: "Saturday Sessions", href: "#" },
-  //   { label: "Events", href: "#" },
-  //   { label: "About Us", href: "#" },
-  // ];
 
   return (
     <div>
@@ -61,16 +48,16 @@ export default function Home() {
             </section>
 
             {/* Services Overview Section */}
-            <section className="w-full relative bg-[#F9F9F9] py-16">
+            <section className="w-full relative bg-[#F9F9F9]">
               <ServicesOverviewSection />
             </section>
 
             {/* What We Offer Heading */}
-            <section className="w-full flex flex-col items-center gap-4 py-16">
+            <section className="w-full flex flex-col items-center gap-4 pt-10 pb-5">
               <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
                 WHAT WE OFFER
               </h2>
-              <p className="font-desktop-title-subheading-2 text-grey-2 text-center text-lg leading-8">
+              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
                 We offer a range of services within Bizzy Buddies. <br />
                 There is something for everyone!
               </p>

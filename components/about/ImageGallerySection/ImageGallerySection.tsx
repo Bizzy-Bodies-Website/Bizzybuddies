@@ -21,7 +21,7 @@ export const ImageGallerySection = () => {
           <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[180px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 font-desktop-title-label text-grey-2 tracking-wide text-sm sm:text-base md:text-lg">
+                <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-wide text-sm sm:text-base md:text-lg">
                   FOUNDER
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
@@ -29,7 +29,7 @@ export const ImageGallerySection = () => {
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-grey-2 text-sm sm:text-base md:text-lg leading-relaxed">
+              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
                 Reiss is the founder and director of Bizzy Buddies. He has been
                 teaching sports to children for over 18 years. He is an FA
                 qualified football coach, LTA qualified tennis coach and
@@ -38,7 +38,7 @@ export const ImageGallerySection = () => {
               </p>
 
               <p
-                className="font-desktop-body-body-copy-1 text-grey-2 text-sm sm:text-base md:text
+                className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text
               lg:text-lg leading-relaxed"
               >
                 Reiss has a great passion for teaching children and observing

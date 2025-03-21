@@ -7,10 +7,10 @@ export const KeyFeaturesSection = () => {
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         <div className="bg-[#FDF6EF] rounded-sm border-none w-full lg:w-1/2">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[220px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[200px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 text-grey-2 text-sm md:text-base lg:text-lg font-semibold">
+                <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
                   BIRTHDAYS
                 </p>
                 <h2 className="text-black text-xl md:text-2xl lg:text-3xl font-bold">
@@ -18,7 +18,7 @@ export const KeyFeaturesSection = () => {
                 </h2>
               </div>
 
-              <p className="text-grey-2 text-sm md:text-base lg:text-lg leading-relaxed">
+              <p className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
                 Book a birthday with our specialised party team. Whether you
                 would like a football or superhero themed party, we&#39;ve got
                 you covered!

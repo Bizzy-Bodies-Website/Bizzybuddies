@@ -21,7 +21,7 @@ export const ServicesOverviewSection = () => {
             <div className="p-0">
               <div className="flex flex-col items-start gap-5">
                 <div className="flex flex-col items-start gap-4">
-                  <div className="opacity-40 font-desktop-title-label text-grey-2 text-sm md:text-base lg:text-lg">
+                  <div className="opacity-40 font-desktop-title-label text-[#636362] text-sm md:text-base lg:text-lg">
                     ABOUT US
                   </div>
                   <h2 className="font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
@@ -29,7 +29,7 @@ export const ServicesOverviewSection = () => {
                   </h2>
                 </div>
 
-                <p className="font-desktop-body-body-copy-1 text-grey-2 text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
                   Bizzy Buddies is a sports coaching company based in Chiswick
                   W4, for children aged 18months - 11 years. It was set up in
                   January 2020 by Reiss Mcgrath.
@@ -53,7 +53,7 @@ export const ServicesOverviewSection = () => {
             <div className="p-0">
               <div className="flex flex-col items-start gap-5">
                 {/* <div className="flex flex-col items-start gap-4">
-                  <div className="opacity-40 font-desktop-title-label text-grey-2 text-sm md:text-base lg:text-lg">
+                  <div className="opacity-40 font-desktop-title-label text-[#636362] text-sm md:text-base lg:text-lg">
                     ABOUT US
                   </div>
                   <h2 className="font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
@@ -61,7 +61,7 @@ export const ServicesOverviewSection = () => {
                   </h2>
                 </div> */}
 
-                <p className="font-desktop-body-body-copy-1 text-grey-2 text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
                   We offer weekend sports classes, holiday sports camps, PPA
                   cover and birthday parties.
                   <br />

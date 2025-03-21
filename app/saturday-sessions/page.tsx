@@ -58,7 +58,7 @@ export default function about() {
               <br />
               BEHIND THE MAGIC
               </h2>
-              <p className="font-desktop-title-subheading-2 text-grey-2 text-center text-lg leading-8">
+              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.  <br />
               In viverra metus sit amet neque sodales, at sodales ex pretium
               </p>

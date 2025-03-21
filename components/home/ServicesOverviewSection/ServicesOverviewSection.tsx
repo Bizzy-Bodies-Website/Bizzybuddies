@@ -3,7 +3,7 @@ import React from "react";
 
 export const ServicesOverviewSection = () => {
   return (
-    <section className="flex justify-center py-20 w-full px-4 md:px-8">
+    <section className="flex justify-center py-20 w-full px-4 md:px-20">
       <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-[100px] max-w-7xl w-full">
         <div className="w-full lg:w-1/2">
           <Image
@@ -20,7 +20,12 @@ export const ServicesOverviewSection = () => {
           <div className="p-0">
             <div className="flex flex-col items-start gap-5">
               <div className="flex flex-col items-start gap-4">
-                <div className="opacity-40 font-desktop-title-label text-grey-2 text-sm md:text-base lg:text-lg">
+                <div
+                  style={{
+                    fontFamily: "var(--font-bebas)",
+                  }}
+                  className="opacity-40 font-desktop-title-label text-grey-2 text-sm md:text-base lg:text-lg"
+                >
                   ABOUT US
                 </div>
                 <h2 className="font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">

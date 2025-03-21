@@ -3,7 +3,7 @@ import React from "react";
 
 export const IntroductionSection = () => {
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-12">
       <div className="w-full bg-bb-red overflow-hidden border-0">
         <div className="p-0 relative">
           {/* <Image

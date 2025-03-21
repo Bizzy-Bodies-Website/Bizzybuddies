@@ -83,7 +83,7 @@ const Header: React.FC = () => {
             <Link
               href={navItems[5].path}
               className="bg-transparent border border-white text-white hover:bg-white hover:text-[#FF0000] px-6 py-2 rounded-full transition-all duration-300"
-              style={{ fontFamily: "var(--font-poppins)", fontWeight: "600" }} // ✅ Apply Poppins
+              style={{ fontFamily: "var(--font-poppins)", fontWeight: "500" }} // ✅ Apply Poppins
             >
               {navItems[5].name}
             </Link>

@@ -13,20 +13,7 @@ import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsS
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
 import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 
-// interface NavItem {
-//   label: string;
-//   href: string;
-// }
-
 export default function Home() {
-  // Navigation items data
-  // const navItems: NavItem[] = [
-  //   { label: "Camps", href: "#" },
-  //   { label: "Birthday Parties", href: "#" },
-  //   { label: "Saturday Sessions", href: "#" },
-  //   { label: "Events", href: "#" },
-  //   { label: "About Us", href: "#" },
-  // ];
 
   return (
     <div>
@@ -61,7 +48,7 @@ export default function Home() {
             </section>
 
             {/* Services Overview Section */}
-            <section className="w-full relative bg-[#F9F9F9] py-16">
+            <section className="w-full relative bg-[#F9F9F9]">
               <ServicesOverviewSection />
             </section>
 

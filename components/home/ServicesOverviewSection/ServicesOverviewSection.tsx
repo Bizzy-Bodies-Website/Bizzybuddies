@@ -24,7 +24,7 @@ export const ServicesOverviewSection = () => {
                   style={{
                     fontFamily: "var(--font-bebas)",
                   }}
-                  className="opacity-40 font-desktop-title-label text-grey-2 text-sm md:text-base lg:text-lg"
+                  className="opacity-40 font-desktop-title-label text-[#636362] text-sm md:text-base lg:text-lg"
                 >
                   ABOUT US
                 </div>
@@ -33,7 +33,7 @@ export const ServicesOverviewSection = () => {
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-grey-2 text-sm md:text-base lg:text-lg leading-relaxed">
+              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
                 Launched in 2019, we are a multi-sports coaching company for
                 children aged 18 months - 11 years old.
                 <br />

@@ -7,7 +7,7 @@ export const KeyFeaturesSection = () => {
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         <div className="bg-[#FDF6EF] rounded-sm border-none w-full lg:w-1/2">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[200px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[190px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">

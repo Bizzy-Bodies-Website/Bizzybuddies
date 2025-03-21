@@ -145,7 +145,8 @@ body {
   font-family: var(--desktop-title-headline-1-font-family);
 }
 
-.font-desktop-title-headline-5 {
+.font-desktop-title-headline-5,
+.font-desktop-title-headline-4 {
   font-family: Bebas;
   font-weight: 400;
   font-size: 52px;

@@ -17,7 +17,7 @@ export const ImageDisplaySection = () => {
 
           {/* Content column */}
           <div className="w-full lg:w-1/2 bg-[#FDF6EF] rounded-sm border-none flex justify-center">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[160px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[180px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                   <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)]">

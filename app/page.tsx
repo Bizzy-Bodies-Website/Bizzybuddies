@@ -123,7 +123,7 @@ export default function Home() {
             {/* <ClientTestimonialsSection /> */}
 
             {/* Contact Us Section */}
-            {/* <ContactUsSection /> */}
+            <ContactUsSection />
           </main>
         </div>
       </div>

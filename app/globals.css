@@ -156,6 +156,16 @@ body {
   text-transform: uppercase;
 }
 
+.font-desktop-title-headline-3a {
+  font-family: Bebas;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -2%;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
 .font-desktop-title-CTA-title {
   font-family: Bebas;
   font-weight: 400;

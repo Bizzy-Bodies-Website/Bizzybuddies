@@ -29,7 +29,8 @@ export const ContactUsSection = () => {
         <div className="w-full md:max-w-[461px] flex flex-col gap-6 md:gap-8">
           <p className="font-desktop-title-CTA-body font-[number:var(--desktop-title-CTA-body-font-weight)] text-white text-[length:var(--desktop-title-CTA-body-font-size)] tracking-[var(--desktop-title-CTA-body-letter-spacing)] leading-[var(--desktop-title-CTA-body-line-height)] [font-style:var(--desktop-title-CTA-body-font-style)] text-center md:text-left">
             We would love you to become part of the family. If you have any
-            questions or would love to join our holiday sports camps, get in touch!
+            questions or would love to join our holiday sports camps, get in
+            touch!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start">
@@ -37,9 +38,7 @@ export const ContactUsSection = () => {
               Contact Us
             </button>
 
-            <button
-              className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]"
-            >
+            <button className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
               About Us
             </button>
           </div>

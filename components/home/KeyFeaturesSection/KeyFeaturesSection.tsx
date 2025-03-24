@@ -25,7 +25,7 @@ export const KeyFeaturesSection = () => {
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
                   BIRTHDAYS
                 </p>
-                <h2 className="text-black text-xl md:text-2xl lg:text-3xl font-bold">
+                <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
                   BIRTHDAY PARTIES
                 </h2>
               </div>

@@ -1,16 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import { IntroductionSection } from "@/components/about/IntroductionSection";
-import { OfferingsSection } from "@/components/about/OfferingsSection/OfferingsSection";
-import { ServicesOverviewSection } from "@/components/about/ServicesOverviewSection/ServicesOverviewSection";
-import { ImageGallerySection } from "@/components/about/ImageGallerySection";
-import { KeyFeaturesSection } from "@/components/about/KeyFeaturesSection";
-import { ImageDisplaySection } from "@/components/about/ImageDisplaySection";
-import { HighlightsSection } from "@/components/about/HighlightsSection";
-import { MainContentSection } from "@/components/about/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/about/BenefitsOverviewSection";
-// import { ClientTestimonialsSection } from "@/components/about/ClientTestimonialsSection/ClientTestimonialsSection";
-import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
+import { IntroductionSection } from "@/components/camps/IntroductionSection";
+import { OfferingsSection } from "@/components/camps/OfferingsSection/OfferingsSection";
+import { ServicesOverviewSection } from "@/components/camps/ServicesOverviewSection/ServicesOverviewSection";
+import { ImageGallerySection } from "@/components/camps/ImageGallerySection";
+import { KeyFeaturesSection } from "@/components/camps/KeyFeaturesSection";
+import { ImageDisplaySection } from "@/components/camps/ImageDisplaySection";
+import { HighlightsSection } from "@/components/camps/HighlightsSection";
+import { MainContentSection } from "@/components/camps/MainContentSection/MainContentSection";
+import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSection";
+// import { ClientTestimonialsSection } from "@/components/camps/ClientTestimonialsSection/ClientTestimonialsSection";
+import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
 
 export default function about() {
 

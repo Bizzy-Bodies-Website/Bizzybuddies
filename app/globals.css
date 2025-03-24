@@ -156,6 +156,41 @@ body {
   text-transform: uppercase;
 }
 
+.font-desktop-title-CTA-title {
+  font-family: Bebas;
+  font-weight: 400;
+  font-size: 144px;
+  line-height: 120px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .font-desktop-title-CTA-title {
+    font-size: 96px;
+    line-height: 88px;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .font-desktop-title-CTA-title {
+    font-size: 64px;
+    line-height: 60px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .font-desktop-title-CTA-title {
+    font-size: 48px;
+    line-height: 44px;
+  }
+}
+
+
 .font-desktop-title-subheading-2,
 .font-desktop-title-label {
   /* color: #636362; */

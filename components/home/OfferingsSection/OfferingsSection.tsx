@@ -2,7 +2,23 @@
 
 import React from "react";
 
-export const OfferingsSection = () => {
+interface OfferingsSectionProps {
+  // existing props
+  data?: {
+    title: string;
+    subtitle: string;
+    backgroundImage?: {
+      asset: {
+        _ref: string;
+      };
+    };
+  };
+}
+
+
+export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
+  data,
+}) => {
   // Function to handle scroll to next section
   const handleScrollToNextSection = () => {
     // Get the current section's height
@@ -20,11 +36,11 @@ export const OfferingsSection = () => {
       <div className="relative w-full max-w-[1440px] h-full mx-auto bg-cover bg-center">
         <div className="flex flex-col items-center justify-center h-full px-4">
           <h1 className="font-desktop-title-headline-1 text-white text-[length:var(--desktop-title-headline-1-font-size)] text-center tracking-[var(--desktop-title-headline-1-letter-spacing)] leading-[var(--desktop-title-headline-1-line-height)] [font-style:var(--desktop-title-headline-1-font-style)] mb-[22px]">
-            BIZZY BUDDIES
+            {data?.title}
           </h1>
 
           <h2 className="font-desktop-title-subheading-1 text-white text-[length:var(--desktop-title-subheading-1-font-size)] text-center tracking-[var(--desktop-title-subheading-1-letter-spacing)] leading-[var(--desktop-title-subheading-1-line-height)] [font-style:var(--desktop-title-subheading-1-font-style)] max-w-[629px]">
-            Multisport Coaching for children aged 18months - 11 years
+            {data?.subtitle}
           </h2>
         </div>
       </div>

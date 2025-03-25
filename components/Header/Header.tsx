@@ -50,6 +50,8 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
+          <Link
+          href="/">
           <Image
             className="w-[50px] h-[50px] object-cover"
             alt="Logo"
@@ -57,6 +59,7 @@ const Header: React.FC = () => {
             width={50}
             height={50}
           />
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.slice(0, 4).map((item) => (

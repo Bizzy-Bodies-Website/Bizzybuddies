@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import React from "react";
 import { IntroductionSection } from "@/components/home/IntroductionSection";
@@ -9,11 +11,53 @@ import { ImageDisplaySection } from "@/components/home/ImageDisplaySection";
 import { HighlightsSection } from "@/components/home/HighlightsSection";
 import { MainContentSection } from "@/components/home/MainContentSection/MainContentSection";
 import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSection";
-import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsSection/ClientTestimonialsSection";
+// import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
-import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
+// import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
+import { useEffect, useState } from "react";
+import client, { urlFor } from '../sanity';
 
 export default function Home() {
+  interface HeroSectionData {
+    title: string;
+    subtitle: string;
+    backgroundImage?: {
+      asset: {
+        _ref: string;
+      };
+    };
+  }
+  
+  interface HeroMoreSectionData {
+    title: string;
+    subtitle: string;
+    description: string;
+    backgroundImage?: { asset: { _ref: string } };
+  }
+  
+  interface HomePageData {
+    heroSection: HeroSectionData;
+    heroMoreSection: HeroMoreSectionData;
+  }
+  
+  const [data, setData] = useState<HomePageData | null>(null);
+
+  console.log("data", data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = `{
+        "heroSection": *[_type == "heroSection"][0],
+        "heroMoreSection": *[_type == "heroMoreSection"][0]
+      }`;
+      const result: HomePageData = await client.fetch(query);
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) return <p>Loading...</p>;
 
   return (
     <div>
@@ -25,14 +69,14 @@ export default function Home() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: "url('/assets/hero1.svg')",
+                backgroundImage: `url(${urlFor(data?.heroSection?.backgroundImage).url()})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
               }}
             >
-              <OfferingsSection />
+              <OfferingsSection data={data?.heroSection} />
             </section>
 
             {/* Introduction Section */}
@@ -44,7 +88,7 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection />
+              <IntroductionSection  data={data?.heroMoreSection} />
             </section>
 
             {/* Services Overview Section */}

@@ -16,7 +16,7 @@ interface ServicesSectionProps {
 }
 
 export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }) => {
-  console.log("ServicesOverviewSection", data);
+  console.log("ServicesOverviewSection", data?.image);
 
   return (
     <section className="flex justify-center py-20 w-full px-4 md:px-20">
@@ -25,13 +25,13 @@ export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }
         {/* Image Section */}
         <div className="w-full lg:w-1/2">
           {data?.image ? (
-            <Image
+            <img
               className="w-full h-auto object-cover rounded-md max-h-[627px]"
               alt="About Section Image"
-              src={urlFor(data.image).url() || "/assets/Oalh2MojUuk.png"}
-              width={1440}
-              height={627}
-              priority
+              src={urlFor(data.image).url()}
+              // width={1440}
+              // height={627}
+              // priority
             />
           ) : (
             <Image

@@ -1,6 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export const ContactUsSection = () => {
+  const router = useRouter();
+
   return (
     <section
       style={{
@@ -33,12 +38,18 @@ export const ContactUsSection = () => {
             touch!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start">
+          <div
+            onClick={() => router.push("/contact")}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start"
+          >
             <button className="w-full sm:w-[198px] h-12 sm:h-14 rounded-[100px] bg-white text-bb-red hover:bg-white/90 font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
               Contact Us
             </button>
 
-            <button className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
+            <button
+              onClick={() => router.push("/about")}
+              className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]"
+            >
               About Us
             </button>
           </div>

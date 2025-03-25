@@ -16,7 +16,6 @@ interface ServicesSectionProps {
 }
 
 export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }) => {
-  console.log("ServicesOverviewSection", data?.image);
 
   return (
     <section className="flex justify-center py-20 w-full px-4 md:px-20">
@@ -59,13 +58,13 @@ export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }
                   ABOUT US
                 </div>
                 <h2 className="w-full lg:w-[400px] font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
-                  {data?.title || "A LITTLE BIT ABOUT BIZZY BUDDIES"}
+                  {data?.title || ""}
                 </h2>
               </div>
 
               {/* Rich Text Description */}
               <div className="font-desktop-body-body-copy-1 text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
-                {data?.description ? <PortableText value={data.description} /> : "No description available."}
+                {data?.description ? <PortableText value={data.description} /> : ""}
               </div>
 
             </div>

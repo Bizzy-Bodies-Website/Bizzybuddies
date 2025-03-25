@@ -1,20 +1,48 @@
 import { ArrowRightIcon } from "lucide-react";
 import React from "react";
+import client, { urlFor } from "../../../sanity"; // Ensure urlFor is properly imported
+import Image from "next/image";
+import { PortableText } from "@portabletext/react";
 
-export const KeyFeaturesSection = () => {
+interface ImageData {
+  asset: { _ref: string };
+}
+
+interface KeyFeaturesSectionProps {
+  data?: {
+    title: string;
+    description?: any[]; // Allow Portable Text
+    image?: ImageData;
+  };
+}
+
+export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
+  data,
+}) => {
   return (
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8 gap-4 md:gap-0">
-
         {/* Image First on Small Screens, Second on Large */}
         <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2 lg:ml-[-30px]">
-          <img
-            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-contain rounded-sm"
-            alt="Child at birthday party"
-            src="/assets/Oalh2MojUuk (2).png"
-            width="1440"
-            height="627"
-          />
+          {data?.image ? (
+            <img
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src={urlFor(data.image).url()}
+              // width={1440}
+              // height={627}
+              // priority
+            />
+          ) : (
+            <Image
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="Child at birthday party"
+              src="/assets/Oalh2MojUuk (2).png"
+              width={1440}
+              height={627}
+              priority
+            />
+          )}
         </div>
 
         {/* Content Second on Small Screens, First on Large */}
@@ -26,15 +54,17 @@ export const KeyFeaturesSection = () => {
                   BIRTHDAYS
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  BIRTHDAY PARTIES
+                  {data?.title || ""}
                 </h2>
               </div>
 
-              <p className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
-                Book a birthday with our specialised party team. Whether you
-                would like a football or superhero themed party, we've got
-                you covered!
-              </p>
+              <div className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
+                {data?.description ? (
+                  <PortableText value={data.description} />
+                ) : (
+                  ""
+                )}
+              </div>
 
               <div className="mt-2">
                 <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">
@@ -49,7 +79,6 @@ export const KeyFeaturesSection = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

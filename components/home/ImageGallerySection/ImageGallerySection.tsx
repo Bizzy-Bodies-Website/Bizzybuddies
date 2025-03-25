@@ -1,20 +1,48 @@
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import client, { urlFor } from "../../../sanity"; // Ensure urlFor is properly imported
+import { PortableText } from "@portabletext/react";
 
-export const ImageGallerySection = () => {
+interface ImageData {
+  asset: { _ref: string };
+}
+
+interface ImageGallerySectionProps {
+  data?: {
+    title: string;
+    description?: any[]; // Allow Portable Text
+    image?: ImageData;
+  };
+}
+
+export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
+  data,
+}) => {
   return (
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
-          <Image
-            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover rounded-sm"
-            alt="Children playing sports outdoors"
-            src="/assets/Oalh2MojUuk (1).png"
-            width={1440}
-            height={627}
-          />
+          {data?.image ? (
+            <img
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src={urlFor(data.image).url()}
+              // width={1440}
+              // height={627}
+              // priority
+            />
+          ) : (
+            <Image
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="Children playing outdoors"
+              src="/assets/Oalh2MojUuk.png"
+              width={1440}
+              height={627}
+              priority
+            />
+          )}
         </div>
 
         {/* Content on the right */}
@@ -26,16 +54,17 @@ export const ImageGallerySection = () => {
                   SATURDAYS
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  HOLIDAY MULTISPORT CAMPS
+                  {data?.title || ""}
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
-                We offer our extremely popular Holiday Multisport Camps all year
-                round. Children can learn various sports throughout the week,
-                such as football, cricket and tennis. We also play fun games
-                such as dodgeball and tagging and evasion games.
-              </p>
+              <div className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
+                {data?.description ? (
+                  <PortableText value={data.description} />
+                ) : (
+                  ""
+                )}
+              </div>
 
               <div className="mt-4 flex justify-center lg:justify-start">
                 <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">

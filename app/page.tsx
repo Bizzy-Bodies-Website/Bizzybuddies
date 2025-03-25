@@ -34,12 +34,20 @@ export default function Home() {
     description: string;
     backgroundImage?: { asset: { _ref: string } };
   }
+
+  interface AboutSectionData {
+    title: string;
+    subtitle: string;
+    description: any[]; // Updated to match the expected type
+    backgroundImage?: { asset: { _ref: string } };
+  }
   
   interface HomePageData {
     heroSection: HeroSectionData;
     heroMoreSection: HeroMoreSectionData;
+    aboutSection: AboutSectionData
   }
-  
+
   const [data, setData] = useState<HomePageData | null>(null);
 
   console.log("data", data);
@@ -48,7 +56,8 @@ export default function Home() {
     const fetchData = async () => {
       const query = `{
         "heroSection": *[_type == "heroSection"][0],
-        "heroMoreSection": *[_type == "heroMoreSection"][0]
+        "heroMoreSection": *[_type == "heroMoreSection"][0],
+        "aboutSection": *[_type == "aboutSection"][0]
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
@@ -93,7 +102,7 @@ export default function Home() {
 
             {/* Services Overview Section */}
             <section className="w-full relative bg-[#F9F9F9]">
-              <ServicesOverviewSection />
+              <ServicesOverviewSection data={data?.aboutSection}/>
             </section>
 
             {/* What We Offer Heading */}

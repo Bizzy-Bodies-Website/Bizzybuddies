@@ -78,7 +78,6 @@
 
 
 import Image from "next/image"
-import { Info } from "lucide-react"
 import JoinUsSection from "../partials/JoinUs"
 
 export default function HalloweenSpectacularPage() {

@@ -11,7 +11,13 @@ import { MainContentSection } from "@/components/about/MainContentSection/MainCo
 import { BenefitsOverviewSection } from "@/components/about/BenefitsOverviewSection";
 // import { ClientTestimonialsSection } from "@/components/about/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
-
+import Img from "@/public/assets/Oalh2MojUuk (2).png";
+import { GreetingsSection } from "./partials/Greetings";
+import FeatureImageSection from "./partials/Feature-Image-Section";
+import PartiesOffer from "./partials/Parties-Offer";
+import PricingSection from "./partials/Pricing";
+import TestimonialsSection from "./partials/Testimonial-Section";
+import BookParty from "./partials/BookAParty";
 export default function about() {
 
   return (
@@ -20,82 +26,57 @@ export default function about() {
         <div className="bg-white w-full relative">
           {/* Main Content */}
           <main className="w-full">
-            {/* Offerings Section */}
-            <section
-              className="w-full relative z-10"
-              style={{
-                backgroundImage: "url('/assets/about1.svg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundColor: "#FF0000",
-              }}
-            >
-              <OfferingsSection />
-            </section>
+          
+            <section className="relative">
+              <div className="h-[680px] w-full relative overflow-hidden">
 
+                <Image src={'https://images.unsplash.com/photo-1606841466847-544b0c481c98?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJpcnRoZGF5JTIwYm95fGVufDB8fDB8fHww'} alt="Birthday Party Hero" className="absolute inset-0 w-full h-full object-cover" width={1440} height={927} />
+
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                  <h1 className="text-6xl md:text-8xl font-semibold text-center">BIRTHDAY<br />PARTIES</h1>
+                  <p className="mt-4 text-xl text-center">Our weekend football coaching sessions</p>
+                </div>
+              </div>
+
+              {/* Curved Divider */}
+              <div className="relative">
+                <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320">
+                  <path fill="#FF0000" d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"></path>
+                </svg>
+              </div>
+            </section>
             {/* Introduction Section */}
             <section
-              className="w-full relative bg-[#FF0000] mt-[-30px] z-0 py-[50px]"
+              className="w-full relative bg-[#FF0000] mt-[0px] z-0 py-20"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection />
+              <GreetingsSection />
             </section>
 
-            {/* Services Overview Section */}
-            <section className="w-full relative bg-[#F9F9F9] py-16">
-              <ServicesOverviewSection />
-            </section>
+            <FeatureImageSection />
+            <PartiesOffer />
+            <div className="p-8">
+              <PricingSection />
+            </div>
 
-            {/* What We Offer Heading */}
-            <section className="w-full flex flex-col items-center gap-4 py-16">
-              <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-              MEET THE TEAM 
-              <br />
-              BEHIND THE MAGIC
-              </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.  <br />
-              In viverra metus sit amet neque sodales, at sodales ex pretium
-              </p>
-            </section>
-
-            {/* Image Gallery Section */}
-            <ImageGallerySection />
-
-            {/* Key Features Section */}
-            <KeyFeaturesSection />
-
-            {/* Image Display Section */}
-            {/* <ImageDisplaySection /> */}
-
-            {/* Highlights Section */}
-            {/* <HighlightsSection /> */}
-
-            {/* Main Content Section */}
-            {/* <MainContentSection /> */}
-
-            {/* Benefits Overview Section */}
-            {/* <BenefitsOverviewSection /> */}
-
-            <section className="w-full p-4">
+            <section className="w-full">
               {/* First Row - Two Images */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Image
-                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover"
                   alt="Batman Cosplay"
-                  src="/assets/a1.svg"
+                  src="/assets/one.svg"
                   width={500}
                   height={415}
                 />
                 <Image
-                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover"
                   alt="Soccer Goal"
-                  src="/assets/a4.png"
+                  src="/assets/four.svg"
                   width={500}
                   height={415}
                 />
@@ -104,26 +85,24 @@ export default function about() {
               {/* Second Row - Two Images in a Flexbox */}
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
                 <Image
-                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover"
                   alt="Batman and Kid"
-                  src="/assets/a2.svg"
+                  src="/assets/two.svg"
                   width={500}
                   height={415}
                 />
                 <Image
-                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover"
                   alt="Kids in Superhero Masks"
-                  src="/assets/a3.svg"                  width={500}
+                  src="/assets/three.svg"
+                  width={500}
                   height={415}
                 />
               </div>
             </section>
 
-            {/* Client Testimonials Section */}
-            {/* <ClientTestimonialsSection /> */}
-
-            {/* Contact Us Section */}
-            <ContactUsSection />
+            <TestimonialsSection />
+            <BookParty />
           </main>
         </div>
       </div>

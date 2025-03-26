@@ -44,7 +44,7 @@ const CardItemRight = ({
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-wide text-sm sm:text-base md:text-lg">
                   {subtitle}
                 </p>
-                <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight text-uppercase">
+                <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight text-uppercase">
                   {title}
                 </h2>
               </div>
@@ -55,11 +55,11 @@ const CardItemRight = ({
 
               {buttonText && <div className="mt-4 flex justify-center lg:justify-start">
                 <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">
-                  <span className="font-desktop-button-button-text text-black text-sm sm:text-base md:text-lg">
+                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-lg">
                     {buttonText}
                   </span>
                   <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
-                    <ArrowRightIcon className="w-5 h-5 text-black" />
+                    <ArrowRightIcon className="w-5 h-5 text-[#111111]" />
                   </div>
                 </button>
               </div>}

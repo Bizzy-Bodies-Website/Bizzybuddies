@@ -15,7 +15,7 @@ export const ClientTestimonialsSection = () => {
   return (
     <section className="w-full bg-light-cream bg-opacity-50 py-16">
       <div className="container mx-auto relative">
-        <h2 className="font-desktop-title-headline-2 text-black text-center mb-12">
+        <h2 className="font-desktop-title-headline-2 text-[#111111] text-center mb-12">
           WHAT OUR CLIENTS SAY
         </h2>
 
@@ -47,7 +47,7 @@ export const ClientTestimonialsSection = () => {
                         width={959}
                         height={200}
                       /> */}
-                      <p className="font-desktop-body-testimonial text-black text-center max-w-[924px] mx-auto">
+                      <p className="font-desktop-body-testimonial text-[#111111] text-center max-w-[924px] mx-auto">
                         {testimonial.text}
                       </p>
                       <p className="font-medium text-bb-red text-xl text-center mt-6 font-['Poppins',Helvetica]">

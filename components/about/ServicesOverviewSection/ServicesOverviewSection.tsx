@@ -24,7 +24,7 @@ export const ServicesOverviewSection = () => {
                   <div className="opacity-40 font-desktop-title-label text-[#636362] text-sm md:text-base lg:text-lg">
                     ABOUT US
                   </div>
-                  <h2 className="font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
+                  <h2 className="font-desktop-title-headline-5 text-[#111111] text-xl md:text-2xl lg:text-3xl font-bold">
                     ABOUT BIZZY BUDDIES
                   </h2>
                 </div>
@@ -56,7 +56,7 @@ export const ServicesOverviewSection = () => {
                   <div className="opacity-40 font-desktop-title-label text-[#636362] text-sm md:text-base lg:text-lg">
                     ABOUT US
                   </div>
-                  <h2 className="font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
+                  <h2 className="font-desktop-title-headline-5 text-[#111111] text-xl md:text-2xl lg:text-3xl font-bold">
                     ABOUT BIZZY BUDDIES
                   </h2>
                 </div> */}

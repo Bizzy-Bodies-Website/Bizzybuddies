@@ -26,7 +26,7 @@ export const KeyFeaturesSection = () => {
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
                   Director
                 </p>
-                <h2 className="text-black text-xl md:text-2xl lg:text-3xl font-bold">
+                <h2 className="text-[#111111] text-xl md:text-2xl lg:text-3xl font-bold">
                   HEY, I’M NOAH!
                 </h2>
               </div>

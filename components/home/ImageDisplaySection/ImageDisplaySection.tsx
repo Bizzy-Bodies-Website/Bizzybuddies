@@ -24,7 +24,7 @@ export const ImageDisplaySection = () => {
                     COACHING
                   </p>
 
-                  <h2 className="font-desktop-title-headline-4 text-black text-[length:var(--desktop-title-headline-4-font-size)] tracking-[var(--desktop-title-headline-4-letter-spacing)] leading-[var(--desktop-title-headline-4-line-height)]">
+                  <h2 className="font-desktop-title-headline-4 text-[#111111] text-[length:var(--desktop-title-headline-4-font-size)] tracking-[var(--desktop-title-headline-4-letter-spacing)] leading-[var(--desktop-title-headline-4-line-height)]">
                     1V1 SPORTS COACHING
                   </h2>
                 </div>

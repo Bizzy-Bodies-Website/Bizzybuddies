@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import React from "react";
@@ -15,7 +15,7 @@ import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSecti
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
 // import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 import { useEffect, useState } from "react";
-import client, { urlFor } from '../sanity';
+import client, { urlFor } from "../sanity";
 
 export default function Home() {
   interface HeroSectionData {
@@ -27,7 +27,7 @@ export default function Home() {
       };
     };
   }
-  
+
   interface HeroMoreSectionData {
     title: string;
     subtitle: string;
@@ -41,23 +41,43 @@ export default function Home() {
     description: any[]; // Updated to match the expected type
     backgroundImage?: { asset: { _ref: string } };
   }
-  
+
+  interface ServicesSectionData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
+  interface valuesHeaderData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
   interface HomePageData {
     heroSection: HeroSectionData;
     heroMoreSection: HeroMoreSectionData;
-    aboutSection: AboutSectionData
+    aboutSection: AboutSectionData;
+    offerings: ServicesSectionData[];
+    values: any[];
+    valuesHeader: valuesHeaderData
   }
 
   const [data, setData] = useState<HomePageData | null>(null);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   useEffect(() => {
     const fetchData = async () => {
       const query = `{
         "heroSection": *[_type == "heroSection"][0],
         "heroMoreSection": *[_type == "heroMoreSection"][0],
-        "aboutSection": *[_type == "aboutSection"][0]
+        "aboutSection": *[_type == "aboutSection"][0],
+        "offerings": *[_type == "offerings"],
+         "values": *[_type == "values"],
+         "valuesHeader": *[_type == "valuesHeader"][0]
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
@@ -78,7 +98,9 @@ export default function Home() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: `url(${urlFor(data?.heroSection?.backgroundImage).url()})`,
+                backgroundImage: `url(${urlFor(
+                  data?.heroSection?.backgroundImage
+                ).url()})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -97,12 +119,12 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection  data={data?.heroMoreSection} />
+              <IntroductionSection data={data?.heroMoreSection} />
             </section>
 
             {/* Services Overview Section */}
             <section className="w-full relative bg-[#F9F9F9]">
-              <ServicesOverviewSection data={data?.aboutSection}/>
+              <ServicesOverviewSection data={data?.aboutSection} />
             </section>
 
             {/* What We Offer Heading */}
@@ -116,26 +138,29 @@ export default function Home() {
               </p>
             </section>
 
-            {/* Image Gallery Section */}
-            <ImageGallerySection />
+            {/* Image Gallery Section .*/}
+            {/* @ts-ignore */}
+            <ImageGallerySection data={data?.offerings[2] || null} />
 
-            {/* Key Features Section */}
-            <KeyFeaturesSection />
+            {/* Key Features Section .*/}
+            {/* @ts-ignore */}
+            <KeyFeaturesSection data={data?.offerings[0] || null}/>
 
-            {/* Image Display Section */}
-            <ImageDisplaySection />
+            {/* Image Display Section .*/}
+            {/* @ts-ignore */}
+            <ImageDisplaySection data={data?.offerings[3] || null} />
 
             {/* Highlights Section */}
             <HighlightsSection />
 
-            {/* Main Content Section */}
-            <MainContentSection />
+            {/* Main Content Section .*/}
+            <MainContentSection data={data?.offerings[1] || null} />
 
-            {/* Benefits Overview Section */}
-            <BenefitsOverviewSection />
+            {/* Benefits Overview Section .*/}
+            <BenefitsOverviewSection data={data?.values} text={data?.valuesHeader} />
 
             <section className="w-full p-4">
-              {/* First Row - Two Images */}
+              {/* First Row - Two Images .*/}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Image
                   className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"

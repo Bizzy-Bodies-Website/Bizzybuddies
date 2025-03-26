@@ -26,21 +26,11 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
-          {/* <Image
-            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover rounded-sm"
-            alt="Children playing sports outdoors"
-            src="/assets/Oalh2MojUuk (1).png"
-            width={1440}
-            height={627}
-          /> */}
-          {/* {data?.image ? (
+          {data?.image?.asset?._ref ? (
             <img
               className="w-full h-auto object-cover rounded-md max-h-[627px]"
               alt="About Section Image"
-              src={urlFor(data.image).url()}
-              // width={1440}
-              // height={627}
-              // priority
+              src={urlFor(data.image.asset._ref).url()}
             />
           ) : (
             <Image
@@ -51,7 +41,7 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
               height={627}
               priority
             />
-          )} */}
+          )}
         </div>
 
         {/* Content on the right */}

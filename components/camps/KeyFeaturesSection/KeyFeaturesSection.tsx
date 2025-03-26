@@ -23,30 +23,27 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8 gap-4 md:gap-0">
         {/* Image First on Small Screens, Second on Large */}
         <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2 lg:ml-[-30px]">
-
-
-        {data?.image?.asset?._ref ? (
-  <img
-    className="w-full h-auto object-cover rounded-md max-h-[627px]"
-    alt="About Section Image"
-    src={urlFor(data.image.asset._ref).url()}
-  />
-) : (
-  <Image
-    className="w-full h-auto object-cover rounded-md max-h-[627px]"
-    alt="About Section Image"
-    src="/assets/Oalh2MojUuk (2).png"
-    width={1440}
-    height={627}
-    priority
-  />
-)}
-
+          {data?.image?.asset?._ref ? (
+            <img
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src={urlFor(data.image.asset._ref).url()}
+            />
+          ) : (
+            <Image
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src="/assets/Oalh2MojUuk (2).png"
+              width={1440}
+              height={627}
+              priority
+            />
+          )}
         </div>
 
         {/* Content Second on Small Screens, First on Large */}
         <div className="bg-[#FDF6EF] rounded-sm border-none w-full lg:w-1/2 order-2 lg:order-1">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[190px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[130px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">

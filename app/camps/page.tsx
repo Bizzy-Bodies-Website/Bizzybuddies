@@ -14,6 +14,7 @@ import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSect
 // import { ClientTestimonialsSection } from "@/components/camps/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "../../sanity";
+import { title } from "process";
 
 export default function camps() {
   interface campHeroData {
@@ -63,6 +64,13 @@ export default function camps() {
     valuesHeader: valuesHeaderData;
     campFeaturedSection: campFeaturedSectionData;
     campServicesSection: campServicesSectionData;
+    campNeedToKnow: campNeedToKnowData;
+  }
+
+  interface campNeedToKnowData {
+    description: string;
+    services: any[];
+    title: string;
   }
 
   interface campFeaturedSectionData {
@@ -93,6 +101,7 @@ export default function camps() {
         "campMoreSection": *[_type == "campMoreSection"][0],
         "campFeaturedSection": *[_type == "campFeaturedSection"][0],
         "campServicesSection": *[_type == "CampServicesSection"][0],
+        "campNeedToKnow": *[_type == "campNeedToKnow"][0],
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
@@ -187,15 +196,15 @@ export default function camps() {
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                WHAT YOU NEED TO KNOW
+                {data?.campNeedToKnow?.title}
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                Everything you need to know for your first visit.
+                {data?.campNeedToKnow?.description}
               </p>
             </section>
 
             {/* BenefitsOverviewSection */}
-            <BenefitsOverviewSection />
+            <BenefitsOverviewSection data={data?.campNeedToKnow} />
 
             {/* Contact Us Section */}
             <ContactUsSection />

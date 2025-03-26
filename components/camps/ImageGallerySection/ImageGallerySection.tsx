@@ -1,20 +1,57 @@
+import { urlFor } from "@/sanity";
+import { PortableText } from "@portabletext/react";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-export const ImageGallerySection = () => {
+interface ImageData {
+  asset: { _ref: string };
+}
+
+interface ImageGallerySectionProps {
+  data?: {
+    title: string;
+    description?: any; // Allow Portable Text
+    image?: ImageData;
+  };
+}
+
+export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
+  data,
+}) => {
+  console.log("ImageGallerySection", data);
+
   return (
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
-          <Image
+          {/* <Image
             className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover rounded-sm"
             alt="Children playing sports outdoors"
             src="/assets/Oalh2MojUuk (1).png"
             width={1440}
             height={627}
-          />
+          /> */}
+          {/* {data?.image ? (
+            <img
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src={urlFor(data.image).url()}
+              // width={1440}
+              // height={627}
+              // priority
+            />
+          ) : (
+            <Image
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src="/assets/Oalh2MojUuk (2).png"
+              width={1440}
+              height={627}
+              priority
+            />
+          )} */}
         </div>
 
         {/* Content on the right */}
@@ -26,16 +63,17 @@ export const ImageGallerySection = () => {
                   CAMPS
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  Mutlisport Camp
+                  {data?.title || ""}
                 </h2>
               </div>
 
               <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
-                Come and try our multisport camp for boys and girls aged 3 - 11
-                years. The kids won't get bored playing various sports such as
-                football, tennis, dodgeball, tag rugby and more! With lots of
-                throwing, running, catching and jumping, we provide a fun-filled
-                day of sporting activities.
+                {/* {data?.description ? (
+                  <PortableText value={data.description} />
+                ) : (
+                  ""
+                )} */}
+                {data?.description}
               </p>
 
               <div className="mt-4 flex flex-col md:flex justify-center lg:justify-between gap-4">

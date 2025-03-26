@@ -113,7 +113,9 @@ export default function camps() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: `url(${data?.campHero?.backgroundImage?._upload?.previewImage})`,
+                backgroundImage: `url(${urlFor(
+                  data?.campHero?.backgroundImage
+                ).url()})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -175,10 +177,12 @@ export default function camps() {
             </section>
 
             {/* Image Gallery Section */}
-            <ImageGallerySection />
+            <ImageGallerySection
+              data={data?.campServicesSection?.services[0]}
+            />
 
             {/* Key Features Section */}
-            <KeyFeaturesSection />
+            <KeyFeaturesSection data={data?.campServicesSection?.services[1]} />
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">

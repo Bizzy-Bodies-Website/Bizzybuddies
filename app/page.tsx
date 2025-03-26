@@ -67,7 +67,7 @@ export default function Home() {
 
   const [data, setData] = useState<HomePageData | null>(null);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -138,29 +138,29 @@ export default function Home() {
               </p>
             </section>
 
-            {/* Image Gallery Section */}
+            {/* Image Gallery Section .*/}
             {/* @ts-ignore */}
             <ImageGallerySection data={data?.offerings[2] || null} />
 
-            {/* Key Features Section */}
+            {/* Key Features Section .*/}
             {/* @ts-ignore */}
             <KeyFeaturesSection data={data?.offerings[0] || null}/>
 
-            {/* Image Display Section */}
+            {/* Image Display Section .*/}
             {/* @ts-ignore */}
             <ImageDisplaySection data={data?.offerings[3] || null} />
 
             {/* Highlights Section */}
             <HighlightsSection />
 
-            {/* Main Content Section */}
+            {/* Main Content Section .*/}
             <MainContentSection data={data?.offerings[1] || null} />
 
-            {/* Benefits Overview Section */}
+            {/* Benefits Overview Section .*/}
             <BenefitsOverviewSection data={data?.values} text={data?.valuesHeader} />
 
             <section className="w-full p-4">
-              {/* First Row - Two Images */}
+              {/* First Row - Two Images .*/}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Image
                   className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"

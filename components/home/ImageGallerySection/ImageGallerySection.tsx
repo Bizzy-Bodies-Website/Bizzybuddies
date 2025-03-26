@@ -72,7 +72,7 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
                     View Saturday Sessions
                   </span>
                   <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
-                    <ArrowRightIcon className="w-5 h-5 text-[#111111]" />
+                    <ArrowRightIcon className="w-5 h-5 text-[#ff0000]" />
                   </div>
                 </button>
               </div>

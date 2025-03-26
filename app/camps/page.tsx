@@ -1,18 +1,108 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IntroductionSection } from "@/components/camps/IntroductionSection";
 import { OfferingsSection } from "@/components/camps/OfferingsSection/OfferingsSection";
-import { ServicesOverviewSection } from "@/components/camps/ServicesOverviewSection/ServicesOverviewSection";
+// import { ServicesOverviewSection } from "@/components/camps/ServicesOverviewSection/ServicesOverviewSection";
 import { ImageGallerySection } from "@/components/camps/ImageGallerySection";
 import { KeyFeaturesSection } from "@/components/camps/KeyFeaturesSection";
-import { ImageDisplaySection } from "@/components/camps/ImageDisplaySection";
-import { HighlightsSection } from "@/components/camps/HighlightsSection";
-import { MainContentSection } from "@/components/camps/MainContentSection/MainContentSection";
+// import { ImageDisplaySection } from "@/components/camps/ImageDisplaySection";
+// import { HighlightsSection } from "@/components/camps/HighlightsSection";
+// import { MainContentSection } from "@/components/camps/MainContentSection/MainContentSection";
 import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSection";
 // import { ClientTestimonialsSection } from "@/components/camps/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
+import client, { urlFor } from "../../sanity";
 
-export default function about() {
+export default function camps() {
+  interface campHeroData {
+    title: string;
+    subtitle: string;
+    backgroundImage?: {
+      _upload: {
+        previewImage: string;
+      };
+    };
+  }
+
+  interface campMoreSectionData {
+    title: string;
+    subtitle: string;
+    description: string;
+    backgroundImage?: { asset: { _ref: string } };
+  }
+
+  interface AboutSectionData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    backgroundImage?: { asset: { _ref: string } };
+  }
+
+  interface ServicesSectionData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
+  interface valuesHeaderData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
+  interface HomePageData {
+    campHero: campHeroData;
+    campMoreSection: campMoreSectionData;
+    aboutSection: AboutSectionData;
+    offerings: ServicesSectionData[];
+    values: any[];
+    valuesHeader: valuesHeaderData;
+    campFeaturedSection: campFeaturedSectionData;
+    campServicesSection: campServicesSectionData;
+  }
+
+  interface campFeaturedSectionData {
+    title: string;
+    subtitle: string;
+    description: string;
+  }
+
+  interface campServicesSectionData {
+    description: string;
+    services: any[];
+    title: string;
+  }
+
+  const [data, setData] = useState<HomePageData | null>(null);
+
+  console.log("data", data);
+
+  // "aboutSection": *[_type == "aboutSection"][0],
+  // "offerings": *[_type == "offerings"],
+  //  "values": *[_type == "values"],
+  //  "valuesHeader": *[_type == "valuesHeader"][0],
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = `{
+        "campHero": *[_type == "campHero"][0],
+        "campMoreSection": *[_type == "campMoreSection"][0],
+        "campFeaturedSection": *[_type == "campFeaturedSection"][0],
+        "campServicesSection": *[_type == "CampServicesSection"][0],
+      }`;
+      const result: HomePageData = await client.fetch(query);
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) return <p>Loading...</p>;
+
   return (
     <div>
       <div className="bg-white flex flex-col items-center w-full">
@@ -23,14 +113,14 @@ export default function about() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: "url('/assets/about1.svg')",
+                backgroundImage: `url(${data?.campHero?.backgroundImage?._upload?.previewImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
               }}
             >
-              <OfferingsSection />
+              <OfferingsSection data={data?.campHero} />
             </section>
 
             {/* Introduction Section */}
@@ -42,17 +132,16 @@ export default function about() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection />
+              <IntroductionSection data={data?.campMoreSection} />
             </section>
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                Come & join IN the fun!
+                {data?.campFeaturedSection?.title}
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                We offer full week, full day and half day options starting from
-                £25.{" "}
+                {data?.campFeaturedSection?.description}
               </p>
             </section>
 
@@ -78,13 +167,10 @@ export default function about() {
 
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                OUR CAMPS
+                {data?.campServicesSection?.title}
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8 w-full md:w-[50%]">
-                The kids won't get bored with us, playing various sports such as
-                football, tennis, dodgeball, tag rugby& more! With lots of
-                throwing, running, catching and jumping, we provide a fun-filled
-                day of sporting activities.
+                {data?.campServicesSection?.description}
               </p>
             </section>
 

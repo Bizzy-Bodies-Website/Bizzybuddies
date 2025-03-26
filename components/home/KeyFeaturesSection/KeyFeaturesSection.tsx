@@ -50,11 +50,11 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
           <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[190px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
-                <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
+                <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
                   BIRTHDAYS
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  BIRTHDAY PARTIES
+                {data?.title || ""}
                 </h2>
               </div>
 
@@ -71,8 +71,8 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
                   <span className="text-[#111111] text-sm md:text-base lg:text-lg font-medium">
                     View Birthday Parties
                   </span>
-                  <div className="w-10 h-10 rounded-full border-2 border-bb-red flex items-center justify-center">
-                    <ArrowRightIcon className="w-4 h-4" />
+                  <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
+                    <ArrowRightIcon className="w-5 h-5 text-[#ff0000]" />
                   </div>
                 </button>
               </div>

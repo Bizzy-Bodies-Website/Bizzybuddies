@@ -43,7 +43,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({
           ) : (
             <Image
               className="w-full h-auto object-cover rounded-md max-h-[627px]"
-                alt="About Section Image"
+              alt="About Section Image"
               src="/assets/Oalh2MojUuk (5).png"
               width={1440}
               height={627}
@@ -53,11 +53,11 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({
         </div>
 
         <div className="w-full lg:w-1/2 bg-[#FDF6EF] rounded-sm border-none flex justify-center">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[230px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[180px] md:py-[140px] text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
-                  GROUP SESSIONS
+                  SATURDAYS{" "}
                 </p>
 
                 <h2 className="font-desktop-title-headline-4 text-black text-[length:var(--desktop-title-headline-4-font-size)] tracking-[var(--desktop-title-headline-4-letter-spacing)] leading-[var(--desktop-title-headline-4-line-height)] [font-style:var(--desktop-title-headline-4-font-style)]">

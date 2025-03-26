@@ -11,11 +11,49 @@ import { ImageDisplaySection } from "@/components/home/ImageDisplaySection";
 import { HighlightsSection } from "@/components/home/HighlightsSection";
 import { MainContentSection } from "@/components/home/MainContentSection/MainContentSection";
 import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSection";
-// import { ClientTestimonialsSection } from "@/components/home/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
-// import { FeaturedProductSection } from "@/components/home/FeaturedProductSection/FeaturedProductSection";
 import { useEffect, useState } from "react";
 import client, { urlFor } from "../sanity";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef } from "react";
+
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const SectionWrapper = ({ children, className = "", style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) => {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+  
+  return (
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={sectionVariants}
+      style={style}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+};
 
 export default function Home() {
   interface HeroSectionData {
@@ -38,7 +76,7 @@ export default function Home() {
   interface AboutSectionData {
     title: string;
     subtitle: string;
-    description: any[]; // Updated to match the expected type
+    description: any[];
     backgroundImage?: { asset: { _ref: string } };
   }
 
@@ -62,12 +100,19 @@ export default function Home() {
     aboutSection: AboutSectionData;
     offerings: ServicesSectionData[];
     values: any[];
-    valuesHeader: valuesHeaderData
+    valuesHeader: valuesHeaderData;
+    whatweOfferText: whatweOfferTextData;
+  }
+
+  interface whatweOfferTextData {
+    title: string;
+    subtitle: string;
+    description: string;
   }
 
   const [data, setData] = useState<HomePageData | null>(null);
 
-  // console.log("data", data);
+  console.log("data", data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +122,8 @@ export default function Home() {
         "aboutSection": *[_type == "aboutSection"][0],
         "offerings": *[_type == "offerings"],
          "values": *[_type == "values"],
-         "valuesHeader": *[_type == "valuesHeader"][0]
+         "valuesHeader": *[_type == "valuesHeader"][0],
+         "whatweOfferText": *[_type == "whatweOfferText"][0],
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
@@ -95,7 +141,7 @@ export default function Home() {
           {/* Main Content */}
           <main className="w-full">
             {/* Offerings Section */}
-            <section
+            <SectionWrapper
               className="w-full relative z-10"
               style={{
                 backgroundImage: `url(${urlFor(
@@ -108,10 +154,10 @@ export default function Home() {
               }}
             >
               <OfferingsSection data={data?.heroSection} />
-            </section>
+            </SectionWrapper>
 
             {/* Introduction Section */}
-            <section
+            <SectionWrapper
               className="w-full relative bg-[#FF0000] mt-[-30px] z-0 py-[50px]"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
@@ -120,88 +166,132 @@ export default function Home() {
               }}
             >
               <IntroductionSection data={data?.heroMoreSection} />
-            </section>
+            </SectionWrapper>
 
             {/* Services Overview Section */}
-            <section className="w-full relative bg-[#F9F9F9]">
+            <SectionWrapper className="w-full relative bg-[#F9F9F9]">
               <ServicesOverviewSection data={data?.aboutSection} />
-            </section>
+            </SectionWrapper>
 
             {/* What We Offer Heading */}
-            <section className="w-full flex flex-col items-center gap-4 pt-10 pb-5">
+            <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-10 pb-5">
               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                WHAT WE OFFER
+                {data?.whatweOfferText?.title}
               </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                We offer a range of services within Bizzy Buddies. <br />
-                There is something for everyone!
+              <p className="w-full md:w-[450px] font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
+                {data?.whatweOfferText?.description}
               </p>
-            </section>
+            </SectionWrapper>
 
-            {/* Image Gallery Section .*/}
-            {/* @ts-ignore */}
-            <ImageGallerySection data={data?.offerings[2] || null} />
+            {/* Main Content Section */}
+            <SectionWrapper>
+              <MainContentSection data={data?.offerings[3] || null} />
+            </SectionWrapper>
 
-            {/* Key Features Section .*/}
-            {/* @ts-ignore */}
-            <KeyFeaturesSection data={data?.offerings[0] || null}/>
+            {/* Key Features Section */}
+            <SectionWrapper>
+              {/* @ts-ignore */}
+              <KeyFeaturesSection data={data?.offerings[0] || null} />
+            </SectionWrapper>
 
-            {/* Image Display Section .*/}
-            {/* @ts-ignore */}
-            <ImageDisplaySection data={data?.offerings[3] || null} />
+            {/* Image Display Section */}
+            <SectionWrapper>
+              {/* @ts-ignore */}
+              <ImageDisplaySection data={data?.offerings[4] || null} />
+            </SectionWrapper>
 
             {/* Highlights Section */}
-            <HighlightsSection />
+            <SectionWrapper>
+              {/* @ts-ignore */}
+              <HighlightsSection data={data?.offerings[1] || null} />
+            </SectionWrapper>
 
-            {/* Main Content Section .*/}
-            <MainContentSection data={data?.offerings[1] || null} />
+            {/* Image Gallery Section */}
+            <SectionWrapper>
+              {/* @ts-ignore */}
+              <ImageGallerySection data={data?.offerings[2] || null} />
+            </SectionWrapper>
 
-            {/* Benefits Overview Section .*/}
-            <BenefitsOverviewSection data={data?.values} text={data?.valuesHeader} />
+            {/* Benefits Overview Section */}
+            <SectionWrapper>
+              <BenefitsOverviewSection
+                data={data?.values}
+                text={data?.valuesHeader}
+              />
+            </SectionWrapper>
 
-            <section className="w-full p-4">
-              {/* First Row - Two Images .*/}
+            <SectionWrapper className="w-full p-4">
+              {/* First Row - Two Images */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Image
-                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Batman Cosplay"
-                  src="/assets/one.svg"
-                  width={500}
-                  height={415}
-                />
-                <Image
-                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Soccer Goal"
-                  src="/assets/four.svg"
-                  width={500}
-                  height={415}
-                />
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                >
+                  <Image
+                    className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Batman Cosplay"
+                    src="/assets/one.svg"
+                    width={500}
+                    height={415}
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                >
+                  <Image
+                    className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Soccer Goal"
+                    src="/assets/four.svg"
+                    width={500}
+                    height={415}
+                  />
+                </motion.div>
               </div>
 
               {/* Second Row - Two Images in a Flexbox */}
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <Image
-                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Batman and Kid"
-                  src="/assets/two.svg"
-                  width={500}
-                  height={415}
-                />
-                <Image
-                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Kids in Superhero Masks"
-                  src="/assets/three.svg"
-                  width={500}
-                  height={415}
-                />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="w-full sm:w-1/4"
+                >
+                  <Image
+                    className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Batman and Kid"
+                    src="/assets/two.svg"
+                    width={500}
+                    height={415}
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="w-full sm:w-3/4"
+                >
+                  <Image
+                    className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Kids in Superhero Masks"
+                    src="/assets/three.svg"
+                    width={500}
+                    height={415}
+                  />
+                </motion.div>
               </div>
-            </section>
-
-            {/* Client Testimonials Section */}
-            {/* <ClientTestimonialsSection /> */}
+            </SectionWrapper>
 
             {/* Contact Us Section */}
-            <ContactUsSection />
+            <SectionWrapper>
+              <ContactUsSection />
+            </SectionWrapper>
           </main>
         </div>
       </div>

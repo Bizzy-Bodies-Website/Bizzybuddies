@@ -65,6 +65,14 @@ export default function camps() {
     campFeaturedSection: campFeaturedSectionData;
     campServicesSection: campServicesSectionData;
     campNeedToKnow: campNeedToKnowData;
+    joinaSession: joinaSessionData;
+  }
+
+  interface joinaSessionData {
+    title: string;
+    subtitle: string;
+    description: string;
+    buttons: any[];
   }
 
   interface campNeedToKnowData {
@@ -89,11 +97,6 @@ export default function camps() {
 
   console.log("data", data);
 
-  // "aboutSection": *[_type == "aboutSection"][0],
-  // "offerings": *[_type == "offerings"],
-  //  "values": *[_type == "values"],
-  //  "valuesHeader": *[_type == "valuesHeader"][0],
-
   useEffect(() => {
     const fetchData = async () => {
       const query = `{
@@ -102,6 +105,7 @@ export default function camps() {
         "campFeaturedSection": *[_type == "campFeaturedSection"][0],
         "campServicesSection": *[_type == "CampServicesSection"][0],
         "campNeedToKnow": *[_type == "campNeedToKnow"][0],
+        "joinaSession": *[_type == "joinaSession"][0],
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
@@ -207,7 +211,7 @@ export default function camps() {
             <BenefitsOverviewSection data={data?.campNeedToKnow} />
 
             {/* Contact Us Section */}
-            <ContactUsSection />
+            <ContactUsSection data={data?.joinaSession}/>
           </main>
         </div>
       </div>

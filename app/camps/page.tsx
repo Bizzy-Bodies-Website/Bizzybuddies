@@ -47,7 +47,7 @@ export default function about() {
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
                 Come & join IN the fun!
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
@@ -77,7 +77,7 @@ export default function about() {
             </section>
 
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
                 OUR CAMPS
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8 w-full md:w-[50%]">
@@ -96,7 +96,7 @@ export default function about() {
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
                 WHAT YOU NEED TO KNOW
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">

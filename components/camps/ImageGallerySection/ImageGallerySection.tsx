@@ -25,7 +25,7 @@ export const ImageGallerySection = () => {
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-wide text-sm sm:text-base md:text-lg">
                   CAMPS
                 </p>
-                <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
+                <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
                   Mutlisport Camp
                 </h2>
               </div>
@@ -40,7 +40,7 @@ export const ImageGallerySection = () => {
 
               <div className="mt-4 flex flex-col md:flex justify-center lg:justify-between gap-4">
                 <button className="p-0 h-auto flex items-center gap-4 md:gap-2 hover:bg-transparent">
-                  <span className="font-desktop-button-button-text text-black text-sm sm:text-base md:text-[14px]">
+                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
                     Contact us for more information
                   </span>
                   <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
@@ -49,7 +49,7 @@ export const ImageGallerySection = () => {
                 </button>
 
                 <button className="p-0 h-auto flex items-center gap-2 hover:bg-transparent">
-                  <span className="font-desktop-button-button-text text-black text-sm sm:text-base md:text-[14px]">
+                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
                     Book now{" "}
                   </span>
                   <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">

@@ -34,7 +34,7 @@
 
 //             {/* What We Offer Heading */}
 //             <section className="w-full flex flex-col items-center gap-4 py-16">
-//               <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+//               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
 //                 PREPARE FOR THE SPOOKIEST
 //                 <br />
 //                 CAMP EVER!

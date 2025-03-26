@@ -58,7 +58,7 @@ export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }
                 >
                   ABOUT US
                 </div>
-                <h2 className="w-full lg:w-[400px] font-desktop-title-headline-5 text-black text-xl md:text-2xl lg:text-3xl font-bold">
+                <h2 className="w-full lg:w-[400px] font-desktop-title-headline-5 text-[#111111] text-xl md:text-2xl lg:text-3xl font-bold">
                   {data?.title || "A LITTLE BIT ABOUT BIZZY BUDDIES"}
                 </h2>
               </div>

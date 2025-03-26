@@ -3,7 +3,7 @@ import React from "react";
 
 export const GreetingsSection = () => {
     return (
-        <section className="w-full py-16">
+        <section className="w-full mt-[-20px]">
             <div className="w-full bg-bb-red overflow-hidden border-0">
                 <div className="p-0 relative">
                     <div className="absolut inset-0 flex items-center justify-center">

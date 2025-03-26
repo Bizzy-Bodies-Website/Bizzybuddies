@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface OfferingsSectionProps {
-  // existing props
   data?: {
     title: string;
     subtitle: string;
@@ -15,16 +15,19 @@ interface OfferingsSectionProps {
   };
 }
 
-
 export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
   data,
 }) => {
+  const { scrollYProgress } = useScroll();
+
+  // Create fade and scale animations based on scroll progress
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
+
   // Function to handle scroll to next section
   const handleScrollToNextSection = () => {
-    // Get the current section's height
     const currentSectionHeight = 583; // Height of current section in pixels
     
-    // Scroll down by the height of the current section
     window.scrollTo({
       top: window.scrollY + currentSectionHeight,
       behavior: 'smooth'
@@ -32,20 +35,42 @@ export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
   };
 
   return (
-    <section className="relative w-full h-[583px]">
+    <motion.section 
+      className="relative w-full h-[583px] overflow-hidden"
+      style={{ 
+        opacity, 
+        scale,
+        transformOrigin: 'center center'
+      }}
+    >
       <div className="relative w-full max-w-[1440px] h-full mx-auto bg-cover bg-center">
         <div className="flex flex-col items-center justify-center h-full px-4">
-          <h1 className="font-desktop-title-headline-1 text-white text-[length:var(--desktop-title-headline-1-font-size)] text-center tracking-[var(--desktop-title-headline-1-letter-spacing)] leading-[var(--desktop-title-headline-1-line-height)] [font-style:var(--desktop-title-headline-1-font-style)] mb-[22px]">
+          <motion.h1 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-desktop-title-headline-1 text-white text-[length:var(--desktop-title-headline-1-font-size)] text-center tracking-[var(--desktop-title-headline-1-letter-spacing)] leading-[var(--desktop-title-headline-1-line-height)] [font-style:var(--desktop-title-headline-1-font-style)] mb-[22px]"
+          >
             {data?.title}
-          </h1>
+          </motion.h1>
 
-          <h2 className="font-desktop-title-subheading-1 text-white text-[length:var(--desktop-title-subheading-1-font-size)] text-center tracking-[var(--desktop-title-subheading-1-letter-spacing)] leading-[var(--desktop-title-subheading-1-line-height)] [font-style:var(--desktop-title-subheading-1-font-style)] max-w-[629px]">
+          <motion.h2 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-desktop-title-subheading-1 text-white text-[length:var(--desktop-title-subheading-1-font-size)] text-center tracking-[var(--desktop-title-subheading-1-letter-spacing)] leading-[var(--desktop-title-subheading-1-line-height)] [font-style:var(--desktop-title-subheading-1-font-style)] max-w-[629px]"
+          >
             {data?.subtitle}
-          </h2>
+          </motion.h2>
         </div>
       </div>
 
-      <div className="animate-bounce flex justify-center mt-[-80px]">
+      <motion.div 
+        className="animate-bounce flex justify-center mt-[-80px]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <svg
           width="40"
           height="40"
@@ -71,7 +96,7 @@ export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
             strokeWidth="2"
           />
         </svg>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };

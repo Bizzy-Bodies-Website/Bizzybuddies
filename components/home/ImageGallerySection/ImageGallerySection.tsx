@@ -68,11 +68,11 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
 
               <div className="mt-4 flex justify-center lg:justify-start">
                 <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">
-                  <span className="font-desktop-button-button-text text-black text-sm sm:text-base md:text-lg">
+                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-lg">
                     View Saturday Sessions
                   </span>
                   <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
-                    <ArrowRightIcon className="w-5 h-5 text-black" />
+                    <ArrowRightIcon className="w-5 h-5 text-[#111111]" />
                   </div>
                 </button>
               </div>

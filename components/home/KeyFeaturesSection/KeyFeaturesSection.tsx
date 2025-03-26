@@ -53,8 +53,8 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
                   BIRTHDAYS
                 </p>
-                <h2 className="font-desktop-title-headline-4 text-black text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  {data?.title || ""}
+                <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
+                  BIRTHDAY PARTIES
                 </h2>
               </div>
 
@@ -68,7 +68,7 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
 
               <div className="mt-2">
                 <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">
-                  <span className="text-black text-sm md:text-base lg:text-lg font-medium">
+                  <span className="text-[#111111] text-sm md:text-base lg:text-lg font-medium">
                     View Birthday Parties
                   </span>
                   <div className="w-10 h-10 rounded-full border-2 border-bb-red flex items-center justify-center">

@@ -129,7 +129,7 @@ export default function Home() {
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 pt-10 pb-5">
-              <h2 className="font-desktop-title-headline-2 text-black text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
                 WHAT WE OFFER
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">

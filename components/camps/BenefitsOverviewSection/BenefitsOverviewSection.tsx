@@ -151,9 +151,9 @@ export const BenefitsOverviewSection = () => {
             {/* {section.icon} */}
             <h3 className=" font-desktop-title-headline-3a font-semibold text-gray-800 flex-grow">{section.title}</h3>
             {expandedSections[section.key] ? (
-              <ChevronUp className="w-5 h-5 text-black cursor-pointer" />
+              <ChevronUp className="w-5 h-5 text-[#111111] cursor-pointer" />
             ) : (
-              <ChevronDown className="w-5 h-5 text-black cursor-pointer" />
+              <ChevronDown className="w-5 h-5 text-[#111111] cursor-pointer" />
             )}
           </button>
           {expandedSections[section.key] && (

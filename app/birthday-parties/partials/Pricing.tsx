@@ -61,7 +61,7 @@ export default function PricingSection({ data }: any) {
                         <div className="relative hidden md:block">
                             <div className="relative ml-4 md:ml-8">
                                 {/* White background that extends to the right */}
-                                <div className="absolute top-5 left-10 w-[calc(85%)] h-full bg-white"></div>
+                                <div className="absolute top-5 left-10 w-[calc(70%)] h-full bg-white"></div>
 
                                 {/* Image positioned to the left side of the white background */}
                                 <div className="relative w-[90%] h-[350px] md:h-[400px] z-10">

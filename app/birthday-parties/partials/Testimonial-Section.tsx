@@ -1,38 +1,38 @@
 "use client"
 
-import { useState } from "react"
+import { Key, useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 // Testimonial data
-const testimonials = [
-  {
-    id: 1,
-    text: "Bizzy Buddies provided a fantastic fun filled dino themed birthday party for our dinosaur obsessed son. The team took the stress out of organising & nothing was too much, from sourcing the dinosaur props to the choice of venue. They all had a fantastic time, there was a wide range of fun activities & games which all the children loved. The team were amazing with the children, engaging, caring and enthusiastic.",
-    author: "Richard",
-  },
-  {
-    id: 2,
-    text: "We had the superhero party for my son's 6th birthday and it was absolutely amazing! The children were engaged from start to finish with fun games and activities. The party hosts were energetic and professional. Would highly recommend to anyone looking for a stress-free party that the kids will love!",
-    author: "Sarah",
-  },
-  {
-    id: 3,
-    text: "The sports party was a huge hit with my daughter and all her friends. The coaches were brilliant at making sure everyone was included and having fun. They adapted activities to suit different abilities and kept the energy high throughout. Will definitely be booking again next year!",
-    author: "Michael",
-  },
-]
+// const testimonials = [
+//   {
+//     id: 1,
+//     text: "Bizzy Buddies provided a fantastic fun filled dino themed birthday party for our dinosaur obsessed son. The team took the stress out of organising & nothing was too much, from sourcing the dinosaur props to the choice of venue. They all had a fantastic time, there was a wide range of fun activities & games which all the children loved. The team were amazing with the children, engaging, caring and enthusiastic.",
+//     author: "Richard",
+//   },
+//   {
+//     id: 2,
+//     text: "We had the superhero party for my son's 6th birthday and it was absolutely amazing! The children were engaged from start to finish with fun games and activities. The party hosts were energetic and professional. Would highly recommend to anyone looking for a stress-free party that the kids will love!",
+//     author: "Sarah",
+//   },
+//   {
+//     id: 3,
+//     text: "The sports party was a huge hit with my daughter and all her friends. The coaches were brilliant at making sure everyone was included and having fun. They adapted activities to suit different abilities and kept the energy high throughout. Will definitely be booking again next year!",
+//     author: "Michael",
+//   },
+// ]
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({data}: any) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0
-    const newIndex = isFirstSlide ? testimonials.length - 1 : currentIndex - 1
+    const newIndex = isFirstSlide ? data?.length - 1 : currentIndex - 1
     setCurrentIndex(newIndex)
   }
 
   const goToNext = () => {
-    const isLastSlide = currentIndex === testimonials.length - 1
+    const isLastSlide = currentIndex === data?.length - 1
     const newIndex = isLastSlide ? 0 : currentIndex + 1
     setCurrentIndex(newIndex)
   }
@@ -53,6 +53,7 @@ export default function TestimonialsSection() {
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">
           WHAT OUR CLIENTS SAY
         </h2>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">Depending on david team lead sanity implementation as blocker</h1>
 
         <div className="max-w-4xl mx-auto relative">
           {/* Navigation buttons */}
@@ -74,14 +75,14 @@ export default function TestimonialsSection() {
 
           {/* Testimonial */}
           <div className="p-8 md:p-12">
-            <p className="text-lg md:text-xl text-gray-800 mb-8">{testimonials[currentIndex].text}</p>
-            <p className="text-[#FF0000] font-medium text-center">{testimonials[currentIndex].author}</p>
+            <p className="text-lg md:text-xl text-gray-800 mb-8">{data[currentIndex]?.quote}</p>
+            <p className="text-[#FF0000] font-medium text-center">{data[currentIndex]?.name}</p>
           </div>
         </div>
 
         {/* Pagination dots */}
-        <div className="flex justify-center mt-2 space-x-2">
-          {testimonials.map((_, index) => (
+        {/* <div className="flex justify-center mt-2 space-x-2">
+          {data?.map((_: any, index: any) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
@@ -89,7 +90,7 @@ export default function TestimonialsSection() {
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   )

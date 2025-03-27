@@ -26,12 +26,12 @@ const CardItem: React.FC<CardItemProps> = ({
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px] z-10">
-          <Image
+          <img
             className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover"
             alt={altText}
             src={imageSrc}
-            width={1440}
-            height={627}
+            // width={1440}
+            // height={627}
           />
         </div>
 

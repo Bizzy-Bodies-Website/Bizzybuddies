@@ -1,25 +1,124 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
-import { IntroductionSection } from "@/components/about/IntroductionSection";
-import { OfferingsSection } from "@/components/about/OfferingsSection/OfferingsSection";
-import { ServicesOverviewSection } from "@/components/about/ServicesOverviewSection/ServicesOverviewSection";
-import { ImageGallerySection } from "@/components/about/ImageGallerySection";
-import { KeyFeaturesSection } from "@/components/about/KeyFeaturesSection";
-import { ImageDisplaySection } from "@/components/about/ImageDisplaySection";
-import { HighlightsSection } from "@/components/about/HighlightsSection";
-import { MainContentSection } from "@/components/about/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/about/BenefitsOverviewSection";
-// import { ClientTestimonialsSection } from "@/components/about/ClientTestimonialsSection/ClientTestimonialsSection";
-import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
+import React, { useEffect, useState } from "react";
 import { SaturdayIntro } from "./partials/SaturdayIntro";
 import CardItem from "../birthday-parties/partials/CardItem";
 import SessionSchedule from "./partials/session-schedule";
 import BookParty from "../birthday-parties/partials/BookAParty";
 import FaqSection from "./partials/FAQ";
 import ContactSection from "./partials/Contact-Form";
+import client, { urlFor } from "@/sanity";
+
+interface saturdaysHeroTypeData {
+  title: string;
+  subtitle: string;
+  backgroundImage?: {
+    asset: {
+      _ref: string;
+    };
+  };
+}
+
+interface saturdayMoreSectionData {
+  title: string;
+  subtitle: string;
+  description: string;
+  backgroundImage?: { asset: { _ref: string } };
+}
+
+interface aboutSaturdaySectionData {
+  title: string;
+  subtitle: string;
+  description: any[];
+  backgroundImage?: { asset: { _ref: string } };
+  image?: { asset: { _ref: string } };
+}
+
+interface ServicesSectionData {
+  title: string;
+  subtitle: string;
+  description: any[];
+  services: any[];
+}
+
+interface valuesHeaderData {
+  title: string;
+  subtitle: string;
+  description: any[];
+  services: any[];
+}
+
+interface HomePageData {
+  saturdaysHeroType: saturdaysHeroTypeData;
+  saturdayMoreSection: saturdayMoreSectionData;
+  aboutSaturdaySection: aboutSaturdaySectionData;
+  session: ServicesSectionData[];
+  values: any[];
+  valuesHeader: valuesHeaderData;
+  tasterSessionCTA: tasterSessionCTA;
+  discounts: discounts;
+  extraInformation: extraInformation;
+  contactSection: contactSection;
+}
+
+interface tasterSessionCTA {
+  title: string;
+  buttonText: string;
+  description: string;
+}
+
+interface discounts {
+  title: string;
+  ctaButtonText: string;
+  ctaText: string;
+  discountList: Array<string>;
+}
+
+interface extraInformation {
+  title: string;
+  accordionItem: Array<any>;
+}
+
+interface contactSection {
+  title: string;
+  subttile: string;
+  description: string;
+  buttons: Array<any>;
+}
 
 export default function about() {
+  const [data, setData] = useState<HomePageData | null>(null);
 
+  console.log("data", data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = `{
+        "saturdaysHeroType": *[_type == "saturdaysHeroType"][0],
+        "saturdayMoreSection": *[_type == "saturdayMoreSection"][0],
+        "aboutSaturdaySection": *[_type == "aboutSaturdaySection"][0],
+        "session": *[_type == "session"],
+        "tasterSessionCTA": *[_type == "tasterSessionCTA"][0],
+        "discounts": *[_type == "discounts"][0],
+        "extraInformation": *[_type == "extraInformation"][0],
+        "contactSection": *[_type == "contactSection"][0]
+      }`;
+      const result: HomePageData = await client.fetch(query);
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
+  // session
+  // tasterSessionCTA
+  // "session": *[_type == "session"],
+  //  "values": *[_type == "values"],
+  //  "valuesHeader": *[_type == "valuesHeader"][0],
+  //  "whatweOfferText": *[_type == "whatweOfferText"][0],
+
+
+  if (!data) return <p>Loading...</p>;
   return (
     <div>
       <div className="bg-white flex flex-col items-center w-full">
@@ -29,16 +128,23 @@ export default function about() {
             <section className="relative">
               <div className="h-[680px] w-full relative overflow-hidden">
 
-                <Image src={'https://images.unsplash.com/photo-1606841466847-544b0c481c98?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJpcnRoZGF5JTIwYm95fGVufDB8fDB8fHww'} alt="Birthday Party Hero" className="absolute inset-0 w-full h-full object-cover" width={1440} height={927} />
+                {data?.saturdaysHeroType?.backgroundImage?.asset?._ref && (
+                  <img
+                    src={urlFor(data?.saturdaysHeroType?.backgroundImage).url()}
+                    alt="Saturday Party Hero"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+
+                )}
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
-                  <h2 className="text-4xl md:text-6xl font-semibold text-center text-uppercase ">Saturday Multisport Sessions</h2>
-                  <p className="mt-4 text-xl text-center">At Westminster Sports Ground</p>
+                  <h2 className="text-4xl md:text-6xl font-semibold text-center text-uppercase ">{data?.saturdaysHeroType?.title}</h2>
+                  <p className="mt-4 text-xl text-center">{data?.saturdaysHeroType?.subtitle}</p>
                 </div>
               </div>
 
               {/* Curved Divider */}
-              <div className="relative">
+              <div className="relative mt-[-30px]">
                 <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320">
                   <path fill="#FF0000" d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"></path>
                 </svg>
@@ -54,17 +160,18 @@ export default function about() {
                 backgroundPosition: "center",
               }}
             >
-              <SaturdayIntro />
+              <SaturdayIntro data={data?.saturdayMoreSection} />
             </section>
 
             <CardItem
-              imageSrc="/assets/Oalh2MojUuk (5).png"
-              altText="SATURDAY SESSIONS AT WESTMINSTER SPORTS GROUND"
-              subtitle="SATURDAY SESSIONS"
-              title="SATURDAY SESSIONS AT WESTMINSTER SPORTS GROUND"
-              description="On Saturday morning we run multisport programme for girls and boys aged between 18months – 8 years Including - football, tennis, tag-rugby, dodgeball and more..."
+              imageSrc={data?.aboutSaturdaySection?.image?.asset?._ref
+                ? urlFor(data?.aboutSaturdaySection?.image).url()
+                : ""}
+              altText={data?.aboutSaturdaySection?.title}
+              subtitle={data?.aboutSaturdaySection?.subtitle}
+              title={data?.aboutSaturdaySection?.title}
+              description={data?.aboutSaturdaySection?.description[0]?.children[0]?.text}
               bgColor="#FFFFFF"
-
             />
 
             <section className="w-full">
@@ -105,38 +212,39 @@ export default function about() {
               </div>
             </section>
 
-            <SessionSchedule />
+            <SessionSchedule data={data?.session}/>
 
             <BookParty
-              title="BOOK A TASTER SESSION TODAY!"
-              description="Come and try out our sessions to see if they are right for you. Contact us today to book your free session!"
+              title={data?.tasterSessionCTA?.title}
+              description={data?.tasterSessionCTA?.description}
+              buttonText={data?.tasterSessionCTA?.buttonText}
             />
 
             <div className="bg-[#D8D8D8] flex flex-col md:flex-row justify-center items-center gap-20 py-20">
               <div className="text-center md:text-left">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">OUR DISCOUNTS</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">{data?.discounts?.title}</h2>
               </div>
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-gray-700">- 10% sibling discount</p>
-                <p className="text-gray-700">- 20% discount applied when making a full-term booking</p>
-                <p className="text-gray-700">- FREE trial sessions available for first-time customers</p>
+               {data?.discounts.discountList?.map((item, index) => <p key={index} className="text-gray-700">{item}</p>)}
+                {/* <p className="text-gray-700">- 20% discount applied when making a full-term booking</p>
+                <p className="text-gray-700">- FREE trial sessions available for first-time customers</p> */}
 
-                <h3 className="text-2xl font-bold mt-10 mb-6">SPEAK TO OUR TEAM FOR MORE INFORMATION</h3>
+                <h3 className="text-2xl font-bold mt-10 mb-6">{data?.discounts?.ctaText}</h3>
 
                 <div>
                   <a
                     href="#contact"
                     className="inline-block font-semibold bg-black text-white py-3 px-8 rounded-full text-center"
                   >
-                    Contact Us
+                    {data?.discounts?.ctaButtonText}
                   </a>
                 </div>
               </div>
             </div>
 
-            <FaqSection />
+            <FaqSection data={data?.extraInformation}/>
 
-            <ContactSection />
+            <ContactSection data={data?.contactSection}/>
           </main>
         </div>
       </div>

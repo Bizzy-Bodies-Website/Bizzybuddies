@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IntroductionSection } from "@/components/about/IntroductionSection";
 import { OfferingsSection } from "@/components/about/OfferingsSection/OfferingsSection";
 import { ServicesOverviewSection } from "@/components/about/ServicesOverviewSection/ServicesOverviewSection";
@@ -11,8 +13,86 @@ import { MainContentSection } from "@/components/about/MainContentSection/MainCo
 import { BenefitsOverviewSection } from "@/components/about/BenefitsOverviewSection";
 // import { ClientTestimonialsSection } from "@/components/about/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
+import client, { urlFor } from "@/sanity";
 
 export default function about() {
+  interface HeroSectionData {
+    title: string;
+    subtitle: string;
+    backgroundImage?: {
+      asset: {
+        _ref: string;
+      };
+    };
+  }
+
+  interface HeroMoreSectionData {
+    title: string;
+    subtitle: string;
+    description: string;
+    backgroundImage?: { asset: { _ref: string } };
+  }
+
+  interface AboutSectionData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    backgroundImage?: { asset: { _ref: string } };
+  }
+
+  interface ServicesSectionData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
+  interface valuesHeaderData {
+    title: string;
+    subtitle: string;
+    description: any[];
+    services: any[];
+  }
+
+  interface HomePageData {
+    aboutPageHero: HeroSectionData;
+    aboutPageMoreSection: HeroMoreSectionData;
+    aboutSection: AboutSectionData;
+    offerings: ServicesSectionData[];
+    values: any[];
+    valuesHeader: valuesHeaderData;
+    whatweOfferText: whatweOfferTextData;
+  }
+
+  interface whatweOfferTextData {
+    title: string;
+    subtitle: string;
+    description: string;
+  }
+
+  const [data, setData] = useState<HomePageData | null>(null);
+
+  console.log("data", data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = `{
+        "aboutPageHero": *[_type == "aboutPageHero"][0],
+        "aboutPageMoreSection": *[_type == "aboutPageMoreSection"][0],
+        "aboutSection": *[_type == "aboutSection"][0],
+        "offerings": *[_type == "offerings"],
+         "values": *[_type == "values"],
+         "valuesHeader": *[_type == "valuesHeader"][0],
+         "whatweOfferText": *[_type == "whatweOfferText"][0],
+      }`;
+      const result: HomePageData = await client.fetch(query);
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) return <p>Loading...</p>;
 
   return (
     <div>
@@ -24,14 +104,16 @@ export default function about() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: "url('/assets/about1.svg')",
+                backgroundImage: `url(${urlFor(
+                  data?.aboutPageHero?.backgroundImage
+                ).url()})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
               }}
             >
-              <OfferingsSection />
+              <OfferingsSection data={data?.aboutPageHero} />
             </section>
 
             {/* Introduction Section */}
@@ -43,7 +125,7 @@ export default function about() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection />
+              <IntroductionSection data={data?.aboutPageMoreSection} />
             </section>
 
             {/* Services Overview Section */}
@@ -54,13 +136,13 @@ export default function about() {
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 py-16">
               <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-              MEET THE TEAM 
-              <br />
-              BEHIND THE MAGIC
+                MEET THE TEAM
+                <br />
+                BEHIND THE MAGIC
               </h2>
               <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.  <br />
-              In viverra metus sit amet neque sodales, at sodales ex pretium
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
+                In viverra metus sit amet neque sodales, at sodales ex pretium
               </p>
             </section>
 
@@ -113,7 +195,8 @@ export default function about() {
                 <Image
                   className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
                   alt="Kids in Superhero Masks"
-                  src="/assets/a3.svg"                  width={500}
+                  src="/assets/a3.svg"
+                  width={500}
                   height={415}
                 />
               </div>

@@ -81,7 +81,7 @@ export const ServicesOverviewSection: React.FC<ServicesSectionProps> = ({ data }
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
               >
-                {data?.description ? <PortableText value={data.description} /> : "No description available."}
+                {data?.description ? <PortableText value={data.description} /> : ""}
               </motion.div>
             </div>
           </div>

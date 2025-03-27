@@ -7,11 +7,6 @@ import { OfferingsSection } from "@/components/about/OfferingsSection/OfferingsS
 import { ServicesOverviewSection } from "@/components/about/ServicesOverviewSection/ServicesOverviewSection";
 import { ImageGallerySection } from "@/components/about/ImageGallerySection";
 import { KeyFeaturesSection } from "@/components/about/KeyFeaturesSection";
-import { ImageDisplaySection } from "@/components/about/ImageDisplaySection";
-import { HighlightsSection } from "@/components/about/HighlightsSection";
-import { MainContentSection } from "@/components/about/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/about/BenefitsOverviewSection";
-// import { ClientTestimonialsSection } from "@/components/about/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "@/sanity";
 
@@ -61,30 +56,47 @@ export default function about() {
     offerings: ServicesSectionData[];
     values: any[];
     valuesHeader: valuesHeaderData;
-    whatweOfferText: whatweOfferTextData;
+    aboutPageFounders: whatweOfferTextData;
+    aboutUs: aboutUsData;
+    joinaSession: joinaSessionData;
+  }
+
+  interface joinaSessionData {
+    title: string;
+    subtitle: string;
+    description: string;
+    buttons: any[];
+  }
+
+  interface aboutUsData {
+    title: string;
+    subtitle: string;
+    description1: string;
+    description2: string;
+    label: string;
   }
 
   interface whatweOfferTextData {
     title: string;
     subtitle: string;
     description: string;
+    team: any[];
   }
 
   const [data, setData] = useState<HomePageData | null>(null);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   useEffect(() => {
     const fetchData = async () => {
       const query = `{
         "aboutPageHero": *[_type == "aboutPageHero"][0],
         "aboutPageMoreSection": *[_type == "aboutPageMoreSection"][0],
-        "aboutSection": *[_type == "aboutSection"][0],
-        "offerings": *[_type == "offerings"],
-         "values": *[_type == "values"],
-         "valuesHeader": *[_type == "valuesHeader"][0],
-         "whatweOfferText": *[_type == "whatweOfferText"][0],
-      }`;
+        "aboutUs": *[_type == "aboutUs"][0],
+        "aboutPageFounders": *[_type == "aboutPageFounders"][0],
+        "aboutPageFounders": *[_type == "aboutPageFounders"][0],
+        "joinaSession": *[_type == "joinaSession"][0],
+        }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);
     };
@@ -130,39 +142,24 @@ export default function about() {
 
             {/* Services Overview Section */}
             <section className="w-full relative bg-[#F9F9F9] py-16">
-              <ServicesOverviewSection />
+              <ServicesOverviewSection data={data?.aboutUs} />
             </section>
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 py-16">
-              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                MEET THE TEAM
-                <br />
-                BEHIND THE MAGIC
+              <h2 className="w-full md:w-[450px] font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+                {data?.aboutPageFounders?.title}
               </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-                In viverra metus sit amet neque sodales, at sodales ex pretium
+              <p className="w-full md:w-[750px] font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
+                {data?.aboutPageFounders?.description}
               </p>
             </section>
 
             {/* Image Gallery Section */}
-            <ImageGallerySection />
+            <ImageGallerySection data={data?.aboutPageFounders?.team[0]} />
 
             {/* Key Features Section */}
-            <KeyFeaturesSection />
-
-            {/* Image Display Section */}
-            {/* <ImageDisplaySection /> */}
-
-            {/* Highlights Section */}
-            {/* <HighlightsSection /> */}
-
-            {/* Main Content Section */}
-            {/* <MainContentSection /> */}
-
-            {/* Benefits Overview Section */}
-            {/* <BenefitsOverviewSection /> */}
+            <KeyFeaturesSection data={data?.aboutPageFounders?.team[1]} />
 
             <section className="w-full p-4">
               {/* First Row - Two Images */}
@@ -202,11 +199,8 @@ export default function about() {
               </div>
             </section>
 
-            {/* Client Testimonials Section */}
-            {/* <ClientTestimonialsSection /> */}
-
             {/* Contact Us Section */}
-            <ContactUsSection />
+            <ContactUsSection data={data?.joinaSession} />
           </main>
         </div>
       </div>

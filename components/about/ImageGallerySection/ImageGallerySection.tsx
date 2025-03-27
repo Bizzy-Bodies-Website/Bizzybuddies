@@ -1,19 +1,53 @@
 import Image from "next/image";
 import React from "react";
+import { PortableText } from "@portabletext/react";
+import { motion } from "framer-motion";
+import client, { urlFor } from "../../../sanity"; // Ensure urlFor is properly imported
 
-export const ImageGallerySection = () => {
+interface ImageData {
+  asset: { _ref: string };
+}
+
+interface ServicesSectionProps {
+  data?: {
+    title: string;
+    description?: any[]; // Allow Portable Text
+    image?: ImageData;
+  };
+}
+
+export const ImageGallerySection: React.FC<ServicesSectionProps> = ({
+  data,
+}) => {
   return (
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
-          <Image
+          {/* <Image
             className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover rounded-sm"
             alt="Children playing sports outdoors"
             src="/assets/about3.svg"
             width={1440}
             height={627}
-          />
+          /> */}
+
+          {data?.image ? (
+            <img
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="About Section Image"
+              src={urlFor(data.image).url()}
+            />
+          ) : (
+            <Image
+              className="w-full h-auto object-cover rounded-md max-h-[627px]"
+              alt="Children playing outdoors"
+              src="/assets/about3.svg"
+              width={1440}
+              height={627}
+              priority
+            />
+          )}
         </div>
 
         {/* Content on the right */}
@@ -25,27 +59,24 @@ export const ImageGallerySection = () => {
                   FOUNDER
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                  HEY, I’M REISS!
+                  {data?.title}
                 </h2>
               </div>
 
-              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed">
-                Reiss is the founder and director of Bizzy Buddies. He has been
-                teaching sports to children for over 18 years. He is an FA
-                qualified football coach, LTA qualified tennis coach and
-                currently the Head of PE at The Falcons Pre-Prep for Boys in
-                Chiswick.
-              </p>
+              <p className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text-lg leading-relaxed"></p>
 
-              <p
+              <div
                 className="font-desktop-body-body-copy-1 text-[#636362] text-sm sm:text-base md:text
               lg:text-lg leading-relaxed"
               >
-                Reiss has a great passion for teaching children and observing
-                their development. He has previously worked as a nanny and has
-                also supported various SEND children in primary schools across
-                London.
-              </p>
+                {/* {data?.description ? (
+                  <PortableText value={data?.description} />
+                ) : (
+                  ""
+                )} */}
+
+                {data?.description}
+              </div>
             </div>
           </div>
         </div>

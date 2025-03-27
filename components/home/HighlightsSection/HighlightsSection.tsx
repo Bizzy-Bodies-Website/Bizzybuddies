@@ -55,7 +55,7 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
 
         {/* Content Second on Small Screens, First on Large */}
         <div className="bg-[#FDF6EF] rounded-sm border-none w-full lg:w-1/2 order-2 lg:order-1">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[160px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24  remove-padding add-padding3 text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-desktop-title-label">

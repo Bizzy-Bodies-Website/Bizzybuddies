@@ -232,6 +232,44 @@ body {
   }
 }
 
+/* Default (For larger screens, above 1024px) */
+@media (min-width: 1265px) {
+  .add-padding {
+    padding-top: 180px !important;
+    padding-bottom: 180px !important;
+  }
+
+  .add-padding2 {
+    padding-top: 190px !important;
+    padding-bottom: 190px !important;
+  }
+
+  .add-padding3 {
+    padding-top: 140px !important;
+    padding-bottom: 140px !important;
+  }
+}
+
+/* Tablets and smaller (1024px and below) */
+@media (max-width: 1024px) {
+  .remove-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .remove-padding2 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .remove-padding3 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
 .font-desktop-title-subheading-2,
 .font-desktop-title-label {
   /* color: #636362; */

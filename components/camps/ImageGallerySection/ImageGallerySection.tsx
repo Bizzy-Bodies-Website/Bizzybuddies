@@ -46,7 +46,7 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
 
         {/* Content on the right */}
         <div className="w-full lg:w-1/2 bg-[#FDF6EF] rounded-sm border-none flex justify-center">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 lg:py-[120px] text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 add-padding remove-padding text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-wide text-sm sm:text-base md:text-lg">

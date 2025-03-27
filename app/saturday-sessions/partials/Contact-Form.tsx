@@ -1,4 +1,4 @@
-export default function ContactSection() {
+export default function ContactSection({ data }: any) {
     return (
       <div className="relative overflow-hidden text-white py-16 md:py-24" style={{ backgroundImage: `url("/assets/bg1.svg")` }}>
         {/* Background decorative elements */}
@@ -10,19 +10,16 @@ export default function ContactSection() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Left column */}
             <div>
-              <p className="text-xl mb-2">INTERESTED?</p>
+              <p className="text-xl mb-2">{data?.subtitle}</p>
               <h2 className="text-5xl md:text-7xl font-bold leading-tight">
-                CONTACT
-                <br />
-                US TODAY!
+                {data?.title}
               </h2>
             </div>
   
             {/* Right column */}
             <div className="space-y-8">
               <p className="text-xl leading-relaxed">
-                We would love you to become part of the family. If you have any questions or would love to join our
-                holiday sports camps, get in touch!
+                {data?.description}
               </p>
   
               <div className="flex flex-wrap gap-4">
@@ -30,13 +27,13 @@ export default function ContactSection() {
                   href="#contact"
                   className="inline-block bg-white text-[#ee3e33] font-medium py-3 px-8 rounded-full text-center hover:bg-gray-100 transition-colors"
                 >
-                  Contact Us
+                  {data?.buttons[0].text}
                 </a>
                 <a
                   href="#about"
                   className="inline-block border-2 border-white text-white font-medium py-3 px-8 rounded-full text-center hover:bg-white/10 transition-colors"
                 >
-                  About Us
+                  {data?.buttons[1].text}
                 </a>
               </div>
             </div>

@@ -1,7 +1,9 @@
 import Image from "next/image"
 import { Check } from "lucide-react"
+import { url } from "inspector"
+import { urlFor } from "@/sanity"
 
-export default function PricingSection() {
+export default function PricingSection({ data }: any) {
     return (
         <section className="w-full bg-[#e93323] relative overflow-hidden py-16 md:p-20 bg-[url('/assets/bg1.svg')] bg-cover bg-center bg-no-repeat">
             {/* Background circles */}
@@ -13,16 +15,16 @@ export default function PricingSection() {
                     {/* Left column - Pricing content */}
                     <div className="text-white">
                         <div className="flex items-center mb-4">
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight">STANDARD PARTY PACKAGE</h2>
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight">{data?.title}</h2>
                         </div>
 
-                        <p className="text-[14px] mb-8">Get the party started with our standard party package!</p>
+                        <p className="text-[14px] mb-8">{data?.description}</p>
 
                         <div className="flex items-start mb-8 relative px-6">
                             {/* Price Container */}
                             <div className="relative">
                                 <span className="text-white text-3xl font-bold absolute top-1 -left-6">£</span>
-                                <span className="text-white text-7xl md:text-8xl font-bold">299</span>
+                                <span className="text-white text-7xl md:text-8xl font-bold">{data?.price}</span>
                             </div>
 
                             {/* "All included" text positioned at the bottom */}
@@ -31,51 +33,24 @@ export default function PricingSection() {
 
 
                         <ul className="space-y-6 max-w-md">
-                            <li className="flex items-center">
-                                <div className="mr-4 bg-white rounded-full p-1 flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#e93323]" />
-                                </div>
-                                <div className="flex items-center">
-                                    <span className="text-sm">2 specialised party coaches for upto 20 children</span>
+                            {
+                                data?.features?.map((feature: any, index: number) => (
+                                    <li key={index} className="flex items-center">
+                                        <div className="mr-4 bg-white rounded-full p-1 flex-shrink-0">
+                                            <Check className="h-4 w-4 text-[#e93323]" />
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="text-sm">{feature}</span>
 
-                                </div>
-                            </li>
-
-                            <li className="flex items-start">
-                                <div className="mr-4 bg-white rounded-full p-1 flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#e93323]" />
-                                </div>
-                                <span className="text-sm">All sports equipment</span>
-                            </li>
-
-                            <li className="flex items-start">
-                                <div className="mr-4 bg-white rounded-full p-1 flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#e93323]" />
-                                </div>
-                                <div className="flex items-center">
-                                    <span className="text-sm">
-                                        2 hour party (1.5 hours of fun and games, plus 30 minutes child supervision for cake presentation
-                                        etc)
-                                    </span>
-
-                                </div>
-                            </li>
-
-                            <li className="flex items-start">
-                                <div className="mr-4 bg-white rounded-full p-1 flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#e93323]" />
-                                </div>
-                                <div className="flex items-center">
-                                    <span className="text-sm">
-                                        Extra add-ons available upon request (medals, tables, themed costumes and more)
-                                    </span>
-                                </div>
-                            </li>
+                                        </div>
+                                    </li>
+                                ))
+                            }
                         </ul>
 
                         <div className="mt-20 flex justify-end">
                             <div className="flex items-center">
-                                <span className="text-sm italic">*Other extras are subject to additional cost</span>
+                                <span className="text-sm italic">{data?.additionalInfo}</span>
 
                             </div>
                         </div>
@@ -90,10 +65,11 @@ export default function PricingSection() {
 
                                 {/* Image positioned to the left side of the white background */}
                                 <div className="relative w-[90%] h-[350px] md:h-[400px] z-10">
-                                    <Image
-                                        src={"/assets/bp.png"}
+                                    <img
+                                        src={urlFor(data?.image).url()}
                                         alt="Party coaches with children"
-                                        fill
+                                        width={350}
+                                        height={100}
                                         className="object-cover"
                                     />
                                 </div>

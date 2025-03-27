@@ -106,7 +106,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <MobileMenu isOpen={isOpen} navItems={navItems} />
+      <MobileMenu isOpen={isOpen} navItems={navItems} onClose={() => setIsOpen(false)} />
     </header>
   );
 };

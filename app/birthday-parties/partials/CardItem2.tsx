@@ -27,7 +27,7 @@ const CardItemRight = ({
         <div
           className={`w-full lg:w-1/2 flex justify-center ${reverse ? 'order-1 lg:order-2 lg:ml-[-30px]' : 'order-1 lg:order-1 lg:mr-[-30px] z-10'}`}
         >
-          <Image
+          <img
             className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full h-auto object-cover"
             alt={altText}
             src={imageSrc}

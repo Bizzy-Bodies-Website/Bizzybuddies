@@ -113,7 +113,6 @@ interface contactSection {
 export default function About() {
   const [data, setData] = useState<HomePageData | null>(null);
 
-  console.log("data", data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -125,7 +124,7 @@ export default function About() {
         "partyPackage": *[_type == "partyPackage"][0],
         "callToAction": *[_type == "callToAction"][0],
         "partyImage": *[_type == "partyImage"][0],
-        "testimonial": *[_type == "testimonial"][0],
+        "testimonial": *[_type == "testimonial"],
       }`;
       const result: HomePageData = await client.fetch(query);
       setData(result);

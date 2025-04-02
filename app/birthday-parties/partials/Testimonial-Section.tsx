@@ -55,9 +55,6 @@ export default function TestimonialsSection({ data }: any) {
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">
           WHAT OUR CLIENTS SAY
         </h2>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">
-          Depending on david team lead sanity implementation as blocker
-        </h1>
 
         <div className="max-w-4xl mx-auto relative">
           {/* Navigation buttons */}

@@ -87,7 +87,7 @@ interface contactSection {
   buttons: Array<any>;
 }
 
-export default function about() {
+export default function About() {
   const [data, setData] = useState<HomePageData | null>(null);
 
   console.log("data", data);

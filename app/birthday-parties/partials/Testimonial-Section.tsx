@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Key, useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Key, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Testimonial data
 // const testimonials = [
@@ -22,38 +22,42 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 //   },
 // ]
 
-export default function TestimonialsSection({data}: any) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function TestimonialsSection({ data }: any) {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0
-    const newIndex = isFirstSlide ? data?.length - 1 : currentIndex - 1
-    setCurrentIndex(newIndex)
-  }
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? data?.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
 
   const goToNext = () => {
-    const isLastSlide = currentIndex === data?.length - 1
-    const newIndex = isLastSlide ? 0 : currentIndex + 1
-    setCurrentIndex(newIndex)
-  }
+    const isLastSlide = currentIndex === data?.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
 
   const goToSlide = (slideIndex: number) => {
-    setCurrentIndex(slideIndex)
-  }
+    setCurrentIndex(slideIndex);
+  };
 
   return (
     <section className="w-full bg-[#FDEFE0] py-16 md:py-20 mt-16 relative overflow-hidden">
       {/* Background quote marks */}
-      <div className="absolute top-1/4 left-1/4 text-[300px] font-serif text-[#f5e8d6] opacity-30 leading-none">"</div>
+      <div className="absolute top-1/4 left-1/4 text-[300px] font-serif text-[#f5e8d6] opacity-30 leading-none">
+        &ldquo;
+      </div>
       <div className="absolute bottom-1/4 right-1/4 text-[300px] font-serif text-[#f5e8d6] opacity-30 leading-none">
-        "
+        &rdquo;
       </div>
 
       <div className="container mx-auto px-4 relative">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">
           WHAT OUR CLIENTS SAY
         </h2>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">Depending on david team lead sanity implementation as blocker</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-8">
+          Depending on david team lead sanity implementation as blocker
+        </h1>
 
         <div className="max-w-4xl mx-auto relative">
           {/* Navigation buttons */}
@@ -75,8 +79,12 @@ export default function TestimonialsSection({data}: any) {
 
           {/* Testimonial */}
           <div className="p-8 md:p-12">
-            <p className="text-lg md:text-xl text-gray-800 mb-8">{data[currentIndex]?.quote}</p>
-            <p className="text-[#FF0000] font-medium text-center">{data[currentIndex]?.name}</p>
+            <p className="text-lg md:text-xl text-gray-800 mb-8">
+              {data[currentIndex]?.quote}
+            </p>
+            <p className="text-[#FF0000] font-medium text-center">
+              {data[currentIndex]?.name}
+            </p>
           </div>
         </div>
 
@@ -93,6 +101,5 @@ export default function TestimonialsSection({data}: any) {
         </div> */}
       </div>
     </section>
-  )
+  );
 }
-

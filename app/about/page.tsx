@@ -10,7 +10,7 @@ import { KeyFeaturesSection } from "@/components/about/KeyFeaturesSection";
 import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "@/sanity";
 
-export default function about() {
+export default function ABOUT() {
   interface HeroSectionData {
     title: string;
     subtitle: string;

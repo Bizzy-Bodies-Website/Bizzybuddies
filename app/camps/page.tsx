@@ -16,7 +16,7 @@ import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsS
 import client, { urlFor } from "../../sanity";
 import { title } from "process";
 
-export default function camps() {
+export default function Camps() {
   interface campHeroData {
     title: string;
     subtitle: string;

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
+import Link from "next/link";
 
 export const FeaturedProductSection = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState({
@@ -158,6 +159,10 @@ export const FeaturedProductSection = () => {
           {/* Copyright */}
           <div className="text-white/50 text-sm tracking-wider text-center">
             ©BIZZY BUDDIES 2021
+
+            <Link href="http://www.plantec.io/" className="text-sm text-gray-100 mt-8 block text-center">
+              <span>Designed by Plantec</span>
+            </Link>
           </div>
         </div>
 
@@ -184,7 +189,13 @@ export const FeaturedProductSection = () => {
           <div className="flex justify-between items-center">
             <div className="text-white/50 text-sm tracking-wider">
               ©BIZZY BUDDIES 2021
+
             </div>
+
+            <Link href="http://www.plantec.io/" className="text-sm text-gray-100 mt-8 block text-center">
+              <span>Designed by Plantec</span>
+            </Link>
+
             <a
               href="#"
               className="text-white text-sm tracking-wider hover:text-white/70 transition-colors"

@@ -11,100 +11,50 @@ import { ContactUsSection } from "@/components/about/ContactUsSection/ContactUsS
 import client, { urlFor } from "@/sanity";
 
 export default function ABOUT() {
-  interface HeroSectionData {
-    title: string;
-    subtitle: string;
-    backgroundImage?: {
-      asset: {
-        _ref: string;
-      };
-    };
-  }
-
-  interface HeroMoreSectionData {
-    title: string;
-    subtitle: string;
-    description: string;
-    backgroundImage?: { asset: { _ref: string } };
-  }
-
-  interface AboutSectionData {
-    title: string;
-    subtitle: string;
-    description: any[];
-    backgroundImage?: { asset: { _ref: string } };
-  }
-
-  interface ServicesSectionData {
-    title: string;
-    subtitle: string;
-    description: any[];
-    services: any[];
-  }
-
-  interface valuesHeaderData {
-    title: string;
-    subtitle: string;
-    description: any[];
-    services: any[];
-  }
-
-  interface HomePageData {
-    aboutPageHero: HeroSectionData;
-    aboutPageMoreSection: HeroMoreSectionData;
-    aboutSection: AboutSectionData;
-    offerings: ServicesSectionData[];
-    values: any[];
-    valuesHeader: valuesHeaderData;
-    aboutPageFounders: whatweOfferTextData;
-    aboutUs: aboutUsData;
-    joinaSession: joinaSessionData;
-  }
-
-  interface joinaSessionData {
-    title: string;
-    subtitle: string;
-    description: string;
-    buttons: any[];
-  }
-
-  interface aboutUsData {
-    title: string;
-    subtitle: string;
-    description1: string;
-    description2: string;
-    label: string;
-  }
-
-  interface whatweOfferTextData {
-    title: string;
-    subtitle: string;
-    description: string;
-    team: any[];
-  }
-
-  const [data, setData] = useState<HomePageData | null>(null);
-
-  // console.log("data", data);
+  const [pageData, setPageData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const query = `{
-        "aboutPageHero": *[_type == "aboutPageHero"][0],
-        "aboutPageMoreSection": *[_type == "aboutPageMoreSection"][0],
-        "aboutUs": *[_type == "aboutUs"][0],
-        "aboutPageFounders": *[_type == "aboutPageFounders"][0],
-        "aboutPageFounders": *[_type == "aboutPageFounders"][0],
-        "joinaSession": *[_type == "joinaSession"][0],
-        }`;
-      const result: HomePageData = await client.fetch(query);
-      setData(result);
+      try {
+        const query = `*[_type == "page" && _id == "c3c19ec3-246a-4363-87e2-e556095b661c"][0]`;
+        const result = await client.fetch(query);
+        setPageData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
   }, []);
 
-  if (!data) return <p>Loading...</p>;
+  console.log("pageData", pageData);
+
+  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  if (!pageData) return <div className="flex justify-center items-center h-screen">Failed to load content</div>;
+
+  // Map the new data structure to match the expected format for the existing components
+  const heroBlock = pageData.contentBlocks.find((block: any) => block._type === "heroBlock");
+  const homeMoreSectionBlock = pageData.contentBlocks.find((block: any) => block._type === "homeMoreSectionBlock");
+  const aboutUsBlock = pageData.contentBlocks.find((block: any) => block._type === "aboutUs");
+  const whatWeOfferBlock = pageData.contentBlocks.find((block: any) => block._type === "whatWeOfferBlock");
+  const imagesBlock = pageData.contentBlocks.find((block: any) => block._type === "imagesBlock");
+  const ctaBlock = pageData.contentBlocks.find((block: any) => block._type === "CTATwoButtons");
+
+  // Create data objects that match what the original components expect
+  const data = {
+    aboutPageHero: heroBlock,
+    aboutPageMoreSection: homeMoreSectionBlock,
+    aboutUs: aboutUsBlock,
+    aboutPageFounders: {
+      title: whatWeOfferBlock?.title,
+      description: whatWeOfferBlock?.description,
+      team: whatWeOfferBlock?.offers || []
+    },
+    joinaSession: ctaBlock
+  };
 
   return (
     <div>
@@ -116,16 +66,14 @@ export default function ABOUT() {
             <section
               className="w-full relative z-10"
               style={{
-                backgroundImage: `url(${urlFor(
-                  data?.aboutPageHero?.backgroundImage
-                ).url()})`,
+                backgroundImage: heroBlock?.backgroundImage ? `url(${urlFor(heroBlock.backgroundImage.asset).url()})` : "",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
               }}
             >
-              <OfferingsSection data={data?.aboutPageHero} />
+              <OfferingsSection data={data.aboutPageHero} />
             </section>
 
             {/* Introduction Section */}
@@ -137,29 +85,29 @@ export default function ABOUT() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection data={data?.aboutPageMoreSection} />
+              <IntroductionSection data={data.aboutPageMoreSection} />
             </section>
 
             {/* Services Overview Section */}
             <section className="w-full relative bg-[#F9F9F9] py-16">
-              <ServicesOverviewSection data={data?.aboutUs} />
+              <ServicesOverviewSection data={data.aboutUs} />
             </section>
 
             {/* What We Offer Heading */}
             <section className="w-full flex flex-col items-center gap-4 py-16">
               <h2 className="w-full md:w-[450px] font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                {data?.aboutPageFounders?.title}
+                {data.aboutPageFounders?.title}
               </h2>
               <p className="w-full md:w-[750px] font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                {data?.aboutPageFounders?.description}
+                {data.aboutPageFounders?.description}
               </p>
             </section>
 
             {/* Image Gallery Section */}
-            <ImageGallerySection data={data?.aboutPageFounders?.team[0]} />
+            <ImageGallerySection data={data.aboutPageFounders?.team[0]} />
 
             {/* Key Features Section */}
-            <KeyFeaturesSection data={data?.aboutPageFounders?.team[1]} />
+            <KeyFeaturesSection data={data.aboutPageFounders?.team[1]} />
 
             <section className="w-full p-4">
               {/* First Row - Two Images */}
@@ -200,7 +148,7 @@ export default function ABOUT() {
             </section>
 
             {/* Contact Us Section */}
-            <ContactUsSection data={data?.joinaSession} />
+            <ContactUsSection data={data.joinaSession} />
           </main>
         </div>
       </div>

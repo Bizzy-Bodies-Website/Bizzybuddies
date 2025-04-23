@@ -132,13 +132,6 @@ export default function About() {
 
     fetchData();
   }, []);
-  // 
-  //       "aboutSaturdaySection": *[_type == "aboutSaturdaySection"][0],
-  //       "session": *[_type == "session"],
-  //       "tasterSessionCTA": *[_type == "tasterSessionCTA"][0],
-  //       "discounts": *[_type == "discounts"][0],
-  //       "extraInformation": *[_type == "extraInformation"][0],
-  //       "contactSection": *[_type == "contactSection"][0]
 
 
   if (!data) return <p>Loading...</p>;

@@ -10,6 +10,7 @@ interface ImageData {
 interface MainContentSectionProps {
   data?: {
     title: string;
+    label: string;
     description?: any[]; // Allow Portable Text
     image?: ImageData;
   };
@@ -23,7 +24,6 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8">
         {/* Image on the left */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center mr-0 lg:mr-[-30px]  z-10">
-
           {data?.image ? (
             <img
               className="w-full h-auto object-cover rounded-md max-h-[627px]"
@@ -50,7 +50,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
-                  SATURDAYS{" "}
+                {data?.label.toUpperCase() || ""}
                 </p>
 
                 <h2 className="font-desktop-title-headline-4 text-black text-[length:var(--desktop-title-headline-4-font-size)] tracking-[var(--desktop-title-headline-4-letter-spacing)] leading-[var(--desktop-title-headline-4-line-height)] [font-style:var(--desktop-title-headline-4-font-style)]">
@@ -58,12 +58,19 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({
                 </h2>
               </div>
 
-              <div className="font-desktop-body-body-copy-1 text-[#636362] text-[length:var(--desktop-body-body-copy-1-font-size)] tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] [font-style:var(--desktop-body-body-copy-1-font-style)]">
-                {data?.description ? (
-                  <PortableText value={data.description} />
-                ) : (
-                  ""
-                )}
+              <div className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
+                {data?.description && typeof data.description === "string" ? (
+                  <p>{data.description}</p>
+                ) : data?.description ? (
+                  <PortableText
+                    value={data.description}
+                    components={{
+                      block: {
+                        normal: ({ children }) => <p>{children}</p>,
+                      },
+                    }}
+                  />
+                ) : null}
               </div>
             </div>
           </div>

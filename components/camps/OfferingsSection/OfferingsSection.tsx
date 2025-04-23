@@ -44,7 +44,7 @@ export const OfferingsSection: React.FC<OfferingsSectionProps> = ({ data }) => {
       }}
     >
       <div className="relative w-full max-w-[1440px] h-full mx-auto bg-cover bg-center">
-        <div className="flex flex-col items-center justify-center h-full px-4">
+        <div className="flex flex-col items-center justify-center h-full px-4 max-w-[900px] mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

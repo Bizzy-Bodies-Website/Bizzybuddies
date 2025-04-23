@@ -11,7 +11,8 @@ interface ImageData {
 interface KeyFeaturesSectionProps {
   data?: {
     title: string;
-    description?: any[]; // Allow Portable Text
+    label: string;
+    description?: any; // Can be string or PortableText blocks
     image?: ImageData;
   };
 }
@@ -19,6 +20,7 @@ interface KeyFeaturesSectionProps {
 export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
   data,
 }) => {
+
   return (
     <section className="w-full py-10 relative">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8 gap-4 md:gap-0">
@@ -29,9 +31,6 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
               className="w-full h-auto object-cover rounded-md max-h-[627px]"
               alt="About Section Image"
               src={urlFor(data.image).url()}
-              // width={1440}
-              // height={627}
-              // priority
             />
           ) : (
             <Image
@@ -51,19 +50,26 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
-                  BIRTHDAYS
+                  {data?.label.toUpperCase() || ""}
                 </p>
                 <h2 className="font-desktop-title-headline-4 text-[#111111] text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight">
-                {data?.title || ""}
+                  {data?.title || ""}
                 </h2>
               </div>
 
               <div className="text-[#636362] text-sm md:text-base lg:text-lg leading-relaxed">
-                {data?.description ? (
-                  <PortableText value={data.description} />
-                ) : (
-                  ""
-                )}
+                {data?.description && typeof data.description === "string" ? (
+                  <p>{data.description}</p>
+                ) : data?.description ? (
+                  <PortableText
+                    value={data.description}
+                    components={{
+                      block: {
+                        normal: ({ children }) => <p>{children}</p>,
+                      },
+                    }}
+                  />
+                ) : null}
               </div>
 
               <div className="mt-2">

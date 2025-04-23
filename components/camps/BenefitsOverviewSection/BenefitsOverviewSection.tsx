@@ -3,30 +3,45 @@
 import React, { useState } from "react";
 import { MapPin, Info, ChevronDown, ChevronUp } from "lucide-react";
 
+interface ContentBlock {
+  _type: string;
+  style: string;
+  _key: string;
+  markDefs: any[];
+  children: {
+    _type: string;
+    marks: any[];
+    text: string;
+    _key: string;
+  }[];
+}
+
 interface AccordionItem {
   _key: string;
   title: string;
-  content: string;
+  content: ContentBlock[];
 }
 
 interface BenefitsOverviewProps {
   data?: {
-    title: string;
+    _type?: string;
+    title?: string;
     description?: string;
     accordionItems?: AccordionItem[];
+    _key?: string;
   };
 }
 
 export const BenefitsOverviewSection: React.FC<BenefitsOverviewProps> = ({
   data,
 }) => {
-  console.log("BenefitsOverviewSection", data);
+  console.log("Faq", data);
 
-  const sections: AccordionItem[] = data?.accordionItems || [];
+  const sections = data?.accordionItems || [];
 
-  // Generate initial expanded state (default: all expanded)
+  // Generate initial expanded state (all collapsed by default)
   const initialExpandedState = sections.reduce((acc, section) => {
-    acc[section._key] = true;
+    acc[section._key] = false;
     return acc;
   }, {} as { [key: string]: boolean });
 
@@ -40,10 +55,27 @@ export const BenefitsOverviewSection: React.FC<BenefitsOverviewProps> = ({
     }));
   };
 
+  // Function to transform content blocks into a string
+  const renderContent = (contentBlocks: ContentBlock[]) => {
+    return contentBlocks.map((block, index) => {
+      // Extract text from all children in this block
+      const text = block.children.map(child => child.text).join('');
+      
+      return (
+        <p key={block._key || index} className="mb-2">
+          {text}
+        </p>
+      );
+    });
+  };
+
   return (
     <div className="max-w-xl mx-auto bg-white rounded-lg overflow-hidden py-10">
-      {/* <h2 className="text-xl font-bold text-gray-900 px-4">{data?.title}</h2>
-      <p className="text-sm text-gray-600 px-4 mb-6">{data?.description}</p> */}
+      {/* <h2 className="text-xl font-bold text-gray-900 px-4">{data?.title || "FAQ's"}</h2>
+      <p className="text-sm text-gray-600 px-4 mb-6">
+        {data?.description || "Everything you need to know for your first visit."}
+      </p> */}
+      
       {sections.map((section) => (
         <div key={section._key} className="mb-5 bg-[#FDEFE080]">
           <button
@@ -61,7 +93,7 @@ export const BenefitsOverviewSection: React.FC<BenefitsOverviewProps> = ({
           </button>
           {expandedSections[section._key] && (
             <div className="px-4 pb-4 text-sm text-gray-600">
-              {section.content}
+              {renderContent(section.content)}
             </div>
           )}
         </div>

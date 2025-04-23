@@ -3,10 +3,10 @@ import imageUrlBuilder from '@sanity/image-url';
 
 
 const client = createClient({
-  projectId: 'u51tggwl', // Replace with your actual project ID
+  projectId: '9gj4lw0d', // Replace with your actual project ID
   dataset: 'production', // Change if needed
   useCdn: true, // `true` for faster responses
-  apiVersion: '2025-03-24', // Keep this up-to-date
+  apiVersion: '2025-04-23', // Keep this up-to-date
 });
 
 const builder = imageUrlBuilder(client);

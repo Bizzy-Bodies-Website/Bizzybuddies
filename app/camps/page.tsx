@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { IntroductionSection } from "@/components/camps/IntroductionSection";
 import { OfferingsSection } from "@/components/camps/OfferingsSection/OfferingsSection";
 // import { ServicesOverviewSection } from "@/components/camps/ServicesOverviewSection/ServicesOverviewSection";
@@ -14,7 +14,51 @@ import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSect
 // import { ClientTestimonialsSection } from "@/components/camps/ClientTestimonialsSection/ClientTestimonialsSection";
 import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "../../sanity";
-import { title } from "process";
+import { motion, useAnimation, useInView } from "framer-motion";
+
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+// Section wrapper with animation
+const SectionWrapper = ({
+  children,
+  className = "",
+  style,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}) => {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  return (
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={sectionVariants}
+      style={style}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+};
 
 export default function Camps() {
   interface campHeroData {
@@ -94,52 +138,79 @@ export default function Camps() {
   }
 
   const [data, setData] = useState<HomePageData | null>(null);
-
-  console.log("data", data);
+  const [pageData, setPageData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const query = `{
-        "campHero": *[_type == "campHero"][0],
-        "campMoreSection": *[_type == "campMoreSection"][0],
-        "campFeaturedSection": *[_type == "campFeaturedSection"][0],
-        "campServicesSection": *[_type == "CampServicesSection"][0],
-        "campNeedToKnow": *[_type == "campNeedToKnow"][0],
-        "joinaSession": *[_type == "joinaSession"][0],
-      }`;
-      const result: HomePageData = await client.fetch(query);
-      setData(result);
+      try {
+        const query = `*[_type == "page" && _id == "525e4d36-5256-41a2-b1e8-9cdb54f9173d"][0]`;
+        const result = await client.fetch(query);
+        setPageData(result);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
     };
 
     fetchData();
   }, []);
 
-  if (!data) return <p>Loading...</p>;
+  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  if (!pageData) return <div className="flex justify-center items-center h-screen">Failed to load content</div>;
+
+  // Extract content blocks from pageData
+  const contentBlocks = pageData.contentBlocks || [];
+
+  // Find specific block types
+  const heroBlock = contentBlocks.find((block: any) => block._type === "heroBlock");
+  const introBlock = contentBlocks.find((block: any) => block._type === "homeMoreSectionBlock");
+  const featuredBlock = contentBlocks.find((block: any) => 
+    block._type === "campFeaturedSection" || 
+    block._type === "featuredSectionBlock"
+  );
+  const servicesBlock = contentBlocks.find((block: any) => 
+    block._type === "CampServicesSection" || 
+    block._type === "servicesSectionBlock" ||
+    block._type === "whatWeOfferBlock"
+  );
+  const needToKnowBlock = contentBlocks.find((block: any) => 
+    block._type === "faqBlock"
+  );
+  const contactBlock = contentBlocks.find((block: any) => 
+    block._type === "CTATwoButtons"
+  );
+
+  console.log("featuredBlock", featuredBlock);
+  console.log("contentBlocks", contentBlocks);
 
   return (
-    <div>
-      <div className="bg-white flex flex-col items-center w-full">
-        <div className="bg-white w-full relative">
-          {/* Main Content */}
-          <main className="w-full">
-            {/* Offerings Section */}
-            <section
+    <div className="bg-white flex flex-col items-center w-full">
+      <div className="bg-white w-full relative">
+        {/* Main Content */}
+        <main className="w-full">
+          {/* Offerings Section */}
+          {heroBlock && (
+            <SectionWrapper
               className="w-full relative z-10"
               style={{
-                backgroundImage: `url(${urlFor(
-                  data?.campHero?.backgroundImage
-                ).url()})`,
+                backgroundImage: heroBlock.backgroundImage ? 
+                  `url(${urlFor(heroBlock.backgroundImage).url()})` : 
+                  undefined,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "#FF0000",
               }}
             >
-              <OfferingsSection data={data?.campHero} />
-            </section>
+              <OfferingsSection data={heroBlock} />
+            </SectionWrapper>
+          )}
 
-            {/* Introduction Section */}
-            <section
+          {/* Introduction Section */}
+          {introBlock && (
+            <SectionWrapper
               className="w-full relative bg-[#FF0000] mt-[-30px] z-0 py-[50px]"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
@@ -147,73 +218,108 @@ export default function Camps() {
                 backgroundPosition: "center",
               }}
             >
-              <IntroductionSection data={data?.campMoreSection} />
-            </section>
+              <IntroductionSection data={introBlock} />
+            </SectionWrapper>
+          )}
 
-            {/* What We Offer Heading */}
-            <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                {data?.campFeaturedSection?.title}
-              </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                {data?.campFeaturedSection?.description}
-              </p>
-            </section>
+          {/* Featured Section */}
+          {/* {featuredBlock && ( */}
+            <>
+              <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
+                <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+                  {contentBlocks[2]?.title}
+                </h2>
+                <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
+                  {contentBlocks[2]?.description}
+                </p>
+              </SectionWrapper>
 
-            <section className="w-full p-4">
-              {/* Second Row - Two Images in a Flexbox */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-">
-                <Image
-                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Batman and Kid"
-                  src="/assets/a2.svg"
-                  width={500}
-                  height={415}
+              <SectionWrapper className="w-full p-4">
+                {/* Second Row - Two Images in a Flexbox */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Image
+                    className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Batman and Kid"
+                    src="/assets/a2.svg"
+                    width={500}
+                    height={415}
+                  />
+                  <Image
+                    className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                    alt="Kids in Superhero Masks"
+                    src="/assets/a3.svg"
+                    width={500}
+                    height={415}
+                  />
+                </div>
+              </SectionWrapper>
+            </>
+          {/* )} */}
+
+          {/* Services Section */}
+          {servicesBlock && (
+            <>
+              <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
+                <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+                  {servicesBlock.title}
+                </h2>
+                <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8 w-full md:w-[50%]">
+                  {servicesBlock.description}
+                </p>
+              </SectionWrapper>
+
+              {/* Check for both old and new data structures */}
+              {((servicesBlock.services && servicesBlock.services.length > 0) || 
+                (servicesBlock.offers && servicesBlock.offers.length > 0)) && (
+                <>
+                  <SectionWrapper>
+                    <ImageGallerySection
+                      data={(servicesBlock.services && servicesBlock.services[0]) || 
+                            (servicesBlock.offers && servicesBlock.offers[0])}
+                    />
+                  </SectionWrapper>
+
+                  {((servicesBlock.services && servicesBlock.services.length > 1) || 
+                    (servicesBlock.offers && servicesBlock.offers.length > 1)) && (
+                    <SectionWrapper>
+                      <KeyFeaturesSection
+                        data={(servicesBlock.services && servicesBlock.services[1]) || 
+                              (servicesBlock.offers && servicesBlock.offers[1])} 
+                      />
+                    </SectionWrapper>
+                  )}
+                </>
+              )}
+            </>
+          )}
+
+          {/* Need to Know Section */}
+          {needToKnowBlock && (
+            <>
+              <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
+                <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+                  {needToKnowBlock.title}
+                </h2>
+                <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
+                  {needToKnowBlock.description}
+                </p>
+              </SectionWrapper>
+
+              <SectionWrapper>
+                <BenefitsOverviewSection 
+                  data={needToKnowBlock}
                 />
-                <Image
-                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
-                  alt="Kids in Superhero Masks"
-                  src="/assets/a3.svg"
-                  width={500}
-                  height={415}
-                />
-              </div>
-            </section>
+              </SectionWrapper>
+            </>
+          )}
 
-            <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                {data?.campServicesSection?.title}
-              </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8 w-full md:w-[50%]">
-                {data?.campServicesSection?.description}
-              </p>
-            </section>
-
-            {/* Image Gallery Section */}
-            <ImageGallerySection
-              data={data?.campServicesSection?.services[0]}
-            />
-
-            {/* Key Features Section */}
-            <KeyFeaturesSection data={data?.campServicesSection?.services[1]} />
-
-            {/* What We Offer Heading */}
-            <section className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                {data?.campNeedToKnow?.title}
-              </h2>
-              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                {data?.campNeedToKnow?.description}
-              </p>
-            </section>
-
-            {/* BenefitsOverviewSection */}
-            <BenefitsOverviewSection data={data?.campNeedToKnow} />
-
-            {/* Contact Us Section */}
-            <ContactUsSection data={data?.joinaSession}/>
-          </main>
-        </div>
+          {/* Contact Us Section */}
+          {/* {contactBlock && ( */}
+            <SectionWrapper>
+              <ContactUsSection data={contactBlock} />
+            </SectionWrapper>
+          {/* )} */}
+        </main>
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
 import React from "react";
-import { PortableText } from "@portabletext/react";
-import client, { urlFor } from "../../../sanity"; // Ensure urlFor is properly imported
 
 interface BenefitsOverviewSectionProps {
   data: any; // Replace 'any' with the actual type if known
@@ -8,16 +6,14 @@ interface BenefitsOverviewSectionProps {
 }
 
 interface Benefit {
-  _id: string;
-  title: string;
-  description: string;
+  _key: string;
+  heading: string;
+  text: string;
 }
 
 export const BenefitsOverviewSection: React.FC<
   BenefitsOverviewSectionProps
 > = ({ data, text }) => {
-  console.log("BenefitsOverviewSection", text);
-
 
   return (
     <section
@@ -44,13 +40,13 @@ export const BenefitsOverviewSection: React.FC<
         {/* Benefits divs */}
         <div className="flex flex-wrap justify-center gap-12">
           {data?.map((benefit: Benefit) => (
-            <div key={benefit?._id} className="bg-transparent border-none w-64">
+            <div key={benefit?._key} className="bg-transparent border-none w-64">
               <div className="flex flex-col items-center gap-2.5 p-0">
                 <h3 className="font-desktop-title-headline-5 text-[length:var(--desktop-title-headline-5-font-size)] text-center tracking-[var(--desktop-title-headline-5-letter-spacing)] leading-[var(--desktop-title-headline-5-line-height)] text-white whitespace-nowrap">
-                  {benefit?.title}
+                  {benefit?.heading}
                 </h3>
                 <p className="font-desktop-body-body-copy-1 text-[length:var(--desktop-body-body-copy-1-font-size)] text-center tracking-[var(--desktop-body-body-copy-1-letter-spacing)] leading-[var(--desktop-body-body-copy-1-line-height)] text-white">
-                  {benefit?.description}
+                  {benefit?.text}
                 </p>
               </div>
             </div>

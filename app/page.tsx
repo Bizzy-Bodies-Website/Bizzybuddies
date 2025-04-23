@@ -114,7 +114,11 @@ export default function Home() {
 
           {/* Introduction Section */}
           {homeMoreSectionBlock && (
-            <SectionWrapper className="w-full relative bg-[#FF0000] py-10">
+            <SectionWrapper className="w-full relative bg-[#FF0000] py-10" style={{
+              backgroundImage: "url('/assets/hero2.svg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}>
               <IntroductionSection data={homeMoreSectionBlock} />
             </SectionWrapper>
           )}

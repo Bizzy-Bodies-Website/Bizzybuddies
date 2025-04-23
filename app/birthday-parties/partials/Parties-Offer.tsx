@@ -15,20 +15,20 @@ function PartiesOffer({data}: any) {
 
             <div className='flex flex-col'>
                 <CardItem
-                    imageSrc={urlFor(data?.services[0]?.image).url()}
-                    altText={data?.services[0]?.title}
-                    subtitle={data?.services[0]?.category}
-                    title={data?.services[0]?.title}
-                    description={data?.services[0]?.description}
+                    imageSrc={urlFor(data?.offers[0]?.image).url()}
+                    altText={data?.offers[0]?.title}
+                    subtitle={data?.offers[0]?.category}
+                    title={data?.offers[0]?.title}
+                    description={data?.offers[0]?.description}
 
                 />
 
                <CardItemRight
-               imageSrc={urlFor(data?.services[1]?.image).url()}
-               altText={data?.services[1]?.title}
-               subtitle={data?.services[1]?.category}
-               title={data?.services[1]?.title}
-               description={data?.services[1]?.description}
+               imageSrc={urlFor(data?.offers[1]?.image).url()}
+               altText={data?.offers[1]?.title}
+               subtitle={data?.offers[1]?.category}
+               title={data?.offers[1]?.title}
+               description={data?.offers[1]?.description}
                />
             </div>
         </div>

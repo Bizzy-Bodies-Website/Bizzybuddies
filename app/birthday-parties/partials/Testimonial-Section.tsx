@@ -77,17 +77,17 @@ export default function TestimonialsSection({ data }: any) {
           {/* Testimonial */}
           <div className="p-8 md:p-12">
             <p className="text-lg md:text-xl text-gray-800 mb-8">
-              {data[currentIndex]?.quote}
+              {data?.testimonialsList[currentIndex]?.quote}
             </p>
             <p className="text-[#FF0000] font-medium text-center">
-              {data[currentIndex]?.name}
+              {data?.testimonialsList[currentIndex]?.clientName}
             </p>
           </div>
         </div>
 
         {/* Pagination dots */}
-        {/* <div className="flex justify-center mt-2 space-x-2">
-          {data?.map((_: any, index: any) => (
+        <div className="flex justify-center mt-2 space-x-2">
+          {data?.testimonialsList.map((_: any, index: any) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
@@ -95,7 +95,7 @@ export default function TestimonialsSection({ data }: any) {
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );

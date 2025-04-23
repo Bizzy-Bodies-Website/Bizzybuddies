@@ -194,13 +194,13 @@ export default function BirthdayPartiesPage() {
   console.log(
     "pageData",
     // pageData,
-    heroBlock,
+    // heroBlock,
     // homeMoreSection,
     // twoImagesSection,
     // whatWeOffer,
     // partyPackage,
     // imagesBlock,
-    // testimonialBlock,
+    testimonialBlock,
     // ctaBlock
   );
 
@@ -243,7 +243,7 @@ export default function BirthdayPartiesPage() {
           
 
             {/* Introduction Section */}
-            {/* {homeMoreSection && (
+            {homeMoreSection && (
               <section
                 className="w-full relative bg-[#FF0000] mt-[0px] z-0 py-20"
                 style={{
@@ -254,25 +254,25 @@ export default function BirthdayPartiesPage() {
               >
                 <GreetingsSection data={homeMoreSection} />
               </section>
-            )} */}
+            )}
 
             {/* Two Images Section */}
-            {/* {twoImagesSection && (
+            {twoImagesSection && (
               <FeatureImageSection data={twoImagesSection} />
-            )} */}
+            )}
 
             {/* What We Offer Section */}
-            {/* {whatWeOffer && <PartiesOffer data={whatWeOffer} />} */}
+            {whatWeOffer && <PartiesOffer data={whatWeOffer} />}
 
             {/* Pricing Section */}
-            {/* {partyPackage && (
+            {partyPackage && (
               <div className="p-8">
                 <PricingSection data={partyPackage} />
               </div>
-            )} */}
+            )}
 
             {/* Images Gallery Section */}
-            {/* {imagesBlock && imagesBlock.images.length >= 4 && (
+            {imagesBlock && imagesBlock.images.length >= 4 && (
               <section className="w-full p-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <img
@@ -299,12 +299,12 @@ export default function BirthdayPartiesPage() {
                   />
                 </div>
               </section>
-            )} */}
+            )}
 
             {/* Testimonials Section */}
-            {/* {testimonialBlock && (
+            {testimonialBlock && (
               <TestimonialsSection data={testimonialBlock} />
-            )} */}
+            )}
 
             {/* CTA Section */}
             {/* {ctaBlock && <BookParty data={ctaBlock} />} */}

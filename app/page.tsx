@@ -123,7 +123,7 @@ export default function Home() {
             </SectionWrapper>
           )}
 
-          {/* About Section */}
+          {/* About Section    */}
           {aboutSectionBlock && (
             <SectionWrapper className="w-full bg-[#F9F9F9] py-10">
               <ServicesOverviewSection data={aboutSectionBlock} />

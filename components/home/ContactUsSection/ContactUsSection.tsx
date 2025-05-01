@@ -21,7 +21,7 @@ export const ContactUsSection = (data: any) => {
         {/* Left side - Headings */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
           <span className="opacity-70 font-desktop-title-CTA-label font-[number:var(--desktop-title-CTA-label-font-weight)] text-white text-[length:var(--desktop-title-CTA-label-font-size)] tracking-[var(--desktop-title-CTA-label-letter-spacing)] leading-[var(--desktop-title-CTA-label-line-height)] whitespace-nowrap [font-style:var(--desktop-title-CTA-label-font-style)]">
-            INTERESTED?
+            {sectionData.subtitle || "GET IN TOUCH"}
           </span>
 
           <h2 className="font-desktop-title-CTA-title font-[number:var(--desktop-title-CTA-title-font-weight)] text-white text-[length:var(--desktop-title-CTA-title-font-size)] tracking-[var(--desktop-title-CTA-title-letter-spacing)] leading-[var(--desktop-title-CTA-title-line-height)] [font-style:var(--desktop-title-CTA-title-font-style)]">
@@ -39,7 +39,7 @@ export const ContactUsSection = (data: any) => {
             onClick={() => router.push("/contact")}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start"
           >
-            <button className="w-full sm:w-[198px] h-12 sm:h-14 rounded-[100px] bg-white text-bb-red hover:bg-white/90 font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
+            <button className="w-full sm:w-[198px] cursor-pointer h-12 sm:h-14 text-white border-white border-2 hover:bg-black hover:text-[#ffffff] px-6 py-2 rounded-full transition-all duration-300 font-medium font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
               {sectionData.buttonText || "Contact Us"}
             </button>
 

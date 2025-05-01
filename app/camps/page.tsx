@@ -157,32 +157,47 @@ export default function Camps() {
     fetchData();
   }, []);
 
-  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  if (!pageData) return <div className="flex justify-center items-center h-screen">Failed to load content</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  if (!pageData)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Failed to load content
+      </div>
+    );
 
   // Extract content blocks from pageData
   const contentBlocks = pageData.contentBlocks || [];
 
   // Find specific block types
-  const heroBlock = contentBlocks.find((block: any) => block._type === "heroBlock");
-  const introBlock = contentBlocks.find((block: any) => block._type === "homeMoreSectionBlock");
-  const featuredBlock = contentBlocks.find((block: any) => 
-    block._type === "campFeaturedSection" || 
-    block._type === "featuredSectionBlock"
+  const heroBlock = contentBlocks.find(
+    (block: any) => block._type === "heroBlock"
   );
-  const servicesBlock = contentBlocks.find((block: any) => 
-    block._type === "CampServicesSection" || 
-    block._type === "servicesSectionBlock" ||
-    block._type === "whatWeOfferBlock"
+  const introBlock = contentBlocks.find(
+    (block: any) => block._type === "homeMoreSectionBlock"
   );
-  const needToKnowBlock = contentBlocks.find((block: any) => 
-    block._type === "faqBlock"
+  const featuredBlock = contentBlocks.find(
+    (block: any) =>
+      block._type === "campFeaturedSection" ||
+      block._type === "featuredSectionBlock"
   );
-  const contactBlock = contentBlocks.find((block: any) => 
-    block._type === "CTATwoButtons"
+  const servicesBlock = contentBlocks.find(
+    (block: any) =>
+      block._type === "CampServicesSection" ||
+      block._type === "servicesSectionBlock" ||
+      block._type === "whatWeOfferBlock"
+  );
+  const needToKnowBlock = contentBlocks.find(
+    (block: any) => block._type === "faqBlock"
+  );
+  const contactBlock = contentBlocks.find(
+    (block: any) => block._type === "CTATwoButtons"
   );
 
-  console.log("featuredBlock", featuredBlock);
   console.log("contentBlocks", contentBlocks);
 
   return (
@@ -195,9 +210,9 @@ export default function Camps() {
             <SectionWrapper
               className="w-full relative z-10"
               style={{
-                backgroundImage: heroBlock.backgroundImage ? 
-                  `url(${urlFor(heroBlock.backgroundImage).url()})` : 
-                  undefined,
+                backgroundImage: heroBlock.backgroundImage
+                  ? `url(${urlFor(heroBlock.backgroundImage).url()})`
+                  : undefined,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -224,18 +239,17 @@ export default function Camps() {
 
           {/* Featured Section */}
           {/* {featuredBlock && ( */}
-            <>
-              <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
-                <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
-                  {contentBlocks[2]?.title}
-                </h2>
-                <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
-                  {contentBlocks[2]?.description}
-                </p>
-              </SectionWrapper>
+          <>
+            <SectionWrapper className="w-full flex flex-col items-center gap-4 pt-16 pb-6">
+              <h2 className="font-desktop-title-headline-2 text-[#111111] text-center text-[72px] leading-[72px] tracking-[-1.44px]">
+                {contentBlocks[2]?.title}
+              </h2>
+              <p className="font-desktop-title-subheading-2 text-[#636362] text-center text-lg leading-8">
+                {contentBlocks[2]?.description}
+              </p>
+            </SectionWrapper>
 
-              <SectionWrapper className="w-full p-4">
-                {/* Second Row - Two Images in a Flexbox */}
+            {/* <SectionWrapper className="w-full p-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Image
                     className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
@@ -252,8 +266,8 @@ export default function Camps() {
                     height={415}
                   />
                 </div>
-              </SectionWrapper>
-            </>
+              </SectionWrapper> */}
+          </>
           {/* )} */}
 
           {/* Services Section */}
@@ -269,22 +283,29 @@ export default function Camps() {
               </SectionWrapper>
 
               {/* Check for both old and new data structures */}
-              {((servicesBlock.services && servicesBlock.services.length > 0) || 
+              {((servicesBlock.services && servicesBlock.services.length > 0) ||
                 (servicesBlock.offers && servicesBlock.offers.length > 0)) && (
                 <>
                   <SectionWrapper>
                     <ImageGallerySection
-                      data={(servicesBlock.services && servicesBlock.services[0]) || 
-                            (servicesBlock.offers && servicesBlock.offers[0])}
+                      data={
+                        (servicesBlock.services && servicesBlock.services[0]) ||
+                        (servicesBlock.offers && servicesBlock.offers[0])
+                      }
                     />
                   </SectionWrapper>
 
-                  {((servicesBlock.services && servicesBlock.services.length > 1) || 
-                    (servicesBlock.offers && servicesBlock.offers.length > 1)) && (
+                  {((servicesBlock.services &&
+                    servicesBlock.services.length > 1) ||
+                    (servicesBlock.offers &&
+                      servicesBlock.offers.length > 1)) && (
                     <SectionWrapper>
                       <KeyFeaturesSection
-                        data={(servicesBlock.services && servicesBlock.services[1]) || 
-                              (servicesBlock.offers && servicesBlock.offers[1])} 
+                        data={
+                          (servicesBlock.services &&
+                            servicesBlock.services[1]) ||
+                          (servicesBlock.offers && servicesBlock.offers[1])
+                        }
                       />
                     </SectionWrapper>
                   )}
@@ -306,19 +327,17 @@ export default function Camps() {
               </SectionWrapper>
 
               <SectionWrapper>
-                <BenefitsOverviewSection 
-                  data={needToKnowBlock}
-                />
+                <BenefitsOverviewSection data={needToKnowBlock} />
               </SectionWrapper>
             </>
           )}
 
           {/* Contact Us Section */}
-          {/* {contactBlock && ( */}
+          {contactBlock && (
             <SectionWrapper>
               <ContactUsSection data={contactBlock} />
             </SectionWrapper>
-          {/* )} */}
+          )}
         </main>
       </div>
     </div>

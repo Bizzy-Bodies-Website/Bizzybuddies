@@ -120,6 +120,9 @@ export default function Home() {
   const upcomingDatesBlock = pageData.contentBlocks.find(
     (block: any) => block._type === "upcomingDatesBlock"
   );
+  const CTATwoButtons = pageData.contentBlocks.find(
+    (block: any) => block._type === "CTATwoButtons"
+  );
 
   console.log("valuesSectionBlock", valuesSectionBlock);
   console.log("pageData", pageData);
@@ -276,7 +279,7 @@ export default function Home() {
           {/* CTA Section */}
           {ctaSectionBlock && (
             <SectionWrapper>
-              <ContactUsSection data={ctaSectionBlock} />
+              <ContactUsSection data={CTATwoButtons} />
             </SectionWrapper>
           )}
         </main>

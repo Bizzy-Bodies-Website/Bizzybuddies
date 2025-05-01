@@ -3,6 +3,7 @@ import React from "react";
 import client, { urlFor } from "../../../sanity"; // Ensure urlFor is properly imported
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
+import Link from "next/link";
 
 interface ImageData {
   asset: { _ref: string };
@@ -14,12 +15,15 @@ interface KeyFeaturesSectionProps {
     label: string;
     description?: any; // Can be string or PortableText blocks
     image?: ImageData;
+    linkUrl?: string;
+    linkText?: string;
   };
 }
 
 export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
   data,
 }) => {
+  // console.log("data", data);
 
   return (
     <section className="w-full py-10 relative">
@@ -46,7 +50,7 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
 
         {/* Content Second on Small Screens, First on Large */}
         <div className="bg-[#FDF6EF] rounded-sm border-none w-full lg:w-1/2 order-2 lg:order-1">
-          <div className="p-6 sm:p-8 md:p-12 lg:px-24 remove-padding2 add-padding2 text-center lg:text-left">
+          <div className="p-6 sm:p-8 md:p-12 lg:px-24 text-center lg:text-left">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 font-desktop-title-label text-[#636362] tracking-[var(--desktop-title-label-letter-spacing)] text-[length:var(--desktop-title-label-font-size)] leading-[var(--desktop-title-label-line-height)] [font-style:var(--desktop-title-label-font-style)]">
@@ -72,16 +76,21 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
                 ) : null}
               </div>
 
-              <div className="mt-2">
-                <button className="p-0 h-auto flex items-center gap-4 hover:bg-transparent">
-                  <span className="text-[#111111] text-sm md:text-base lg:text-lg font-medium">
-                    View Birthday Parties
-                  </span>
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
-                    <ArrowRightIcon className="w-5 h-5 text-[#ff0000]" />
-                  </div>
-                </button>
-              </div>
+              {data?.linkText && data?.linkUrl && (
+                <div className="mt-2">
+                  <Link
+                    href={`${data?.linkUrl}`}
+                    className="p-0 h-auto flex items-center gap-4 hover:bg-transparent"
+                  >
+                    <span className="text-[#111111] text-sm md:text-base lg:text-lg font-medium">
+                      {data?.linkText}
+                    </span>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
+                      <ArrowRightIcon className="w-5 h-5 text-[#ff0000]" />
+                    </div>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

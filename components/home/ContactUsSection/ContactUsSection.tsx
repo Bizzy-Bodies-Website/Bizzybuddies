@@ -43,12 +43,12 @@ export const ContactUsSection = (data: any) => {
               {sectionData.buttonText || "Contact Us"}
             </button>
 
-            <button
+            {/* <button
               onClick={() => router.push("/about")}
               className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]"
             >
               About Us
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

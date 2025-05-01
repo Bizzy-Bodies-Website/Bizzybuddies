@@ -63,12 +63,12 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`menu-item text-white ${
-                  isActive(item.path) ? "menu-active" : ""
+                className={`menu-item text-white font-semibold  ${
+                  isActive(item.path) ? "menu-active " : ""
                 } ${
                   item.name === "Contact Us"
-                    ? "bg-transparent border border-white hover:bg-white hover:text-[#FF0000] px-6 py-2 rounded-full transition-all duration-300 font-medium"
-                    : ""
+                    ? "bg-transparent border-white border-2 hover:bg-black hover:text-[#ffffff] px-6 py-2 rounded-full transition-all duration-300 font-medium"
+                    : "hover:border-b-2 hover:border-white pb-1"
                 }`}
                 style={{ fontFamily: "var(--font-poppins)" }}
               >

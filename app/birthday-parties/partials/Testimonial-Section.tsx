@@ -42,7 +42,7 @@ export default function TestimonialsSection({ data }: any) {
   };
 
   return (
-    <section className="w-full bg-[#FDEFE0] py-16 md:py-20 mt-16 relative overflow-hidden">
+    <section className="w-full bg-[#FDEFE0] py-16 md:py-20 pt-16 relative overflow-hidden">
       {/* Background quote marks */}
       <div className="absolute top-1/4 left-1/4 text-[300px] font-serif text-[#f5e8d6] opacity-30 leading-none">
         &ldquo;

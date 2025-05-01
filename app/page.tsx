@@ -12,6 +12,8 @@ import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSecti
 import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "../sanity";
 import { motion, useAnimation, useInView } from "framer-motion";
+import TestimonialsSection from "./birthday-parties/partials/Testimonial-Section";
+import { BenefitsOverviewSection2 } from "@/components/home/BenefitsOverviewSection2/BenefitsOverviewSection2";
 
 // Animation variants
 const sectionVariants = {
@@ -77,18 +79,50 @@ export default function Home() {
     fetchData();
   }, []);
 
-  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  if (!pageData) return <div className="flex justify-center items-center h-screen">Failed to load content</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  if (!pageData)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Failed to load content
+      </div>
+    );
 
   // Find blocks by type
-  const heroBlock = pageData.contentBlocks.find((block: any) => block._type === "heroBlock");
-  const homeMoreSectionBlock = pageData.contentBlocks.find((block: any) => block._type === "homeMoreSectionBlock");
-  const aboutSectionBlock = pageData.contentBlocks.find((block: any) => block._type === "aboutSectionBlock");
-  const whatWeOfferBlock = pageData.contentBlocks.find((block: any) => block._type === "whatWeOfferBlock");
-  const valuesSectionBlock = pageData.contentBlocks.find((block: any) => block._type === "valuesSectionBlock");
-  const imagesBlock = pageData.contentBlocks.find((block: any) => block._type === "imagesBlock");
-  const testimonialBlock = pageData.contentBlocks.find((block: any) => block._type === "testimonialBlock");
-  const ctaSectionBlock = pageData.contentBlocks.find((block: any) => block._type === "CTASectionBlock");
+  const heroBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "heroBlock"
+  );
+  const homeMoreSectionBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "homeMoreSectionBlock"
+  );
+  const aboutSectionBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "aboutSectionBlock"
+  );
+  const whatWeOfferBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "whatWeOfferBlock"
+  );
+  const valuesSectionBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "valuesSectionBlock"
+  );
+  const imagesBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "imagesBlock"
+  );
+  const testimonialBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "testimonialBlock"
+  );
+  const ctaSectionBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "CTASectionBlock"
+  );
+  const upcomingDatesBlock = pageData.contentBlocks.find(
+    (block: any) => block._type === "upcomingDatesBlock"
+  );
+
+  console.log("valuesSectionBlock", valuesSectionBlock);
+  console.log("pageData", pageData);
 
   return (
     <div className="bg-white flex flex-col items-center w-full">
@@ -99,9 +133,9 @@ export default function Home() {
             <SectionWrapper
               className="w-full relative z-10"
               style={{
-                backgroundImage: heroBlock.backgroundImage ? 
-                  `url(${urlFor(heroBlock.backgroundImage).url()})` : 
-                  undefined,
+                backgroundImage: heroBlock.backgroundImage
+                  ? `url(${urlFor(heroBlock.backgroundImage).url()})`
+                  : undefined,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -114,11 +148,14 @@ export default function Home() {
 
           {/* Introduction Section */}
           {homeMoreSectionBlock && (
-            <SectionWrapper className="w-full relative bg-[#FF0000] py-10" style={{
-              backgroundImage: "url('/assets/hero2.svg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}>
+            <SectionWrapper
+              className="w-full relative bg-[#FF0000] py-10"
+              style={{
+                backgroundImage: "url('/assets/hero2.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
               <IntroductionSection data={homeMoreSectionBlock} />
             </SectionWrapper>
           )}
@@ -143,21 +180,33 @@ export default function Home() {
               </SectionWrapper>
 
               {/* Offers */}
-              {whatWeOfferBlock.offers && whatWeOfferBlock.offers.map((offer: any, index: number) => (  
-                <SectionWrapper key={offer._key}>
-                  {index === 0 && <KeyFeaturesSection data={offer} />}
-                  {index === 1 && <MainContentSection data={offer} />}
-                </SectionWrapper>
-              ))}
+              {whatWeOfferBlock.offers &&
+                whatWeOfferBlock.offers.map((offer: any, index: number) => (
+                  <SectionWrapper key={offer._key}>
+                    {index === 0 && <KeyFeaturesSection data={offer} />}
+                    {index === 1 && <MainContentSection data={offer} />}
+                    {index === 2 && <ImageGallerySection data={offer} />}
+                  </SectionWrapper>
+                ))}
             </>
           )}
 
           {/* Values Section */}
           {valuesSectionBlock && (
             <SectionWrapper>
-              <BenefitsOverviewSection 
-                data={valuesSectionBlock.blocks || []} 
-                text={valuesSectionBlock} 
+              <BenefitsOverviewSection
+                data={valuesSectionBlock.blocks || []}
+                text={valuesSectionBlock}
+              />
+            </SectionWrapper>
+          )}
+
+          {/* upcomingDatesBlock */}
+          {upcomingDatesBlock && (
+            <SectionWrapper>
+              <BenefitsOverviewSection2
+                data={upcomingDatesBlock.blocks || []}
+                text={upcomingDatesBlock}
               />
             </SectionWrapper>
           )}
@@ -168,23 +217,25 @@ export default function Home() {
               {/* First row of images */}
               <SectionWrapper className="w-full p-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {imagesBlock.images.slice(0, 2).map((image: any, index: number) => (
-                    <motion.div
-                      key={image._key}
-                      initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.2 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                    >
-                      <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">
-                        <img
-                          className="w-full h-full object-cover"
-                          alt={`Gallery image ${index + 1}`}
-                          src={urlFor(image.asset).url()}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
+                  {imagesBlock.images
+                    .slice(0, 2)
+                    .map((image: any, index: number) => (
+                      <motion.div
+                        key={image._key}
+                        initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                      >
+                        <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">
+                          <img
+                            className="w-full h-full object-cover"
+                            alt={`Gallery image ${index + 1}`}
+                            src={urlFor(image.asset).url()}
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
                 </div>
               </SectionWrapper>
 
@@ -192,24 +243,28 @@ export default function Home() {
               {imagesBlock.images.length > 2 && (
                 <SectionWrapper className="w-full p-4">
                   <div className="flex flex-col sm:flex-row gap-4">
-                    {imagesBlock.images.slice(2, 4).map((image: any, index: number) => (
-                      <motion.div
-                        key={image._key}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.4 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className={index === 0 ? "w-full sm:w-1/4" : "w-full sm:w-3/4"}
-                      >
-                        <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">
-                          <img
-                            className="w-full h-full object-cover"
-                            alt={`Gallery image ${index + 3}`}
-                            src={urlFor(image.asset).url()}
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
+                    {imagesBlock.images
+                      .slice(2, 4)
+                      .map((image: any, index: number) => (
+                        <motion.div
+                          key={image._key}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.5, delay: index * 0.4 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          className={
+                            index === 0 ? "w-full sm:w-1/4" : "w-full sm:w-3/4"
+                          }
+                        >
+                          <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">
+                            <img
+                              className="w-full h-full object-cover"
+                              alt={`Gallery image ${index + 3}`}
+                              src={urlFor(image.asset).url()}
+                            />
+                          </div>
+                        </motion.div>
+                      ))}
                   </div>
                 </SectionWrapper>
               )}
@@ -217,7 +272,7 @@ export default function Home() {
           )}
 
           {/* Testimonials could be implemented here */}
-          
+          {testimonialBlock && <TestimonialsSection data={testimonialBlock} />}
           {/* CTA Section */}
           {ctaSectionBlock && (
             <SectionWrapper>

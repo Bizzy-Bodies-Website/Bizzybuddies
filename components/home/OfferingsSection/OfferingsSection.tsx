@@ -45,27 +45,27 @@ export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
     >
       <div className="relative w-full max-w-[1440px] h-full mx-auto bg-cover bg-center">
         <div className="flex flex-col items-center justify-center h-full px-4">
-          <motion.h1 
+          {/* <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="font-desktop-title-headline-1 text-white text-[length:var(--desktop-title-headline-1-font-size)] text-center tracking-[var(--desktop-title-headline-1-letter-spacing)] leading-[var(--desktop-title-headline-1-line-height)] [font-style:var(--desktop-title-headline-1-font-style)] mb-[22px]"
           >
             {data?.title}
-          </motion.h1>
+          </motion.h1> */}
 
           <motion.h2 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-desktop-title-subheading-1 text-white text-[length:var(--desktop-title-subheading-1-font-size)] text-center tracking-[var(--desktop-title-subheading-1-letter-spacing)] leading-[var(--desktop-title-subheading-1-line-height)] [font-style:var(--desktop-title-subheading-1-font-style)] max-w-[629px]"
+            className="font-desktop-title-subheading-1 text-white text-[length:var(--desktop-title-subheading-1-font-size)] text-center tracking-[var(--desktop-title-subheading-1-letter-spacing)] leading-[var(--desktop-title-subheading-1-line-height)] [font-style:var(--desktop-title-subheading-1-font-style)] max-w-[629px] font-semibold"
           >
             {data?.subtitle}
           </motion.h2>
         </div>
       </div>
 
-      <motion.div 
+      {/* <motion.div 
         className="animate-bounce flex justify-center mt-[-80px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -96,7 +96,7 @@ export const OfferingsSection: React.FC<OfferingsSectionProps> = ({
             strokeWidth="2"
           />
         </svg>
-      </motion.div>
+      </motion.div> */}
     </motion.section>
   );
 };

@@ -51,16 +51,16 @@ export const ContactUsSection: React.FC<ImageGallerySectionProps> = ({
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start">
-            <button className="w-full sm:w-[198px] h-12 sm:h-14 rounded-[100px] bg-white text-bb-red hover:bg-white/90 font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
+            <button className="w-full sm:w-[198px] cursor-pointer h-12 sm:h-14 text-white border-white border-2 hover:bg-black hover:text-[#ffffff] px-6 py-2 rounded-full transition-all duration-300 font-medium font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
               {data?.buttons[0]?.text}
             </button>
 
-            <button
+            {/* <button
               // variant="outline"
               className="w-full sm:w-[188px] h-12 sm:h-14 rounded-[100px] bg-[#ff4040] text-white border-2 border-white hover:bg-[#ff4040]/90 hover:text-white font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]"
             >
               {data?.buttons[1]?.text}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

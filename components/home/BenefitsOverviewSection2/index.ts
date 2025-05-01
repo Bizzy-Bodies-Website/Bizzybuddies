@@ -1,1 +1,1 @@
-export { BenefitsOverviewSection } from "./BenefitsOverviewSection2";
+export { BenefitsOverviewSection2 } from "./BenefitsOverviewSection2";

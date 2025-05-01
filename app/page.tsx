@@ -124,8 +124,8 @@ export default function Home() {
     (block: any) => block._type === "CTATwoButtons"
   );
 
-  console.log("valuesSectionBlock", valuesSectionBlock);
-  console.log("pageData", pageData);
+  console.log("homeMoreSectionBlock", homeMoreSectionBlock);
+  console.log("pageData bbbb", pageData);
 
   return (
     <div className="bg-white flex flex-col items-center w-full">
@@ -146,13 +146,24 @@ export default function Home() {
               }}
             >
               <OfferingsSection data={heroBlock} />
+              <div className="relative">
+                <svg
+                  className="absolute bottom-[-75px] left-0 w-full"
+                  viewBox="0 0 1440 320"
+                >
+                  <path
+                    fill="#FF0000"
+                    d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"
+                  ></path>
+                </svg>
+              </div>
             </SectionWrapper>
           )}
 
           {/* Introduction Section */}
           {homeMoreSectionBlock && (
             <SectionWrapper
-              className="w-full relative bg-[#FF0000] py-10"
+              className="w-full relative bg-[#FF0000] mt-[50px] Z-50"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
                 backgroundSize: "cover",

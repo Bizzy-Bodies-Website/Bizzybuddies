@@ -2,6 +2,7 @@ import { urlFor } from "@/sanity";
 import { PortableText } from "@portabletext/react";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface ImageData {
@@ -13,13 +14,15 @@ interface ImageGallerySectionProps {
     title: string;
     description?: any; // Allow Portable Text
     image?: ImageData;
+    linkText: string;
+    linkUrl: string;
   };
 }
 
 export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
   data,
 }) => {
-  console.log("ImageGallerySection", data);
+
 
   return (
     <section className="w-full py-10 relative">
@@ -67,23 +70,31 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
               </p>
 
               <div className="mt-4 flex flex-col md:flex justify-center lg:justify-between gap-4">
-                <button className="p-0 h-auto flex items-center gap-4 md:gap-2 hover:bg-transparent">
+                <Link
+                  href="/contact"
+                  className="p-0 h-auto flex items-center gap-4 md:gap-2 hover:bg-transparent"
+                >
                   <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
                     Contact us for more information
                   </span>
                   <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
                     <ArrowRightIcon className="w-3 h-3 text-[#ff0000]" />
                   </div>
-                </button>
+                </Link>
 
-                <button className="p-0 h-auto flex items-center gap-2 hover:bg-transparent">
-                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
-                    Book now{" "}
-                  </span>
-                  <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
-                    <ArrowRightIcon className="w-3 h-3 text-[#ff0000]" />
-                  </div>
-                </button>
+                {data?.linkUrl && data?.linkText && (
+                  <Link
+                    href={data?.linkUrl || "#"}
+                    className="p-0 h-auto flex items-center gap-2 hover:bg-transparent"
+                  >
+                    <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
+                      {data?.linkText || ""}
+                    </span>
+                    <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
+                      <ArrowRightIcon className="w-3 h-3 text-[#ff0000]" />
+                    </div>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

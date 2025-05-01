@@ -230,11 +230,11 @@ export default function BirthdayPartiesPage() {
                 </div>
                 <div className="relative">
                   <svg
-                    className="absolute bottom-0 left-0 w-full"
-                    viewBox="0 0 1440 320"
+                  className="absolute bottom-[-75px] left-0 w-full"
+                  viewBox="0 0 1440 320"
                   >
                     <path
-                      fill="#FF0000"
+                      fill="#FFFFFF"
                       d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"
                     ></path>
                   </svg>

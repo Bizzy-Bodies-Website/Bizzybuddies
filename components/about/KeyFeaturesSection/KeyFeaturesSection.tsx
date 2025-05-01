@@ -13,6 +13,7 @@ interface ServicesSectionProps {
     title: string;
     description?: any[]; // Allow Portable Text
     image?: ImageData;
+    label: string;
   };
 }
 
@@ -48,7 +49,7 @@ export const KeyFeaturesSection: React.FC<ServicesSectionProps> = ({
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <p className="opacity-40 text-[#636362] text-sm md:text-base lg:text-lg font-semibold">
-                  Director
+                  {data?.label}
                 </p>
                 <h2 className="text-[#111111] text-xl md:text-2xl lg:text-3xl font-bold">
                 {data?.title}

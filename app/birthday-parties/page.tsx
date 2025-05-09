@@ -300,6 +300,7 @@ export default function BirthdayPartiesPage() {
                 </div>
               </section>
             )}
+            
 
             {/* Testimonials Section */}
             {testimonialBlock && (

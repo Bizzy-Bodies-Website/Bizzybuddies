@@ -15,6 +15,7 @@ import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSect
 import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
 import client, { urlFor } from "../../sanity";
 import { motion, useAnimation, useInView } from "framer-motion";
+import ChiswickCampInfo from "./partials/camp-info";
 
 // Animation variants
 const sectionVariants = {
@@ -198,7 +199,11 @@ export default function Camps() {
     (block: any) => block._type === "CTATwoButtons"
   );
 
-  console.log("contentBlocks", contentBlocks);
+  const imagesBlock = contentBlocks.find(
+    (block: any) => block._type === "imagesBlock"
+  );
+
+  console.log("contentBlocks fffggfghhg", contentBlocks);
 
   return (
     <div className="bg-white flex flex-col items-center w-full">
@@ -296,32 +301,35 @@ export default function Camps() {
               {/* Check for both old and new data structures */}
               {((servicesBlock.services && servicesBlock.services.length > 0) ||
                 (servicesBlock.offers && servicesBlock.offers.length > 0)) && (
-                <>
-                  <SectionWrapper>
-                    <ImageGallerySection
-                      data={
-                        (servicesBlock.services && servicesBlock.services[0]) ||
-                        (servicesBlock.offers && servicesBlock.offers[0])
-                      }
-                    />
-                  </SectionWrapper>
-
-                  {((servicesBlock.services &&
-                    servicesBlock.services.length > 1) ||
-                    (servicesBlock.offers &&
-                      servicesBlock.offers.length > 1)) && (
+                  <>
                     <SectionWrapper>
-                      <KeyFeaturesSection
+                      <ImageGallerySection
                         data={
-                          (servicesBlock.services &&
-                            servicesBlock.services[1]) ||
-                          (servicesBlock.offers && servicesBlock.offers[1])
+                          (servicesBlock.services && servicesBlock.services[0]) ||
+                          (servicesBlock.offers && servicesBlock.offers[0])
                         }
                       />
+                      {servicesBlock.offers[0].details && servicesBlock.offers[0].details && <ChiswickCampInfo data={servicesBlock.offers[0].details}/>}
                     </SectionWrapper>
-                  )}
-                </>
-              )}
+
+                    {((servicesBlock.services &&
+                      servicesBlock.services.length > 1) ||
+                      (servicesBlock.offers &&
+                        servicesBlock.offers.length > 1)) && (
+                        <SectionWrapper>
+                          <KeyFeaturesSection
+                            data={
+                              (servicesBlock.services &&
+                                servicesBlock.services[1]) ||
+                              (servicesBlock.offers && servicesBlock.offers[1])
+                            }
+                          />
+                          {servicesBlock.offers[1].details && servicesBlock.offers[1].details && <ChiswickCampInfo data={servicesBlock.offers[1].details}/>}
+                        </SectionWrapper>
+                      )}
+                  </>
+                )}
+
             </>
           )}
 
@@ -348,6 +356,37 @@ export default function Camps() {
             <SectionWrapper>
               <ContactUsSection data={contactBlock} />
             </SectionWrapper>
+          )}
+
+          {/* Images Gallery Section */}
+
+          {imagesBlock && imagesBlock.images.length >= 4 && (
+            <section className="w-full p-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <img
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Party image 1"
+                  src={urlFor(imagesBlock.images[0].asset).url()}
+                />
+                <img
+                  className="w-full h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Party image 2"
+                  src={urlFor(imagesBlock.images[1].asset).url()}
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <img
+                  className="w-full sm:w-1/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Party image 3"
+                  src={urlFor(imagesBlock.images[2].asset).url()}
+                />
+                <img
+                  className="w-full sm:w-3/4 h-auto sm:h-[300px] md:h-[415px] object-cover rounded-lg"
+                  alt="Party image 4"
+                  src={urlFor(imagesBlock.images[3].asset).url()}
+                />
+              </div>
+            </section>
           )}
         </main>
       </div>

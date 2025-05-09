@@ -1,7 +1,9 @@
+'use client';
 import { urlFor } from "@/sanity";
 import { PortableText } from "@portabletext/react";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ImageData {
@@ -21,6 +23,7 @@ interface ImageGallerySectionProps {
 export const ContactUsSection: React.FC<ImageGallerySectionProps> = ({
   data,
 }) => {
+  const router = useRouter();
   return (
     <section
       style={{
@@ -51,7 +54,7 @@ export const ContactUsSection: React.FC<ImageGallerySectionProps> = ({
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 md:mt-auto w-full justify-center md:justify-start">
-            <button className="w-full sm:w-[198px] cursor-pointer h-12 sm:h-14 text-white border-white border-2 hover:bg-black hover:text-[#ffffff] px-6 py-2 rounded-full transition-all duration-300 font-medium font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
+            <button onClick={() => router.push('/contact')} className="w-full sm:w-[198px] cursor-pointer h-12 sm:h-14 text-white border-white border-2 hover:bg-black hover:text-[#ffffff] px-6 py-2 rounded-full transition-all duration-300 font-medium font-desktop-button-large-button-text font-[number:var(--desktop-button-large-button-text-font-weight)] text-[length:var(--desktop-button-large-button-text-font-size)] tracking-[var(--desktop-button-large-button-text-letter-spacing)] leading-[var(--desktop-button-large-button-text-line-height)] [font-style:var(--desktop-button-large-button-text-font-style)]">
               {data?.buttons[0]?.text}
             </button>
 

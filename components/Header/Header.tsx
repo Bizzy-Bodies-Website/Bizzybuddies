@@ -43,20 +43,22 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#FF0000] ${
-        scrolled ? "py-1 bg-brand-red shadow-md" : "py-2 bg-brand-red"
+        scrolled ? "py-4 bg-brand-red shadow-md" : "py-4 bg-brand-red"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link href="/">
+          <Link href="/" className="flex items-center bg-[#FF0000] border-[3px] border-black rounded-full p-4 absolute top-5">
             <Image
-              className="w-[50px] h-[50px] object-cover"
+              className="w-[80px] h-[80px] object-cover"
               alt="Logo"
               src="/assets/logo.svg"
-              width={50}
-              height={50}
+              width={80}
+              height={80}
             />
           </Link>
+
+          <div></div>
 
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (

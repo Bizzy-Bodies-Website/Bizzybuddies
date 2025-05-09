@@ -8,25 +8,26 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     firstName: '',
     lastName: '',
     email: '',
     message: '',
     agreed: false,
   });
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState<any>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev: any) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     
     if (!formData.agreed) {
@@ -65,6 +66,7 @@ export default function Contact() {
         setSubmitStatus({ success: false, message: data.message || 'Error sending message' });
       }
     } catch (error) {
+      console.error('Error sending message:', error);
       setSubmitStatus({ success: false, message: 'Network error. Please try again.' });
     } finally {
       setIsSubmitting(false);

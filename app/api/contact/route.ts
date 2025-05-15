@@ -9,7 +9,10 @@ export async function POST(req: NextRequest) {
     const { firstName, lastName, email, message } = body;
 
     if (!firstName || !lastName || !email || !message) {
-      return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
+      return NextResponse.json(
+        { message: 'All fields are required' },
+        { status: 400 }
+      );
     }
 
     const transporter = nodemailer.createTransport({
@@ -41,12 +44,17 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail(mailOptions);
 
     // ✅ MUST RETURN this!
-    return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
-
+    return NextResponse.json(
+      { message: 'Message sent successfully!' },
+      { status: 200 }
+    );
   } catch (error) {
     console.error('Error sending email:', error);
 
     // ✅ MUST RETURN this!
-    return NextResponse.json({ message: 'Error sending message' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Error sending message' },
+      { status: 500 }
+    );
   }
 }

@@ -1,68 +1,68 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { GreetingsSection } from "./partials/Greetings";
-import FeatureImageSection from "./partials/Feature-Image-Section";
-import PartiesOffer from "./partials/Parties-Offer";
-import PricingSection from "./partials/Pricing";
-import TestimonialsSection from "./partials/Testimonial-Section";
-import BookParty from "./partials/BookAParty";
-import client, { urlFor } from "@/sanity";
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import { GreetingsSection } from './partials/Greetings';
+import FeatureImageSection from './partials/Feature-Image-Section';
+import PartiesOffer from './partials/Parties-Offer';
+import PricingSection from './partials/Pricing';
+import TestimonialsSection from './partials/Testimonial-Section';
+import BookParty from './partials/BookAParty';
+import client, { urlFor } from '@/sanity';
 
 interface HeroBlock {
-  _type: "heroBlock";
+  _type: 'heroBlock';
   _key: string;
   title: string;
   subtitle: string;
   backgroundImage?: {
-    _type: "image";
+    _type: 'image';
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
     };
   };
 }
 
 interface HomeMoreSectionBlock {
-  _type: "homeMoreSectionBlock";
+  _type: 'homeMoreSectionBlock';
   _key: string;
   title: string;
   subtitle: string;
 }
 
 interface TwoImagesSectionBlock {
-  _type: "twoImagesSectionBlock";
+  _type: 'twoImagesSectionBlock';
   _key: string;
   title: string;
   description: string;
   images: Array<{
     _key: string;
-    _type: "image";
+    _type: 'image';
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
     };
   }>;
 }
 
 interface OfferItem {
   _key: string;
-  _type: "offerItem";
+  _type: 'offerItem';
   title: string;
   label: string;
   description: string;
   image: {
-    _type: "image";
+    _type: 'image';
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
     };
   };
 }
 
 interface WhatWeOfferBlock {
-  _type: "whatWeOfferBlock";
+  _type: 'whatWeOfferBlock';
   _key: string;
   title: string;
   description: string;
@@ -70,7 +70,7 @@ interface WhatWeOfferBlock {
 }
 
 interface PartyPackageBlock {
-  _type: "partyPakageBlock";
+  _type: 'partyPakageBlock';
   _key: string;
   title: string;
   description: string;
@@ -78,23 +78,23 @@ interface PartyPackageBlock {
   features: string[];
   additionalInfo: string;
   image: {
-    _type: "image";
+    _type: 'image';
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
     };
   };
 }
 
 interface ImagesBlock {
-  _type: "imagesBlock";
+  _type: 'imagesBlock';
   _key: string;
   images: Array<{
     _key: string;
-    _type: "image";
+    _type: 'image';
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
     };
   }>;
 }
@@ -106,13 +106,13 @@ interface TestimonialItem {
 }
 
 interface TestimonialBlock {
-  _type: "testimonialBlock";
+  _type: 'testimonialBlock';
   _key: string;
   testimonialsList: TestimonialItem[];
 }
 
 interface CTASectionBlock {
-  _type: "CTASectionBlock";
+  _type: 'CTASectionBlock';
   _key: string;
   title: string;
   description: string;
@@ -121,7 +121,7 @@ interface CTASectionBlock {
 
 interface PageData {
   _id: string;
-  _type: "page";
+  _type: 'page';
   title: string;
   contentBlocks: Array<
     | HeroBlock
@@ -146,7 +146,7 @@ export default function BirthdayPartiesPage() {
         const result = await client.fetch(query);
         setPageData(result);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -169,8 +169,8 @@ export default function BirthdayPartiesPage() {
     );
 
   // Helper function to find first block of a specific type
-  const findBlock = <T extends PageData["contentBlocks"][number]>(
-    type: T["_type"]
+  const findBlock = <T extends PageData['contentBlocks'][number]>(
+    type: T['_type']
   ): T | undefined => {
     return pageData.contentBlocks.find((block) => block._type === type) as
       | T
@@ -178,21 +178,21 @@ export default function BirthdayPartiesPage() {
   };
 
   // Extract specific blocks
-  const heroBlock = findBlock<HeroBlock>("heroBlock");
+  const heroBlock = findBlock<HeroBlock>('heroBlock');
   const homeMoreSection = findBlock<HomeMoreSectionBlock>(
-    "homeMoreSectionBlock"
+    'homeMoreSectionBlock'
   );
   const twoImagesSection = findBlock<TwoImagesSectionBlock>(
-    "twoImagesSectionBlock"
+    'twoImagesSectionBlock'
   );
-  const whatWeOffer = findBlock<WhatWeOfferBlock>("whatWeOfferBlock");
-  const partyPackage = findBlock<PartyPackageBlock>("partyPakageBlock");
-  const imagesBlock = findBlock<ImagesBlock>("imagesBlock");
-  const testimonialBlock = findBlock<TestimonialBlock>("testimonialBlock");
-  const ctaBlock = findBlock<CTASectionBlock>("CTASectionBlock");
+  const whatWeOffer = findBlock<WhatWeOfferBlock>('whatWeOfferBlock');
+  const partyPackage = findBlock<PartyPackageBlock>('partyPakageBlock');
+  const imagesBlock = findBlock<ImagesBlock>('imagesBlock');
+  const testimonialBlock = findBlock<TestimonialBlock>('testimonialBlock');
+  const ctaBlock = findBlock<CTASectionBlock>('CTASectionBlock');
 
   console.log(
-    "pageData",
+    'pageData',
     // pageData,
     // heroBlock,
     // homeMoreSection,
@@ -200,7 +200,7 @@ export default function BirthdayPartiesPage() {
     // whatWeOffer,
     // partyPackage,
     // imagesBlock,
-    testimonialBlock,
+    testimonialBlock
     // ctaBlock
   );
 
@@ -210,37 +210,36 @@ export default function BirthdayPartiesPage() {
         <div className="bg-white w-full relative">
           <main className="w-full">
             {/* Hero Section */}
-              <section className="relative">
-                <div className="h-[680px] w-full relative overflow-hidden">
-                  {heroBlock?.backgroundImage?.asset?._ref && (
-                    <img
-                      src={urlFor(heroBlock?.backgroundImage).url()}
-                      alt="Birthday Party Hero"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  )}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
-                    <h2 className="text-4xl md:text-6xl font-semibold text-center text-uppercase">
-                      {heroBlock?.title}
-                    </h2>
-                    <p className="mt-4 text-xl text-center">
-                      {heroBlock?.subtitle}
-                    </p>
-                  </div>
+            <section className="relative">
+              <div className="h-[680px] w-full relative overflow-hidden">
+                {heroBlock?.backgroundImage?.asset?._ref && (
+                  <img
+                    src={urlFor(heroBlock?.backgroundImage).url()}
+                    alt="Birthday Party Hero"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                  <h2 className="text-4xl md:text-6xl font-semibold text-center text-uppercase">
+                    {heroBlock?.title}
+                  </h2>
+                  <p className="mt-4 text-xl text-center font-semibold">
+                    {heroBlock?.subtitle}
+                  </p>
                 </div>
-                <div className="relative">
-                  <svg
+              </div>
+              <div className="relative">
+                <svg
                   className="absolute bottom-[-75px] left-0 w-full"
                   viewBox="0 0 1440 320"
-                  >
-                    <path
-                      fill="#FFFFFF"
-                      d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"
-                    ></path>
-                  </svg>
-                </div>
-              </section>
-          
+                >
+                  <path
+                    fill="#FFFFFF"
+                    d="M0,160 Q720,320 1440,160 L1440,320 L0,320Z"
+                  ></path>
+                </svg>
+              </div>
+            </section>
 
             {/* Introduction Section */}
             {homeMoreSection && (
@@ -248,8 +247,8 @@ export default function BirthdayPartiesPage() {
                 className="w-full relative bg-[#FF0000] mt-[0px] z-0 py-20"
                 style={{
                   backgroundImage: "url('/assets/hero2.svg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }}
               >
                 <GreetingsSection data={homeMoreSection} />
@@ -300,7 +299,6 @@ export default function BirthdayPartiesPage() {
                 </div>
               </section>
             )}
-            
 
             {/* Testimonials Section */}
             {testimonialBlock && (

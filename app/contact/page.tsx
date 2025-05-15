@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
-import Image from "next/image";
-import React, { useState } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
 
 export default function Contact() {
   const [formData, setFormData] = useState<any>({
@@ -15,7 +15,7 @@ export default function Contact() {
     message: '',
     agreed: false,
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<any>(null);
 
@@ -23,17 +23,20 @@ export default function Contact() {
     const { name, value, type, checked } = e.target;
     setFormData((prev: any) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    
-    if (!formData.agreed) {
-      setSubmitStatus({ success: false, message: 'You must agree to the terms' });
-      return;
-    }
+
+    // if (!formData.agreed) {
+    //   setSubmitStatus({
+    //     success: false,
+    //     message: 'You must agree to the terms',
+    //   });
+    //   return;
+    // }
 
     setIsSubmitting(true);
     setSubmitStatus(null);
@@ -54,7 +57,10 @@ export default function Contact() {
 
       const data = await response.json();
       if (response.ok) {
-        setSubmitStatus({ success: true, message: 'Message sent successfully!' });
+        setSubmitStatus({
+          success: true,
+          message: 'Message sent successfully!',
+        });
         setFormData({
           firstName: '',
           lastName: '',
@@ -63,11 +69,17 @@ export default function Contact() {
           agreed: false,
         });
       } else {
-        setSubmitStatus({ success: false, message: data.message || 'Error sending message' });
+        setSubmitStatus({
+          success: false,
+          message: data.message || 'Error sending message',
+        });
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setSubmitStatus({ success: false, message: 'Network error. Please try again.' });
+      setSubmitStatus({
+        success: false,
+        message: 'Network error. Please try again.',
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -96,8 +108,8 @@ export default function Contact() {
                 possible.
               </p>
               <p className="text-lg">
-                If you want to get in touch with us quicker, you can call us on{" "}
-                <span className="font-bold">02078460099</span> or{" "}
+                If you want to get in touch with us quicker, you can call us on{' '}
+                <span className="font-bold">02078460099</span> or{' '}
                 <span className="font-bold">07535061152</span>
               </p>
             </div>
@@ -107,7 +119,13 @@ export default function Contact() {
           <div className="bg-white p-8 md:p-16 flex items-center">
             <div className="w-full max-w-md mx-auto">
               {submitStatus && (
-                <div className={`mb-4 p-4 rounded ${submitStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                <div
+                  className={`mb-4 p-4 rounded ${
+                    submitStatus.success
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-red-100 text-red-800'
+                  }`}
+                >
                   {submitStatus.message}
                 </div>
               )}
@@ -160,7 +178,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="flex items-start space-x-3">
+                {/* <div className="flex items-start space-x-3">
                   <Checkbox 
                     id="terms" 
                     className="mt-1"
@@ -173,9 +191,9 @@ export default function Contact() {
                     typesetting industry. Lorem Ipsum has been the
                     industry&apos;s standard dummy.
                   </label>
-                </div>
+                </div> */}
 
-                <Button 
+                <Button
                   type="submit"
                   className="w-full bg-black hover:bg-black/80 text-white py-6 rounded-full text-lg"
                   disabled={isSubmitting}

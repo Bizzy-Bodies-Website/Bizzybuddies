@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
-import { IntroductionSection } from "@/components/camps/IntroductionSection";
-import { OfferingsSection } from "@/components/camps/OfferingsSection/OfferingsSection";
+import Image from 'next/image';
+import React, { useEffect, useState, useRef } from 'react';
+import { IntroductionSection } from '@/components/camps/IntroductionSection';
+import { OfferingsSection } from '@/components/camps/OfferingsSection/OfferingsSection';
 // import { ServicesOverviewSection } from "@/components/camps/ServicesOverviewSection/ServicesOverviewSection";
-import { ImageGallerySection } from "@/components/camps/ImageGallerySection";
-import { KeyFeaturesSection } from "@/components/camps/KeyFeaturesSection";
+import { ImageGallerySection } from '@/components/camps/ImageGallerySection';
+import { KeyFeaturesSection } from '@/components/camps/KeyFeaturesSection';
 // import { ImageDisplaySection } from "@/components/camps/ImageDisplaySection";
 // import { HighlightsSection } from "@/components/camps/HighlightsSection";
 // import { MainContentSection } from "@/components/camps/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/camps/BenefitsOverviewSection";
+import { BenefitsOverviewSection } from '@/components/camps/BenefitsOverviewSection';
 // import { ClientTestimonialsSection } from "@/components/camps/ClientTestimonialsSection/ClientTestimonialsSection";
-import { ContactUsSection } from "@/components/camps/ContactUsSection/ContactUsSection";
-import client, { urlFor } from "../../sanity";
-import { motion, useAnimation, useInView } from "framer-motion";
-import ChiswickCampInfo from "./partials/camp-info";
+import { ContactUsSection } from '@/components/camps/ContactUsSection/ContactUsSection';
+import client, { urlFor } from '../../sanity';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import ChiswickCampInfo from './partials/camp-info';
 
 // Animation variants
 const sectionVariants = {
@@ -23,14 +23,14 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
 // Section wrapper with animation
 const SectionWrapper = ({
   children,
-  className = "",
+  className = '',
   style,
 }: {
   children: React.ReactNode;
@@ -39,11 +39,11 @@ const SectionWrapper = ({
 }) => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible");
+      controls.start('visible');
     }
   }, [isInView, controls]);
 
@@ -150,7 +150,7 @@ export default function Camps() {
         setPageData(result);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       }
     };
@@ -176,34 +176,35 @@ export default function Camps() {
 
   // Find specific block types
   const heroBlock = contentBlocks.find(
-    (block: any) => block._type === "heroBlock"
+    (block: any) => block._type === 'heroBlock'
   );
   const introBlock = contentBlocks.find(
-    (block: any) => block._type === "homeMoreSectionBlock"
+    (block: any) => block._type === 'homeMoreSectionBlock'
   );
   const featuredBlock = contentBlocks.find(
     (block: any) =>
-      block._type === "campFeaturedSection" ||
-      block._type === "featuredSectionBlock"
+      block._type === 'campFeaturedSection' ||
+      block._type === 'featuredSectionBlock'
   );
   const servicesBlock = contentBlocks.find(
     (block: any) =>
-      block._type === "CampServicesSection" ||
-      block._type === "servicesSectionBlock" ||
-      block._type === "whatWeOfferBlock"
+      block._type === 'CampServicesSection' ||
+      block._type === 'servicesSectionBlock' ||
+      block._type === 'whatWeOfferBlock'
   );
   const needToKnowBlock = contentBlocks.find(
-    (block: any) => block._type === "faqBlock"
+    (block: any) => block._type === 'faqBlock'
   );
   const contactBlock = contentBlocks.find(
-    (block: any) => block._type === "CTATwoButtons"
+    (block: any) => block._type === 'CTATwoButtons'
   );
 
   const imagesBlock = contentBlocks.find(
-    (block: any) => block._type === "imagesBlock"
+    (block: any) => block._type === 'imagesBlock'
   );
 
-  console.log("contentBlocks fffggfghhg", contentBlocks);
+  console.log('contentBlocks fffggfghhg', contentBlocks);
+  console.log('servicesBlock.offers[1]', servicesBlock.offers[1]);
 
   return (
     <div className="bg-white flex flex-col items-center w-full">
@@ -218,10 +219,10 @@ export default function Camps() {
                 backgroundImage: heroBlock.backgroundImage
                   ? `url(${urlFor(heroBlock.backgroundImage).url()})`
                   : undefined,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundColor: "#FF0000",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: '#FF0000',
               }}
             >
               <OfferingsSection data={heroBlock} />
@@ -245,8 +246,8 @@ export default function Camps() {
               className="w-full relative bg-[#FF0000] mt-[-30px] z-0 py-[50px]"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             >
               <IntroductionSection data={introBlock} />
@@ -298,38 +299,31 @@ export default function Camps() {
                 </p>
               </SectionWrapper>
 
-              {/* Check for both old and new data structures */}
-              {((servicesBlock.services && servicesBlock.services.length > 0) ||
-                (servicesBlock.offers && servicesBlock.offers.length > 0)) && (
-                  <>
-                    <SectionWrapper>
-                      <ImageGallerySection
-                        data={
-                          (servicesBlock.services && servicesBlock.services[0]) ||
-                          (servicesBlock.offers && servicesBlock.offers[0])
-                        }
-                      />
-                      {servicesBlock.offers[0].details && servicesBlock.offers[0].details && <ChiswickCampInfo data={servicesBlock.offers[0].details}/>}
-                    </SectionWrapper>
+              {(servicesBlock.services?.length > 0 ||
+                servicesBlock.offers?.length > 0) && (
+                <>
+                  {(servicesBlock.services || servicesBlock.offers).map(
+                    (item: any, index: number) => (
+                      <SectionWrapper key={index}>
+                        {/* First item uses ImageGallerySection, others use KeyFeaturesSection */}
+                        {index === 0 ? (
+                          <ImageGallerySection data={item} />
+                        ) : (
+                          <KeyFeaturesSection data={item} />
+                        )}
 
-                    {((servicesBlock.services &&
-                      servicesBlock.services.length > 1) ||
-                      (servicesBlock.offers &&
-                        servicesBlock.offers.length > 1)) && (
-                        <SectionWrapper>
-                          <KeyFeaturesSection
-                            data={
-                              (servicesBlock.services &&
-                                servicesBlock.services[1]) ||
-                              (servicesBlock.offers && servicesBlock.offers[1])
-                            }
+                        {/* Handle ChiswickCampInfo if present (mainly for offers) */}
+                        {item.details && (
+                          <ChiswickCampInfo
+                            data={item.details}
+                            campTitle={item.campTitle}
                           />
-                          {servicesBlock.offers[1].details && servicesBlock.offers[1].details && <ChiswickCampInfo data={servicesBlock.offers[1].details}/>}
-                        </SectionWrapper>
-                      )}
-                  </>
-                )}
-
+                        )}
+                      </SectionWrapper>
+                    )
+                  )}
+                </>
+              )}
             </>
           )}
 

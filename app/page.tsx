@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
-import { IntroductionSection } from "@/components/home/IntroductionSection";
-import { OfferingsSection } from "@/components/home/OfferingsSection/OfferingsSection";
-import { ServicesOverviewSection } from "@/components/home/ServicesOverviewSection/ServicesOverviewSection";
-import { ImageGallerySection } from "@/components/home/ImageGallerySection";
-import { KeyFeaturesSection } from "@/components/home/KeyFeaturesSection";
-import { MainContentSection } from "@/components/home/MainContentSection/MainContentSection";
-import { BenefitsOverviewSection } from "@/components/home/BenefitsOverviewSection";
-import { ContactUsSection } from "@/components/home/ContactUsSection/ContactUsSection";
-import client, { urlFor } from "../sanity";
-import { motion, useAnimation, useInView } from "framer-motion";
-import TestimonialsSection from "./birthday-parties/partials/Testimonial-Section";
-import { BenefitsOverviewSection2 } from "@/components/home/BenefitsOverviewSection2/BenefitsOverviewSection2";
+import Image from 'next/image';
+import React, { useEffect, useState, useRef } from 'react';
+import { IntroductionSection } from '@/components/home/IntroductionSection';
+import { OfferingsSection } from '@/components/home/OfferingsSection/OfferingsSection';
+import { ServicesOverviewSection } from '@/components/home/ServicesOverviewSection/ServicesOverviewSection';
+import { ImageGallerySection } from '@/components/home/ImageGallerySection';
+import { KeyFeaturesSection } from '@/components/home/KeyFeaturesSection';
+import { MainContentSection } from '@/components/home/MainContentSection/MainContentSection';
+import { BenefitsOverviewSection } from '@/components/home/BenefitsOverviewSection';
+import { ContactUsSection } from '@/components/home/ContactUsSection/ContactUsSection';
+import client, { urlFor } from '../sanity';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import TestimonialsSection from './birthday-parties/partials/Testimonial-Section';
+import { BenefitsOverviewSection2 } from '@/components/home/BenefitsOverviewSection2/BenefitsOverviewSection2';
 
 // Animation variants
 const sectionVariants = {
@@ -21,14 +21,14 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
 // Section wrapper with animation
 const SectionWrapper = ({
   children,
-  className = "",
+  className = '',
   style,
 }: {
   children: React.ReactNode;
@@ -37,11 +37,11 @@ const SectionWrapper = ({
 }) => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible");
+      controls.start('visible');
     }
   }, [isInView, controls]);
 
@@ -70,7 +70,7 @@ export default function Home() {
         const result = await client.fetch(query);
         setPageData(result);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -94,38 +94,38 @@ export default function Home() {
 
   // Find blocks by type
   const heroBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "heroBlock"
+    (block: any) => block._type === 'heroBlock'
   );
   const homeMoreSectionBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "homeMoreSectionBlock"
+    (block: any) => block._type === 'homeMoreSectionBlock'
   );
   const aboutSectionBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "aboutSectionBlock"
+    (block: any) => block._type === 'aboutSectionBlock'
   );
   const whatWeOfferBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "whatWeOfferBlock"
+    (block: any) => block._type === 'whatWeOfferBlock'
   );
   const valuesSectionBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "valuesSectionBlock"
+    (block: any) => block._type === 'valuesSectionBlock'
   );
   const imagesBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "imagesBlock"
+    (block: any) => block._type === 'imagesBlock'
   );
   const testimonialBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "testimonialBlock"
+    (block: any) => block._type === 'testimonialBlock'
   );
   const ctaSectionBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "CTASectionBlock"
+    (block: any) => block._type === 'CTASectionBlock'
   );
   const upcomingDatesBlock = pageData.contentBlocks.find(
-    (block: any) => block._type === "upcomingDatesBlock"
+    (block: any) => block._type === 'upcomingDatesBlock'
   );
   const CTATwoButtons = pageData.contentBlocks.find(
-    (block: any) => block._type === "CTATwoButtons"
+    (block: any) => block._type === 'CTATwoButtons'
   );
 
-  console.log("homeMoreSectionBlock", homeMoreSectionBlock);
-  console.log("pageData bbbb", pageData);
+  console.log('homeMoreSectionBlock', homeMoreSectionBlock);
+  console.log('pageData bbbb', pageData);
 
   return (
     <div className="bg-white flex flex-col items-center w-full">
@@ -139,10 +139,10 @@ export default function Home() {
                 backgroundImage: heroBlock.backgroundImage
                   ? `url(${urlFor(heroBlock.backgroundImage).url()})`
                   : undefined,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundColor: "#FF0000",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: '#FF0000',
               }}
             >
               <OfferingsSection data={heroBlock} />
@@ -166,8 +166,8 @@ export default function Home() {
               className="w-full relative bg-[#FF0000] mt-[50px] Z-50"
               style={{
                 backgroundImage: "url('/assets/hero2.svg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             >
               <IntroductionSection data={homeMoreSectionBlock} />
@@ -216,14 +216,14 @@ export default function Home() {
           )}
 
           {/* upcomingDatesBlock */}
-          {upcomingDatesBlock && (
+          {/* {upcomingDatesBlock && (
             <SectionWrapper>
               <BenefitsOverviewSection2
                 data={upcomingDatesBlock.blocks || []}
                 text={upcomingDatesBlock}
               />
             </SectionWrapper>
-          )}
+          )} */}
 
           {/* Images Gallery */}
           {imagesBlock && imagesBlock.images && (
@@ -239,7 +239,7 @@ export default function Home() {
                         initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, margin: '-100px' }}
                       >
                         <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">
                           <img
@@ -265,9 +265,9 @@ export default function Home() {
                           initial={{ opacity: 0, scale: 0.9 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5, delay: index * 0.4 }}
-                          viewport={{ once: true, margin: "-100px" }}
+                          viewport={{ once: true, margin: '-100px' }}
                           className={
-                            index === 0 ? "w-full sm:w-1/4" : "w-full sm:w-3/4"
+                            index === 0 ? 'w-full sm:w-1/4' : 'w-full sm:w-3/4'
                           }
                         >
                           <div className="w-full max-h-[300px] sm:max-h-[415px] overflow-hidden rounded-lg">

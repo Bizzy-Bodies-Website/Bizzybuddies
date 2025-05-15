@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface BenefitsOverviewSectionProps {
   data: any; // Replace 'any' with the actual type if known

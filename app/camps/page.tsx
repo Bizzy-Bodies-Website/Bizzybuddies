@@ -311,7 +311,7 @@ export default function Camps() {
                         ) : (
                           <KeyFeaturesSection data={item} />
                         )}
-
+ 
                         {/* Handle ChiswickCampInfo if present (mainly for offers) */}
                         {item.details && (
                           <ChiswickCampInfo
@@ -319,6 +319,8 @@ export default function Camps() {
                             campTitle={item.campTitle}
                           />
                         )}
+
+                    
                       </SectionWrapper>
                     )
                   )}

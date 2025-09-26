@@ -83,7 +83,7 @@ export const KeyFeaturesSection: React.FC<KeyFeaturesSectionProps> = ({
                     className="p-0 h-auto flex items-center gap-4 hover:bg-transparent"
                   >
                     <span className="text-[#111111] text-sm md:text-base lg:text-lg font-medium">
-                      {data?.linkText}
+                      {data?.linkText} 
                     </span>
                     <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
                       <ArrowRightIcon className="w-5 h-5 text-[#ff0000]" />

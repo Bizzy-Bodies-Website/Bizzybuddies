@@ -59,11 +59,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, navItems, onClose }) =>
               <ArrowRight size={20} className="text-white" />
             </Link>
           ))}
+           {lastTwoNavItems.map((item) => (
+          <Link
+            key={item.name}
+            href={item.path}
+            className="group py-4 border-b border-white/20 flex justify-between items-center"
+          >
+            <span className="text-white text-sm font-bold uppercase">{item.name}</span>
+            <ArrowRight size={20} className="text-white" />
+          </Link>
+        ))}
         </nav>
       </div>
 
       {/* Render the last two items just above Privacy Policy */}
-      <div className="px-6 pt-4">
+      {/* <div className="px-6 pt-4">
         {lastTwoNavItems.map((item) => (
           <Link
             key={item.name}
@@ -74,7 +84,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, navItems, onClose }) =>
             <ArrowRight size={20} className="text-white" />
           </Link>
         ))}
-      </div>
+      </div> */}
 
       <div className="p-6 text-center text-white">
         <Link href="/privacy-policy" className="text-xl font-semibold text-[14px]">

@@ -74,12 +74,19 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
                   href="/contact"
                   className="p-0 h-auto flex items-center gap-4 md:gap-2 hover:bg-transparent"
                 >
-                  <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
+                  {/* <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
                     Contact us for more information
-                  </span>
-                  <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
+                  </span> */}
+
+                     <span className="text-[#111111] text-sm md:text-base lg:text-md font-medium">
+                    Contact us for more information
+                    </span>
+                  {/* <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
                     <ArrowRightIcon className="w-3 h-3 text-[#ff0000]" />
-                  </div>
+                  </div> */}
+                     <div className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-solid border-[#FF0000]">
+                      <ArrowRightIcon className="w-4 h-4 text-[#FF0000]" />
+                    </div>
                 </Link>
 
                 {data?.linkUrl && data?.linkText && (
@@ -87,11 +94,17 @@ export const ImageGallerySection: React.FC<ImageGallerySectionProps> = ({
                     href={data?.linkUrl || "#"}
                     className="p-0 h-auto flex items-center gap-2 hover:bg-transparent"
                   >
-                    <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]">
+                    {/* <span className="font-desktop-button-button-text text-[#111111] text-sm sm:text-base md:text-[14px]"> */}
+                                          <span className="text-[#111111] text-sm md:text-base lg:text-md font-medium">
+
                       {data?.linkText || ""}
                     </span>
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
+
+                    {/* <div className="w-6 h-6 flex items-center justify-center rounded-full border-2 border-solid border-[#ff0000]">
                       <ArrowRightIcon className="w-3 h-3 text-[#ff0000]" />
+                    </div> */}
+                       <div className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-solid border-[#FF0000]">
+                      <ArrowRightIcon className="w-4 h-4 text-[#FF0000]" />
                     </div>
                   </Link>
                 )}

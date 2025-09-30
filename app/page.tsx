@@ -15,7 +15,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import TestimonialsSection from './birthday-parties/partials/Testimonial-Section';
 import { BenefitsOverviewSection2 } from '@/components/home/BenefitsOverviewSection2/BenefitsOverviewSection2';
 
-// Animation variants dev team
+// Animation variants dev team  update
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -206,7 +206,7 @@ export default function Home() {
 {whatWeOfferBlock.offers &&
   whatWeOfferBlock.offers.map((offer: any, index: number) => (
     <SectionWrapper key={offer._key}>
-      {/* Alternate between the two components that show content properly */}
+      {/* Alternate between the two components that show content properly dev team update */}
       {index % 2 === 0 ? (
         <KeyFeaturesSection data={offer} />
       ) : (

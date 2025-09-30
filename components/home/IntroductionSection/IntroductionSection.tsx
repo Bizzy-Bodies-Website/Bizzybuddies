@@ -30,7 +30,7 @@ export const IntroductionSection: React.FC<OfferingsSectionProps> = ({
               </h2>
 
               <p className="w-full lg:w-[450px] font-desktop-title-subheading-2 text-[length:var(--desktop-title-subheading-2-font-size)] text-center tracking-[var(--desktop-title-subheading-2-letter-spacing)] leading-[var(--desktop-title-subheading-2-line-height)]">
-                {data?.subtitle}
+                {data?.subtitle} 
               </p>
             </div>
           </div>

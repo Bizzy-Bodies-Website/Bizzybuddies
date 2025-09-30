@@ -194,14 +194,28 @@ export default function Home() {
               </SectionWrapper>
 
               {/* Offers */}
-              {whatWeOfferBlock.offers &&
+              {/* {whatWeOfferBlock.offers &&
                 whatWeOfferBlock.offers.map((offer: any, index: number) => (
                   <SectionWrapper key={offer._key}>
                     {index === 0 && <KeyFeaturesSection data={offer} />}
                     {index === 1 && <MainContentSection data={offer} />}
-                    {index === 2 && <ImageGallerySection data={offer} />}
+                    {index === 2 && <KeyFeaturesSection data={offer} />}
                   </SectionWrapper>
-                ))}
+                ))} */}
+
+{whatWeOfferBlock.offers &&
+  whatWeOfferBlock.offers.map((offer: any, index: number) => (
+    <SectionWrapper key={offer._key}>
+      {/* Alternate between the two components that show content properly */}
+      {index % 2 === 0 ? (
+        <KeyFeaturesSection data={offer} />
+      ) : (
+        <MainContentSection data={offer} />
+      )}
+    </SectionWrapper>
+  ))}
+
+                
             </>
           )}
 

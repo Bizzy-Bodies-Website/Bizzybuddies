@@ -15,7 +15,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import TestimonialsSection from './birthday-parties/partials/Testimonial-Section';
 import { BenefitsOverviewSection2 } from '@/components/home/BenefitsOverviewSection2/BenefitsOverviewSection2';
 
-// Animation variants
+// Animation variants dev team
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
